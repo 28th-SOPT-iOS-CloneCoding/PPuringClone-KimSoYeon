@@ -1,7 +1,8 @@
 # KimSoYeon
-1st Clone Coding - iOS Clock App
+<1st Clone Coding - iOS Clock App>
 
 Stop Watch
+
 [화면] 
 뷰 (-> 스택뷰, 시간 디스플레이)
 테이블 뷰 (-> 여기에는 시간을 기록하는 셀이 들어감)
