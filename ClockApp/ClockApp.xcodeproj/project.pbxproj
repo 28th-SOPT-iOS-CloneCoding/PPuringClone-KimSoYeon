@@ -18,6 +18,7 @@
 		9286524E2624DF030025529B /* Clock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9286524D2624DF030025529B /* Clock.storyboard */; };
 		928652652624E0660025529B /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928652642624E0660025529B /* RecordCell.swift */; };
 		928652702624E0AD0025529B /* StopWatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286526F2624E0AD0025529B /* StopWatchVC.swift */; };
+		92A2917A2627F7250071F65D /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A291792627F7250071F65D /* StopWatch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		9286524D2624DF030025529B /* Clock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Clock.storyboard; sourceTree = "<group>"; };
 		928652642624E0660025529B /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		9286526F2624E0AD0025529B /* StopWatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchVC.swift; sourceTree = "<group>"; };
+		92A291792627F7250071F65D /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +111,8 @@
 				9286521C2624DEC60025529B /* SceneDelegate.swift */,
 				928652232624DEC70025529B /* Assets.xcassets */,
 				928652282624DEC70025529B /* Info.plist */,
-				928652592624DFA20025529B /* Resources */,
-				928652582624DF990025529B /* Sources */,
+				928652592624DFA20025529B /* Sources */,
+				928652582624DF990025529B /* Resources */,
 			);
 			path = ClockApp;
 			sourceTree = "<group>";
@@ -133,15 +135,15 @@
 			path = ClockAppUITests;
 			sourceTree = "<group>";
 		};
-		928652582624DF990025529B /* Sources */ = {
+		928652582624DF990025529B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				9286525A2624DFBA0025529B /* Storyboards */,
 			);
-			path = Sources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		928652592624DFA20025529B /* Resources */ = {
+		928652592624DFA20025529B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				928652602624E0240025529B /* Models */,
@@ -149,7 +151,7 @@
 				9286525F2624E01F0025529B /* Views */,
 				9286525E2624E0170025529B /* VCs */,
 			);
-			path = Resources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		9286525A2624DFBA0025529B /* Storyboards */ = {
@@ -181,6 +183,7 @@
 		928652602624E0240025529B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				92A291782627F7040071F65D /* StopWatch */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,6 +194,14 @@
 				928652642624E0660025529B /* RecordCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		92A291782627F7040071F65D /* StopWatch */ = {
+			isa = PBXGroup;
+			children = (
+				92A291792627F7250071F65D /* StopWatch.swift */,
+			);
+			path = StopWatch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +338,7 @@
 				928652702624E0AD0025529B /* StopWatchVC.swift in Sources */,
 				9286521F2624DEC60025529B /* ViewController.swift in Sources */,
 				9286521B2624DEC60025529B /* AppDelegate.swift in Sources */,
+				92A2917A2627F7250071F65D /* StopWatch.swift in Sources */,
 				928652652624E0660025529B /* RecordCell.swift in Sources */,
 				9286521D2624DEC60025529B /* SceneDelegate.swift in Sources */,
 			);

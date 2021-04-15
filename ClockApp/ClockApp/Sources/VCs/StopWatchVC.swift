@@ -8,8 +8,7 @@
 import UIKit
 
 class StopWatchVC: UIViewController {
-
-
+    
     @IBOutlet weak var stopwatchLabel: UILabel!
     @IBOutlet weak var decimalLabel: UILabel!
     @IBOutlet weak var lapBtn: UIButton!
@@ -18,33 +17,35 @@ class StopWatchVC: UIViewController {
     
     var isStart: Bool = false
     var isLap: Bool = false
+    
     var timer: Timer?
     let timeSelector: Selector = #selector(StopWatchVC.updateTime)
+    
     var currentTimeCount: Int = 0
     var currentLapTimeCount: Int = 0
     var lapTimerString: String?
     
-    var timeLap: [String] = []
+    var laps: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         recordTableView.delegate = self
         recordTableView.dataSource = self
-        setUpStopwatch()
+        setUpButtons()
     }
     
-    func setUpStopwatch() {
+    func setUpButtons() {
         stopwatchLabel.text = timeFormatter(0)
         decimalLabel.text = timeFormatterSec(0)
         
         lapBtn.setTitle("랩", for: .normal)
-        lapBtn.layer.masksToBounds = true
+        lapBtn.clipsToBounds = true
         lapBtn.layer.cornerRadius = 35
         lapBtn.isEnabled = false
         
         startBtn.setTitle("시작", for: .normal)
-        startBtn.layer.masksToBounds = true
+        startBtn.clipsToBounds = true
         startBtn.layer.cornerRadius = 35
     }
     
@@ -68,20 +69,57 @@ class StopWatchVC: UIViewController {
     
     @objc func updateTime(){
         currentTimeCount += 1
+        
         stopwatchLabel.text = timeFormatter(currentTimeCount)
         decimalLabel.text = timeFormatterSec(currentTimeCount)
+        
         lapTimerString = timeFormatter(currentTimeCount) + timeFormatterSec(currentTimeCount)
     }
-
+    
+    @IBAction func touchUpStart(_ sender: Any) {
+        if isStart == false { // 최초 시작
+            isLap = true
+            isStart = true
+            lapBtn.isEnabled = true
+            
+            startBtn.setTitle("중단", for: .normal)
+            startBtn.setTitleColor(UIColor.init(red: 255/255, green: 0, blue: 0, alpha: 1), for: .normal)
+            startBtn.backgroundColor = UIColor.init(red: 148/255, green: 17/255, blue: 0, alpha: 1)
+            
+            stopwatchLabel.text = timeFormatter(currentTimeCount)
+            decimalLabel.text = timeFormatterSec(currentTimeCount)
+            timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        } else if isStart && timer!.isValid { // 일시정지
+            isLap = false
+            
+            startBtn.setTitle("시작", for: .normal)
+            startBtn.setTitleColor(UIColor.init(red: 142/255, green: 250/255, blue: 0, alpha: 1), for: .normal)
+            startBtn.backgroundColor = UIColor.init(red: 50/255, green: 76/255, blue: 21/255, alpha: 1)
+            lapBtn.setTitle("재설정", for: .normal)
+            
+            timer?.invalidate()
+        } else if isStart && !(timer!.isValid) { // 일시정지에서 재개
+            isLap = true
+            startBtn.setTitle("중단", for: .normal)
+            startBtn.setTitleColor(UIColor.init(red: 255/255, green: 38/255, blue: 0, alpha: 1), for: .normal)
+            startBtn.backgroundColor = UIColor.init(red: 148/255, green: 17/255, blue: 0, alpha: 1)
+            lapBtn.setTitle("랩", for: .normal)
+            
+            timer = Timer.scheduledTimer(timeInterval: 0.035, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        }
+    }
+    
     @IBAction func touchUpLap(_ sender: Any) {
         if isLap {
-            timeLap.append(lapTimerString ?? " ")
+            laps.append(lapTimerString ?? "")
             recordTableView.reloadData()
+            
+            // TODO: - lap할 때마다 시간 저장하고? 값 초기화 기능
         } else {
             timer?.invalidate()
             isStart = false
             currentTimeCount = 0
-            timeLap.removeAll()
+            laps.removeAll()
             recordTableView.reloadData()
             
             lapBtn.setTitle("랩", for: .normal)
@@ -92,51 +130,22 @@ class StopWatchVC: UIViewController {
         }
     }
     
-    @IBAction func touchUpStart(_ sender: Any) {
-        if isStart == false {
-            isLap = true
-            isStart = true
-            lapBtn.isEnabled = true
-            startBtn.setTitle("중단", for: .normal)
-            startBtn.setTitleColor(UIColor.init(red: 255/255, green: 38/255, blue: 0, alpha: 1), for: .normal)
-            startBtn.backgroundColor = UIColor.init(red: 148/255, green: 17/255, blue: 0, alpha: 1)
-            
-            stopwatchLabel.text = timeFormatter(currentTimeCount)
-            decimalLabel.text = timeFormatterSec(currentTimeCount)
-            
-            timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: timeSelector, userInfo: nil, repeats: true)
-        } else if isStart && timer!.isValid {
-            isLap = false
-            startBtn.setTitle("시작", for: .normal)
-            startBtn.setTitleColor(UIColor.init(red: 142/255, green: 250/255, blue: 0, alpha: 1), for: .normal)
-            startBtn.backgroundColor = UIColor.init(red: 50/255, green: 76/255, blue: 21/255, alpha: 1)
-            lapBtn.setTitle("재설정", for: .normal)
-            timer?.invalidate()
-        } else if isStart && !(timer!.isValid) {
-            isLap = true
-            startBtn.setTitle("중단", for: .normal)
-            startBtn.setTitleColor(UIColor.init(red: 255/255, green: 38/255, blue: 0, alpha: 1), for: .normal)
-            startBtn.backgroundColor = UIColor.init(red: 148/255, green: 17/255, blue: 0, alpha: 1)
-            lapBtn.setTitle("랩", for: .normal)
-            timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: timeSelector, userInfo: nil, repeats: true)
-        }
-    }
-    
 }
 
 extension StopWatchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        timeLap.count
+        laps.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RecordCell.identifier) as? RecordCell else {
             return UITableViewCell()
         }
-        timeLap.sort(by: { $0 > $1 })
-        let cellItem = self.timeLap[indexPath.row]
-        cell.lapCountLabel.text = "랩 \(timeLap.count - indexPath.row)"
-        cell.lapRecordLabel.text = cellItem
+        laps.sort(by: { $0 > $1 })
+        
+        let recordCellItem = self.laps[indexPath.row]
+        cell.lapCountLabel.text = "랩 \(laps.count - indexPath.row)"
+        cell.lapRecordLabel.text = recordCellItem
         return cell
     }
     
