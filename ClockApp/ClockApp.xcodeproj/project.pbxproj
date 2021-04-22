@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,32 +13,22 @@
 		928652222624DEC60025529B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928652202624DEC60025529B /* Main.storyboard */; };
 		928652242624DEC70025529B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928652232624DEC70025529B /* Assets.xcassets */; };
 		928652272624DEC70025529B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928652252624DEC70025529B /* LaunchScreen.storyboard */; };
-		928652322624DEC70025529B /* ClockAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928652312624DEC70025529B /* ClockAppTests.swift */; };
-		9286523D2624DEC70025529B /* ClockAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286523C2624DEC70025529B /* ClockAppUITests.swift */; };
 		9286524E2624DF030025529B /* Clock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9286524D2624DF030025529B /* Clock.storyboard */; };
 		928652652624E0660025529B /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928652642624E0660025529B /* RecordCell.swift */; };
 		928652702624E0AD0025529B /* StopWatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286526F2624E0AD0025529B /* StopWatchVC.swift */; };
+		928840EB262C1F1A0054C6F2 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928840EA262C1F1A0054C6F2 /* CircularProgressView.swift */; };
+		928840FA262C28280054C6F2 /* Pods_ClockApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADCE6A723AB3AB0CF8F915C /* Pods_ClockApp.framework */; };
+		929380AE262B181D00508618 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929380AD262B181D00508618 /* TimerVC.swift */; };
+		929380B3262B185800508618 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929380B2262B185800508618 /* MusicCell.swift */; };
+		929380B8262B1A2D00508618 /* TimerMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929380B7262B1A2D00508618 /* TimerMusicVC.swift */; };
 		92A2917A2627F7250071F65D /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A291792627F7250071F65D /* StopWatch.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9286522E2624DEC70025529B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9286520F2624DEC60025529B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 928652162624DEC60025529B;
-			remoteInfo = ClockApp;
-		};
-		928652392624DEC70025529B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9286520F2624DEC60025529B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 928652162624DEC60025529B;
-			remoteInfo = ClockApp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		0ADCE6A723AB3AB0CF8F915C /* Pods_ClockApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClockApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		373AEF153E81186E48A1179E /* Pods-ClockAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ClockAppTests/Pods-ClockAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3F0BF442501996BDD7F6BBD9 /* Pods-ClockAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockAppTests.release.xcconfig"; path = "Target Support Files/Pods-ClockAppTests/Pods-ClockAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		40617B82E3F23C753B870C2D /* Pods-ClockApp-ClockAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockApp-ClockAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-ClockApp-ClockAppUITests/Pods-ClockApp-ClockAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		928652172624DEC60025529B /* ClockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9286521A2624DEC60025529B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9286521C2624DEC60025529B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,16 +37,17 @@
 		928652232624DEC70025529B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		928652262624DEC70025529B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		928652282624DEC70025529B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9286522D2624DEC70025529B /* ClockAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		928652312624DEC70025529B /* ClockAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockAppTests.swift; sourceTree = "<group>"; };
-		928652332624DEC70025529B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		928652382624DEC70025529B /* ClockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9286523C2624DEC70025529B /* ClockAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockAppUITests.swift; sourceTree = "<group>"; };
-		9286523E2624DEC70025529B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9286524D2624DF030025529B /* Clock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Clock.storyboard; sourceTree = "<group>"; };
 		928652642624E0660025529B /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		9286526F2624E0AD0025529B /* StopWatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchVC.swift; sourceTree = "<group>"; };
+		928840EA262C1F1A0054C6F2 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		929380AD262B181D00508618 /* TimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVC.swift; sourceTree = "<group>"; };
+		929380B2262B185800508618 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		929380B7262B1A2D00508618 /* TimerMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerMusicVC.swift; sourceTree = "<group>"; };
 		92A291792627F7250071F65D /* StopWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		96A71FB1B6B08267FD967C6C /* Pods-ClockApp-ClockAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockApp-ClockAppUITests.release.xcconfig"; path = "Target Support Files/Pods-ClockApp-ClockAppUITests/Pods-ClockApp-ClockAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CBC3B4F1E47DBC8F2384E732 /* Pods-ClockApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockApp.debug.xcconfig"; path = "Target Support Files/Pods-ClockApp/Pods-ClockApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F4CEEC576AB33BDD9EDC6B3B /* Pods-ClockApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClockApp.release.xcconfig"; path = "Target Support Files/Pods-ClockApp/Pods-ClockApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,33 +55,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9286522A2624DEC70025529B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		928652352624DEC70025529B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				928840FA262C28280054C6F2 /* Pods_ClockApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40584735FCF004EDCE9AC54A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CBC3B4F1E47DBC8F2384E732 /* Pods-ClockApp.debug.xcconfig */,
+				F4CEEC576AB33BDD9EDC6B3B /* Pods-ClockApp.release.xcconfig */,
+				40617B82E3F23C753B870C2D /* Pods-ClockApp-ClockAppUITests.debug.xcconfig */,
+				96A71FB1B6B08267FD967C6C /* Pods-ClockApp-ClockAppUITests.release.xcconfig */,
+				373AEF153E81186E48A1179E /* Pods-ClockAppTests.debug.xcconfig */,
+				3F0BF442501996BDD7F6BBD9 /* Pods-ClockAppTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5A78CDB2584E7E9965DF14E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0ADCE6A723AB3AB0CF8F915C /* Pods_ClockApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9286520E2624DEC60025529B = {
 			isa = PBXGroup;
 			children = (
 				928652192624DEC60025529B /* ClockApp */,
-				928652302624DEC70025529B /* ClockAppTests */,
-				9286523B2624DEC70025529B /* ClockAppUITests */,
 				928652182624DEC60025529B /* Products */,
+				40584735FCF004EDCE9AC54A /* Pods */,
+				5A78CDB2584E7E9965DF14E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				928652172624DEC60025529B /* ClockApp.app */,
-				9286522D2624DEC70025529B /* ClockAppTests.xctest */,
-				928652382624DEC70025529B /* ClockAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,32 +104,12 @@
 		928652192624DEC60025529B /* ClockApp */ = {
 			isa = PBXGroup;
 			children = (
-				9286521A2624DEC60025529B /* AppDelegate.swift */,
-				9286521C2624DEC60025529B /* SceneDelegate.swift */,
 				928652232624DEC70025529B /* Assets.xcassets */,
 				928652282624DEC70025529B /* Info.plist */,
-				928652592624DFA20025529B /* Sources */,
 				928652582624DF990025529B /* Resources */,
+				928652592624DFA20025529B /* Sources */,
 			);
 			path = ClockApp;
-			sourceTree = "<group>";
-		};
-		928652302624DEC70025529B /* ClockAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				928652312624DEC70025529B /* ClockAppTests.swift */,
-				928652332624DEC70025529B /* Info.plist */,
-			);
-			path = ClockAppTests;
-			sourceTree = "<group>";
-		};
-		9286523B2624DEC70025529B /* ClockAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9286523C2624DEC70025529B /* ClockAppUITests.swift */,
-				9286523E2624DEC70025529B /* Info.plist */,
-			);
-			path = ClockAppUITests;
 			sourceTree = "<group>";
 		};
 		928652582624DF990025529B /* Resources */ = {
@@ -168,7 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				9286521E2624DEC60025529B /* ViewController.swift */,
-				9286526F2624E0AD0025529B /* StopWatchVC.swift */,
+				92884104262C2A290054C6F2 /* Timer */,
+				92884103262C2A1F0054C6F2 /* StopWatch */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -176,6 +154,7 @@
 		9286525F2624E01F0025529B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				928840EA262C1F1A0054C6F2 /* CircularProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +162,8 @@
 		928652602624E0240025529B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9286521A2624DEC60025529B /* AppDelegate.swift */,
+				9286521C2624DEC60025529B /* SceneDelegate.swift */,
 				92A291782627F7040071F65D /* StopWatch */,
 			);
 			path = Models;
@@ -192,8 +173,26 @@
 			isa = PBXGroup;
 			children = (
 				928652642624E0660025529B /* RecordCell.swift */,
+				929380B2262B185800508618 /* MusicCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		92884103262C2A1F0054C6F2 /* StopWatch */ = {
+			isa = PBXGroup;
+			children = (
+				9286526F2624E0AD0025529B /* StopWatchVC.swift */,
+			);
+			path = StopWatch;
+			sourceTree = "<group>";
+		};
+		92884104262C2A290054C6F2 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				929380AD262B181D00508618 /* TimerVC.swift */,
+				929380B7262B1A2D00508618 /* TimerMusicVC.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		92A291782627F7040071F65D /* StopWatch */ = {
@@ -211,9 +210,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 928652412624DEC70025529B /* Build configuration list for PBXNativeTarget "ClockApp" */;
 			buildPhases = (
+				53FE0EF8D77B67DDA4EE6D54 /* [CP] Check Pods Manifest.lock */,
 				928652132624DEC60025529B /* Sources */,
 				928652142624DEC60025529B /* Frameworks */,
 				928652152624DEC60025529B /* Resources */,
+				0128C4E14961CB874DC34BC3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,42 +224,6 @@
 			productName = ClockApp;
 			productReference = 928652172624DEC60025529B /* ClockApp.app */;
 			productType = "com.apple.product-type.application";
-		};
-		9286522C2624DEC70025529B /* ClockAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 928652442624DEC70025529B /* Build configuration list for PBXNativeTarget "ClockAppTests" */;
-			buildPhases = (
-				928652292624DEC70025529B /* Sources */,
-				9286522A2624DEC70025529B /* Frameworks */,
-				9286522B2624DEC70025529B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9286522F2624DEC70025529B /* PBXTargetDependency */,
-			);
-			name = ClockAppTests;
-			productName = ClockAppTests;
-			productReference = 9286522D2624DEC70025529B /* ClockAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		928652372624DEC70025529B /* ClockAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 928652472624DEC70025529B /* Build configuration list for PBXNativeTarget "ClockAppUITests" */;
-			buildPhases = (
-				928652342624DEC70025529B /* Sources */,
-				928652352624DEC70025529B /* Frameworks */,
-				928652362624DEC70025529B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9286523A2624DEC70025529B /* PBXTargetDependency */,
-			);
-			name = ClockAppUITests;
-			productName = ClockAppUITests;
-			productReference = 928652382624DEC70025529B /* ClockAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -271,14 +236,6 @@
 				TargetAttributes = {
 					928652162624DEC60025529B = {
 						CreatedOnToolsVersion = 12.4;
-					};
-					9286522C2624DEC70025529B = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 928652162624DEC60025529B;
-					};
-					928652372624DEC70025529B = {
-						CreatedOnToolsVersion = 12.4;
-						TestTargetID = 928652162624DEC60025529B;
 					};
 				};
 			};
@@ -296,8 +253,6 @@
 			projectRoot = "";
 			targets = (
 				928652162624DEC60025529B /* ClockApp */,
-				9286522C2624DEC70025529B /* ClockAppTests */,
-				928652372624DEC70025529B /* ClockAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -314,66 +269,69 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9286522B2624DEC70025529B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		928652362624DEC70025529B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0128C4E14961CB874DC34BC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ClockApp/Pods-ClockApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ClockApp/Pods-ClockApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ClockApp/Pods-ClockApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53FE0EF8D77B67DDA4EE6D54 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ClockApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		928652132624DEC60025529B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929380AE262B181D00508618 /* TimerVC.swift in Sources */,
+				929380B8262B1A2D00508618 /* TimerMusicVC.swift in Sources */,
 				928652702624E0AD0025529B /* StopWatchVC.swift in Sources */,
 				9286521F2624DEC60025529B /* ViewController.swift in Sources */,
+				929380B3262B185800508618 /* MusicCell.swift in Sources */,
 				9286521B2624DEC60025529B /* AppDelegate.swift in Sources */,
 				92A2917A2627F7250071F65D /* StopWatch.swift in Sources */,
+				928840EB262C1F1A0054C6F2 /* CircularProgressView.swift in Sources */,
 				928652652624E0660025529B /* RecordCell.swift in Sources */,
 				9286521D2624DEC60025529B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		928652292624DEC70025529B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				928652322624DEC70025529B /* ClockAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		928652342624DEC70025529B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9286523D2624DEC70025529B /* ClockAppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9286522F2624DEC70025529B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 928652162624DEC60025529B /* ClockApp */;
-			targetProxy = 9286522E2624DEC70025529B /* PBXContainerItemProxy */;
-		};
-		9286523A2624DEC70025529B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 928652162624DEC60025529B /* ClockApp */;
-			targetProxy = 928652392624DEC70025529B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		928652202624DEC60025529B /* Main.storyboard */ = {
@@ -513,6 +471,7 @@
 		};
 		928652422624DEC70025529B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBC3B4F1E47DBC8F2384E732 /* Pods-ClockApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -531,6 +490,7 @@
 		};
 		928652432624DEC70025529B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4CEEC576AB33BDD9EDC6B3B /* Pods-ClockApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -544,86 +504,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		928652452624DEC70025529B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ClockAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = soyeon.ClockAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClockApp.app/ClockApp";
-			};
-			name = Debug;
-		};
-		928652462624DEC70025529B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ClockAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = soyeon.ClockAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClockApp.app/ClockApp";
-			};
-			name = Release;
-		};
-		928652482624DEC70025529B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ClockAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = soyeon.ClockAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ClockApp;
-			};
-			name = Debug;
-		};
-		928652492624DEC70025529B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ClockAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = soyeon.ClockAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ClockApp;
 			};
 			name = Release;
 		};
@@ -644,24 +524,6 @@
 			buildConfigurations = (
 				928652422624DEC70025529B /* Debug */,
 				928652432624DEC70025529B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		928652442624DEC70025529B /* Build configuration list for PBXNativeTarget "ClockAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				928652452624DEC70025529B /* Debug */,
-				928652462624DEC70025529B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		928652472624DEC70025529B /* Build configuration list for PBXNativeTarget "ClockAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				928652482624DEC70025529B /* Debug */,
-				928652492624DEC70025529B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
