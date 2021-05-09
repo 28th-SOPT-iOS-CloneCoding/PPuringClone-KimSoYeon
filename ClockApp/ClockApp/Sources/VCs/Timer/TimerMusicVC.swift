@@ -56,10 +56,10 @@ extension TimerMusicVC: UITableViewDataSource {
         cell.selectionStyle = .none
         cell.musicLabel.text = musics[indexPath.row]
         
-//        if musics[indexPath.row] == "없음" {
-//            cell.backgroundColor = .black
-//            cell.musicLabel.textColor = .black
-//        }
+        if musics[indexPath.row] == "없음" {
+            cell.backgroundColor = .black
+            cell.musicLabel.textColor = .black
+        }
         
         return cell
     }

@@ -32,23 +32,19 @@ class TimerVC: UIViewController {
 
     var musicName: String?
     
+    var cpView: CircularProgressView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound,.badge]) { (result, Error) in
-            print("Notification")
-        }
         
         timePickerView.delegate = self
         
         initialSetUp()
-        circularProgressSetUp()
     }
     
     func initialSetUp() {
         timePickerView.setValue(UIColor.white, forKeyPath: "textColor")
         timerLabel.isHidden = true
-        circularProgressView.isHidden = true
         
         cancelButton.setTitle("취소", for: .normal)
         cancelButton.layer.masksToBounds = true
@@ -56,16 +52,28 @@ class TimerVC: UIViewController {
         cancelButton.isEnabled = false
         
         startButton.setTitle("시작", for: .normal)
+        startButton.setTitleColor(UIColor.init(red: 142/255, green: 250/255, blue: 0, alpha: 1), for: .normal)
+        startButton.backgroundColor = UIColor.init(red: 55/255, green: 55/255, blue: 55/255, alpha: 1)
         startButton.layer.masksToBounds = true
         startButton.layer.cornerRadius = 35
+        startButton.isEnabled = false
         
         musicButton.layer.masksToBounds = true
         musicButton.layer.cornerRadius = 8
+        
+        circularProgressSetUp()
     }
     
     func circularProgressSetUp() {
         circularProgressView.isHidden = true
-        
+        circularProgressView.trackColor = UIColor.darkGray
+        circularProgressView.progressColor = UIColor.orange
+        circularProgressView.tag = 101
+    }
+    
+    @objc func animateProgress() {
+        cpView = self.view.viewWithTag(101) as? CircularProgressView
+        cpView?.setCurrentProgress(duration: TimeInterval(Float(totalTime)), value: Float(currentTimeCount/totalTime))
     }
     
     func timeSetUp() {
@@ -86,7 +94,6 @@ class TimerVC: UIViewController {
         currentTimeCount = times[2] + 60 * times[1] + 3600 * times[0]
     }
     
-    
     func timeFormatter(_ intTime: Int) -> String {
         let hour = intTime / 3600
         let min = (intTime % 3600) / 60
@@ -102,12 +109,13 @@ class TimerVC: UIViewController {
     @objc func updateTime() {
         currentTimeCount -= 1
         timerLabel.text = timeFormatter(currentTimeCount)
+        circularProgressView.reloadInputViews()
         
         if currentTimeCount == 0 {
             isStart = false
             timerLabel.isHidden = true
-            circularProgressView.isHidden = true
             timePickerView.isHidden = false
+            circularProgressView.isHidden = true
             
             currentTimeCount = 0
             timer?.invalidate()
@@ -115,20 +123,7 @@ class TimerVC: UIViewController {
             startButton.setTitle("시작", for: .normal)
             startButton.setTitleColor(UIColor.init(red: 142/255, green: 250/255, blue: 0, alpha: 1), for: .normal)
             startButton.backgroundColor = UIColor.init(red: 50/255, green: 76/255, blue: 21/255, alpha: 1)
-            
-            timeAlert()
         }
-    }
-    
-    func timeAlert() {
-        let content = UNMutableNotificationContent()
-        content.title = "title"
-        content.body = "content"
-        content.badge = 1
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: "doneAlert", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     @IBAction func touchUpStart(_ sender: Any) {
@@ -137,23 +132,27 @@ class TimerVC: UIViewController {
             isStart = true
             timerLabel.isHidden = false
             timePickerView.isHidden = true
-//            circularProgressView.isHidden = false
+            circularProgressView.isHidden = false
             
             cancelButton.isEnabled = true
             
             startButton.setTitle("일시 정지", for: .normal)
             startButton.backgroundColor = UIColor.init(red: 244/255, green: 134/255, blue: 60/255, alpha: 1)
-            startButton.setTitleColor(UIColor.init(red: 248/255, green: 209/255, blue: 129/255, alpha: 1), for: .normal)
+            startButton.setTitleColor(UIColor.white, for: .normal)
             
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+            
+            self.perform(#selector(animateProgress), with: nil, afterDelay: 0.0)
+            
         } else if isStart && timer!.isValid {
             startButton.setTitle("재개", for: .normal)
             startButton.setTitleColor(UIColor.init(red: 142/255, green: 250/255, blue: 0, alpha: 1), for: .normal)
             startButton.backgroundColor = UIColor.init(red: 50/255, green: 76/255, blue: 21/255, alpha: 1)
             timer?.invalidate()
+            // ?
         } else if isStart && !(timer!.isValid) {
             startButton.setTitle("일시 정지", for: .normal)
-            startButton.setTitleColor(UIColor.init(red: 248/255, green: 209/255, blue: 129/255, alpha: 1), for: .normal)
+            startButton.setTitleColor(UIColor.white, for: .normal)
             startButton.backgroundColor = UIColor.init(red: 244/255, green: 134/255, blue: 60/255, alpha: 1)
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: timeSelector, userInfo: nil, repeats: true)
         }
@@ -162,6 +161,7 @@ class TimerVC: UIViewController {
     @IBAction func touchUpCancel(_ sender: Any) {
         timePickerView.isHidden = false
         timerLabel.isHidden = true
+        circularProgressView.isHidden = true
         
         timer?.invalidate()
         isStart = false
@@ -185,7 +185,6 @@ class TimerVC: UIViewController {
     }
     
 }
-
 
 extension TimerVC: sendBackDelegate{
     func dataReceived(data: String) {
@@ -238,6 +237,8 @@ extension TimerVC: UIPickerViewDelegate,UIPickerViewDataSource {
         default:
             break;
         }
-        alarmTime = "\(hour):\(minutes):\(seconds)"
+        alarmTime = "0\(hour):0\(minutes):0\(seconds)"
+        startButton.isEnabled = true
+        startButton.backgroundColor = UIColor.init(red: 50/255, green: 76/255, blue: 21/255, alpha: 1)
     }
 }

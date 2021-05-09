@@ -36,6 +36,7 @@ class StopWatchVC: UIViewController {
         
         recordTableView.delegate = self
         recordTableView.dataSource = self
+        recordTableView.separatorColor = .darkGray
         setUpButtons()
     }
     
@@ -211,3 +212,4 @@ extension StopWatchVC: UITableViewDataSource {
         return cell
     }
 }
+
