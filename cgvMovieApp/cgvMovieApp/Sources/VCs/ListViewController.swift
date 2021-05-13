@@ -6,9 +6,17 @@
 //
 
 import UIKit
+import SnapKit
+
+enum MovieChart: String {
+    case movieChart = "무비차트"
+    case artHouse = "아트하우스"
+    case upcoming = "개봉예정"
+}
 
 class ListViewController: UIViewController {
     var movieViewModel = MovieViewModel()
+    private var filteredMovieList: [Movie] = []
 
     @IBOutlet weak var movieListTableView: UITableView!
     
@@ -35,13 +43,45 @@ class ListViewController: UIViewController {
         }
     }
     
+    func filterHeaderView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor.systemGray6
+        
+        let popularityButton = UIButton()
+        popularityButton.setTitle("- 인기순", for: .normal)
+        popularityButton.setTitleColor(UIColor.black, for: .normal)
+        popularityButton.addTarget(self, action: #selector(filterTableView(_:)), for: .touchUpInside)
+        
+        let voteRateButton = UIButton()
+        voteRateButton.setTitle("- 투표율 순", for: .normal)
+        voteRateButton.setTitleColor(UIColor.darkGray, for: .normal)
+        voteRateButton.addTarget(self, action: #selector(filterTableView(_:)), for: .touchUpInside)
+        
+        view.addSubview(popularityButton)
+        view.addSubview(voteRateButton)
+        
+        popularityButton.snp.makeConstraints { make in
+            make.leading.equalTo(view.snp.leading).inset(10)
+            make.centerY.equalTo(view.snp.centerY)
+        }
+        voteRateButton.snp.makeConstraints { make in
+            make.leading.equalTo(popularityButton.snp.trailing).inset(-10)
+            make.centerY.equalTo(view.snp.centerY)
+        }
+        
+        return view
+    }
+    
+    @objc func filterTableView(_ sender: UIButton) {
+        
+    }
+    
     func setMovieList() {
         GetMovieDataService.shared.getMovieInfo { (response) in
             switch(response)
             {
-            case .success(let movieData):
+            case .success(_):
                 print("success")
-//                dump(movieData)
             case .requestErr(let message):
                 print("requestErr", message)
             case .pathErr:
@@ -57,6 +97,14 @@ class ListViewController: UIViewController {
 
 
 extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return filterHeaderView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
@@ -69,7 +117,6 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListCell", for: indexPath) as! MovieListCell
-        
         let movie = movieViewModel.cellForRowAt(indexPath: indexPath)
         cell.setCellWithValuesOf(movie)
         

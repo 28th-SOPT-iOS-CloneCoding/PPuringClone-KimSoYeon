@@ -13,13 +13,14 @@ struct GetMovieDataService {
     
     func getMovieInfo(completion : @escaping (NetworkResult<Any>) -> Void)
     {
-        let URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=7a0258bf0084d8887279aaf068cda614&language=en-US&page=1"
+        let URL = GeneralAPI.baseURL + GeneralAPI.nowPlaying + "?api_key=" + GeneralAPI.apiKey + "&language=ko&page=1"
         let header : HTTPHeaders = ["Content-Type": "application/json"]
         
         let dataRequest = AF.request(URL,
                                      method: .get,
                                      encoding: JSONEncoding.default,
                                      headers: header)
+
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success:

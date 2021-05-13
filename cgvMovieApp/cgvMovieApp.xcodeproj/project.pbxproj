@@ -20,6 +20,7 @@
 		927F063A264921FE006EA1F3 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927F0639264921FE006EA1F3 /* NetworkResult.swift */; };
 		927F063D26492357006EA1F3 /* GetMovieDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927F063C26492357006EA1F3 /* GetMovieDataService.swift */; };
 		92AF75F9264B6D9300D51830 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AF75F8264B6D9300D51830 /* MovieViewModel.swift */; };
+		92C5EF95264D182E001EB17A /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5EF94264D182E001EB17A /* GeneralAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		927F0639264921FE006EA1F3 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkResult.swift; path = cgvMovieApp/Sources/Network/NetworkResult.swift; sourceTree = SOURCE_ROOT; };
 		927F063C26492357006EA1F3 /* GetMovieDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieDataService.swift; sourceTree = "<group>"; };
 		92AF75F8264B6D9300D51830 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		92C5EF94264D182E001EB17A /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
 		CD13D5FA3DEE151EDAFF1D2C /* Pods-cgvMovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgvMovieApp.release.xcconfig"; path = "Target Support Files/Pods-cgvMovieApp/Pods-cgvMovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		DDA4F02D2495872530472A62 /* Pods_cgvMovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cgvMovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A468FE2574E4CBB9D0BD4B /* Pods-cgvMovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgvMovieApp.debug.xcconfig"; path = "Target Support Files/Pods-cgvMovieApp/Pods-cgvMovieApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				927F063C26492357006EA1F3 /* GetMovieDataService.swift */,
+				92C5EF94264D182E001EB17A /* GeneralAPI.swift */,
 			);
 			name = Services;
 			path = cgvMovieApp/Sources/Services;
@@ -295,6 +298,7 @@
 				9267F32C26479F2D00278698 /* AppDelegate.swift in Sources */,
 				92AF75F9264B6D9300D51830 /* MovieViewModel.swift in Sources */,
 				927F062C26490D7E006EA1F3 /* ListViewController.swift in Sources */,
+				92C5EF95264D182E001EB17A /* GeneralAPI.swift in Sources */,
 				9267F32E26479F2D00278698 /* SceneDelegate.swift in Sources */,
 				927F063D26492357006EA1F3 /* GetMovieDataService.swift in Sources */,
 			);

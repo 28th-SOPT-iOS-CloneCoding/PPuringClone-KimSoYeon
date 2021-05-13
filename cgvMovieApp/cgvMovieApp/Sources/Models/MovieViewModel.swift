@@ -10,12 +10,14 @@ import Foundation
 class MovieViewModel {
     private var apiService = GetMovieDataService()
     private var popularMovies = [Movie]()
+    private var upComingMovies = [Movie]()
     
     func fetchPopularMoviesData(comletion:@escaping () -> ()) {
         apiService.getMovieInfo { (result) in
             switch result {
             case .success(let listOf):
                 self.popularMovies = listOf.self as! [Movie]
+                self.upComingMovies = listOf.self as! [Movie]
                 comletion()
             case .requestErr(_):
                 return
@@ -25,7 +27,6 @@ class MovieViewModel {
                 return
             case .networkFail:
                 return
-            
             }
         }
     }

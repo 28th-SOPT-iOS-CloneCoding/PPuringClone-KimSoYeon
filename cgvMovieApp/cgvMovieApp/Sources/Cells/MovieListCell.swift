@@ -14,11 +14,16 @@ class MovieListCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var ticketSaleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var nowReserve: UIButton!
+    @IBOutlet weak var adultMark: UIButton!
     
     private var urlString: String = ""
+    private var isAdult: Bool?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        initialSetUp()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,24 +31,34 @@ class MovieListCell: UITableViewCell {
     }
     
     func setCellWithValuesOf(_ movie: Movie) {
-        updateUI(title: movie.title, releaseDate: movie.year, rating: movie.rate, poster: movie.posterImage)
+        updateUI(title: movie.title, releaseDate: movie.year, rating: movie.rate, poster: movie.posterImage, adult: movie.adult)
+    }
+    
+    func initialSetUp() {
+        adultMark.isHidden = true
+        nowReserve.layer.cornerRadius = 3
     }
     
     // MARK: - Update UI Views
-    private func updateUI(title: String?, releaseDate: String?, rating: Double?, poster: String?) {
+    private func updateUI(title: String?, releaseDate: String?, rating: Double?, poster: String?, adult: Bool?) {
         self.titleLabel.text = title
         self.releaseDateLabel.text = convertDateFormatter(releaseDate)
+        
         guard let rate = rating else {return}
         self.ticketSaleLabel.text = "예매율 \(String(rate))%"
         
+        if adult! {
+            self.adultMark.isHidden = true
+        } else {
+            self.adultMark.isHidden = false
+        }
+        
         guard let posterString = poster else {return}
         urlString = "http://image.tmdb.org/t/p/w300" + posterString
-        
         guard let posterImageURL = URL(string: urlString) else {
             self.posterImageView.image = UIImage(named: "No Image")
             return
         }
-        
         self.posterImageView.image = nil
         getImageDateFrom(url: posterImageURL)
     }
@@ -76,7 +91,7 @@ class MovieListCell: UITableViewCell {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         if let originalDate = date {
             if let newData = dateFormatter.date(from: originalDate) {
-                dateFormatter.dateFormat = "dd.MM.yyyy"
+                dateFormatter.dateFormat = "yyyy.MM.dd 개봉"
                 fixDate = dateFormatter.string(from: newData)
             }
         }
