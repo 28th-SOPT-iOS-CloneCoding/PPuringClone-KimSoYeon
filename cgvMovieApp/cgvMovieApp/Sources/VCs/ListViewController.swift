@@ -16,7 +16,6 @@ enum MovieChart: String {
 
 class ListViewController: UIViewController {
     var movieViewModel = MovieViewModel()
-    private var filteredMovieList: [Movie] = []
 
     @IBOutlet weak var movieListTableView: UITableView!
     
@@ -29,8 +28,8 @@ class ListViewController: UIViewController {
     }
     
     private func setUpNavigationController() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.tintColor = .black
     }
@@ -48,24 +47,37 @@ class ListViewController: UIViewController {
         view.backgroundColor = UIColor.systemGray6
         
         let popularityButton = UIButton()
-        popularityButton.setTitle("- 인기순", for: .normal)
+        popularityButton.setTitle("• 인기순", for: .normal)
         popularityButton.setTitleColor(UIColor.black, for: .normal)
+        popularityButton.titleLabel?.font = UIFont.init(name: "AppleSDGothic", size: 13)
         popularityButton.addTarget(self, action: #selector(filterTableView(_:)), for: .touchUpInside)
         
         let voteRateButton = UIButton()
-        voteRateButton.setTitle("- 투표율 순", for: .normal)
-        voteRateButton.setTitleColor(UIColor.darkGray, for: .normal)
+        voteRateButton.setTitle("• 투표율순", for: .normal)
+        voteRateButton.setTitleColor(UIColor.gray, for: .normal)
+        voteRateButton.titleLabel?.font = UIFont.init(name: "AppleSDGothic", size: 13)
         voteRateButton.addTarget(self, action: #selector(filterTableView(_:)), for: .touchUpInside)
+        
+        let nowPlayingButton = UIButton()
+        nowPlayingButton.setTitle("✓ 현재상영작보기", for: .normal)
+        nowPlayingButton.setTitleColor(UIColor.gray, for: .normal)
+        nowPlayingButton.titleLabel?.font = UIFont.init(name: "AppleSDGothic", size: 13)
+        nowPlayingButton.addTarget(self, action: #selector(filterTableView(_:)), for: .touchUpInside)
         
         view.addSubview(popularityButton)
         view.addSubview(voteRateButton)
+        view.addSubview(nowPlayingButton)
         
         popularityButton.snp.makeConstraints { make in
-            make.leading.equalTo(view.snp.leading).inset(10)
+            make.leading.equalTo(view.snp.leading).inset(20)
             make.centerY.equalTo(view.snp.centerY)
         }
         voteRateButton.snp.makeConstraints { make in
             make.leading.equalTo(popularityButton.snp.trailing).inset(-10)
+            make.centerY.equalTo(view.snp.centerY)
+        }
+        nowPlayingButton.snp.makeConstraints { make in
+            make.trailing.equalTo(view.snp.trailing).inset(20)
             make.centerY.equalTo(view.snp.centerY)
         }
         

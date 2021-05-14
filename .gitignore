@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift,cocoapods,xcode
 
 cgvMovieApp/cgvMovieApp/Sources/Services/GeneralAPI.swift
+CGVMovieApp-Moya/CGVMovieApp/Sources/Services/GeneralAPI.swift
 
 ### CocoaPods ###
 ## CocoaPods GitIgnore Template
