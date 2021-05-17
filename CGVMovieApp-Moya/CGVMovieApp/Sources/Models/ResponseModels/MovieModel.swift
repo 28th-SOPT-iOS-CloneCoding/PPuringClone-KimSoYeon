@@ -23,22 +23,18 @@ struct MovieModel: Codable {
 // MARK: - MovieResponse
 struct MovieResponse: Codable {
     let adult: Bool
-    let originalLanguage, originalTitle, overview: String
     let popularity: Double
     let posterPath: String?
     let releaseDate, title: String
-    let video: Bool
     let voteAverage: Double
     let voteCount: Int
 
     enum CodingKeys: String, CodingKey {
         case adult
-        case originalLanguage = "original_language"
-        case originalTitle = "original_title"
-        case overview, popularity
+        case popularity
         case posterPath = "poster_path"
         case releaseDate = "release_date"
-        case title, video
+        case title
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
