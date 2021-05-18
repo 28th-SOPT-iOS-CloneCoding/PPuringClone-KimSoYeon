@@ -24,6 +24,8 @@
 		92753C37264E30C6005B6CC1 /* MovieRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92753C36264E30C6005B6CC1 /* MovieRequest.swift */; };
 		92753C3D264E32B5005B6CC1 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92753C3C264E32B5005B6CC1 /* MovieModel.swift */; };
 		92753C43264E37EC005B6CC1 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92753C42264E37EC005B6CC1 /* MoreVC.swift */; };
+		929D0EFD2653FDA600F326C0 /* DateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929D0EFC2653FDA600F326C0 /* DateCVC.swift */; };
+		929D0F002653FDB200F326C0 /* TimeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929D0EFF2653FDB200F326C0 /* TimeCVC.swift */; };
 		92BB7B5D264ED3E7005A9103 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB7B5C264ED3E7005A9103 /* HomeVC.swift */; };
 		92EC1CFA264E66A00078BC3E /* MovieListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC1CF9264E66A00078BC3E /* MovieListTVC.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +51,8 @@
 		92753C36264E30C6005B6CC1 /* MovieRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequest.swift; sourceTree = "<group>"; };
 		92753C3C264E32B5005B6CC1 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		92753C42264E37EC005B6CC1 /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
+		929D0EFC2653FDA600F326C0 /* DateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCVC.swift; sourceTree = "<group>"; };
+		929D0EFF2653FDB200F326C0 /* TimeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCVC.swift; sourceTree = "<group>"; };
 		92BB7B5C264ED3E7005A9103 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		92EC1CF9264E66A00078BC3E /* MovieListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieListTVC.swift; path = CGVMovieApp/Sources/Cells/MovieListTVC.swift; sourceTree = SOURCE_ROOT; };
 		964143DC22EBACBF4121FE39 /* Pods-CGVMovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CGVMovieApp.debug.xcconfig"; path = "Target Support Files/Pods-CGVMovieApp/Pods-CGVMovieApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				9231EA4F2653C030006F42F6 /* DateTVC.swift */,
+				929D0EFC2653FDA600F326C0 /* DateCVC.swift */,
+				929D0EFF2653FDB200F326C0 /* TimeCVC.swift */,
 			);
 			path = Date;
 			sourceTree = "<group>";
@@ -332,6 +338,8 @@
 			files = (
 				92753C3D264E32B5005B6CC1 /* MovieModel.swift in Sources */,
 				92BB7B5D264ED3E7005A9103 /* HomeVC.swift in Sources */,
+				929D0F002653FDB200F326C0 /* TimeCVC.swift in Sources */,
+				929D0EFD2653FDA600F326C0 /* DateCVC.swift in Sources */,
 				92669D042649FB0F009E0018 /* ViewController.swift in Sources */,
 				9231EA3E2653A928006F42F6 /* TheaterAreaCVC.swift in Sources */,
 				92EC1CFA264E66A00078BC3E /* MovieListTVC.swift in Sources */,

@@ -21,14 +21,10 @@ class TheaterAreaCVC: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setLabel()
+        areaLabel.font = UIFont.systemFont(ofSize: 15)
     }
     
-    func areaConfigure(area: String) {
+    func setArea(area: String) {
         areaLabel.text = area
-    }
-    
-    private func setLabel() {
-        areaLabel.font = .systemFont(ofSize: 15)
     }
 }

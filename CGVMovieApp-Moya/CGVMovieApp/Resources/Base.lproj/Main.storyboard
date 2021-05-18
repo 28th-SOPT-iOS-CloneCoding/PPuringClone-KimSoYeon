@@ -58,11 +58,11 @@
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iRz-Xj-d4t">
-                                                                                <rect key="frame" x="8" y="6" width="101" height="39"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="51"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1v-xo-nRJ">
-                                                                                        <rect key="frame" x="0.0" y="9" width="101" height="21"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1v-xo-nRJ">
+                                                                                        <rect key="frame" x="0.0" y="15" width="112" height="21"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
@@ -100,7 +100,7 @@
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4V-Gy-PHE">
-                                                                                <rect key="frame" x="0.0" y="15" width="79" height="21"/>
+                                                                                <rect key="frame" x="0.0" y="15" width="116" height="21"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
@@ -130,29 +130,29 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g7F-8m-kvJ">
-                                                            <rect key="frame" x="20" y="11" width="374" height="107"/>
+                                                            <rect key="frame" x="20" y="11" width="374" height="56"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nwz-yX-xNz">
-                                                                <size key="itemSize" width="128" height="96"/>
+                                                                <size key="itemSize" width="128" height="58"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cre-kW-fch">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCVC" id="Cre-kW-fch" customClass="DateCVC" customModule="CGVMovieApp" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="55"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mtz-Em-m12">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="55"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </collectionViewCellContentView>
-                                                                    <size key="customSize" width="128" height="96"/>
+                                                                    <size key="customSize" width="128" height="55"/>
                                                                 </collectionViewCell>
                                                             </cells>
                                                         </collectionView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m8j-Mg-1L5">
-                                                            <rect key="frame" x="20" y="126" width="374" height="63"/>
+                                                            <rect key="frame" x="20" y="75" width="374" height="63"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5sR-X3-xRN">
@@ -162,7 +162,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4T6-h5-5xx">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimeCVC" id="4T6-h5-5xx" customClass="TimeCVC" customModule="CGVMovieApp" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="63"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IX1-MU-G45">
@@ -170,11 +170,11 @@
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aAq-cK-omC">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="63"/>
+                                                                                <rect key="frame" x="0.0" y="1" width="128" height="62"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-dE-DDu">
-                                                                                        <rect key="frame" x="43" y="21" width="42" height="21"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-dE-DDu">
+                                                                                        <rect key="frame" x="0.0" y="21" width="120" height="21"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
@@ -186,9 +186,21 @@
                                                                         </subviews>
                                                                     </collectionViewCellContentView>
                                                                     <size key="customSize" width="128" height="63"/>
+                                                                    <connections>
+                                                                        <outlet property="buttonView" destination="aAq-cK-omC" id="ZME-rV-DjJ"/>
+                                                                        <outlet property="timeLabel" destination="CZg-dE-DDu" id="CrZ-S1-fbB"/>
+                                                                    </connections>
                                                                 </collectionViewCell>
                                                             </cells>
                                                         </collectionView>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3P-YK-nXX">
+                                                            <rect key="frame" x="20" y="147" width="374" height="42"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="조회하기">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
