@@ -12,7 +12,6 @@ import SnapKit
 class MoreVC: UIViewController {
     private let authProvider = MoyaProvider<MovieServices>()
     private var movieModel: MovieModel?
-    
     private var movieData: [MovieResponse] = []
     
     private lazy var tableView: UITableView = {
@@ -22,7 +21,7 @@ class MoreVC: UIViewController {
         tableView.register(MovieListTVC.self, forCellReuseIdentifier: MovieListTVC.identifier)
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +43,7 @@ extension MoreVC {
     }
     
     func setNavigationBar() {
+        navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.topItem?.title = "영화"
     }

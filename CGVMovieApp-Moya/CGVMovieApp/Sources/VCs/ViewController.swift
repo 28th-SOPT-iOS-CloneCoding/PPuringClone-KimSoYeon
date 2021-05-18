@@ -12,7 +12,6 @@ class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Floating", for: .normal)
-        
         return button
     }()
     
@@ -21,13 +20,5 @@ class ViewController: UIViewController {
         
         view.addSubview(floatingButton)
     }
-    
-    @IBAction func moreButtonClicked(_ sender: Any) {
-        guard let dvc = self.storyboard?.instantiateViewController(identifier: "MoreVC") as? MoreVC else {
-            return
-        }
-        self.navigationController?.pushViewController(dvc, animated: true)
-    }
-    
 }
 
