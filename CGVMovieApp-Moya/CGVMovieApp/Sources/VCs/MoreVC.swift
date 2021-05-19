@@ -37,8 +37,7 @@ extension MoreVC {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.leading.trailing.bottom.equalTo(0)
         }
     }
     

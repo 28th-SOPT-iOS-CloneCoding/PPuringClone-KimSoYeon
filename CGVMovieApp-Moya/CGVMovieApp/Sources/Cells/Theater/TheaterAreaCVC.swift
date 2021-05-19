@@ -15,7 +15,11 @@ class TheaterAreaCVC: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            self.areaLabel.textColor = isSelected ? UIColor.systemRed : UIColor.gray
+            if isSelected {
+                areaLabel.textColor = .systemRed
+            } else {
+                areaLabel.textColor = .darkGray
+            }
         }
     }
     

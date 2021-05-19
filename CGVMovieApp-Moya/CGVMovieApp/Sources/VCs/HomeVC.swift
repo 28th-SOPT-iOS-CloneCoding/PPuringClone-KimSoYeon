@@ -13,6 +13,7 @@ class HomeVC: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.backgroundColor = .systemGray6
         return scrollView
     }()
     private lazy var contentView: UIView = {
@@ -145,7 +146,6 @@ extension HomeVC {
 // MARK: -Action
 extension HomeVC {
     @objc func presentNowBookingVC() {
-        print("now button touched")
         guard let dvc = self.storyboard?.instantiateViewController(identifier: "NowBookingVC") as? NowBookingVC else {
             return
         }

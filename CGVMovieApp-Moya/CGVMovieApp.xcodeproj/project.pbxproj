@@ -12,7 +12,7 @@
 		922E50D02652E11A007DFB79 /* TheaterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922E50CF2652E11A007DFB79 /* TheaterTVC.swift */; };
 		9231EA3E2653A928006F42F6 /* TheaterAreaCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9231EA3D2653A928006F42F6 /* TheaterAreaCVC.swift */; };
 		9231EA412653AA0E006F42F6 /* TheaterTownCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9231EA402653AA0E006F42F6 /* TheaterTownCVC.swift */; };
-		9231EA502653C030006F42F6 /* DateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9231EA4F2653C030006F42F6 /* DateTVC.swift */; };
+		9231EA502653C030006F42F6 /* DateTimeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9231EA4F2653C030006F42F6 /* DateTimeTVC.swift */; };
 		92669D002649FB0F009E0018 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92669CFF2649FB0F009E0018 /* AppDelegate.swift */; };
 		92669D022649FB0F009E0018 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92669D012649FB0F009E0018 /* SceneDelegate.swift */; };
 		92669D042649FB0F009E0018 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92669D032649FB0F009E0018 /* ViewController.swift */; };
@@ -37,7 +37,7 @@
 		922E50CF2652E11A007DFB79 /* TheaterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterTVC.swift; sourceTree = "<group>"; };
 		9231EA3D2653A928006F42F6 /* TheaterAreaCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterAreaCVC.swift; sourceTree = "<group>"; };
 		9231EA402653AA0E006F42F6 /* TheaterTownCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterTownCVC.swift; sourceTree = "<group>"; };
-		9231EA4F2653C030006F42F6 /* DateTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTVC.swift; sourceTree = "<group>"; };
+		9231EA4F2653C030006F42F6 /* DateTimeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeTVC.swift; sourceTree = "<group>"; };
 		92669CFC2649FB0F009E0018 /* CGVMovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CGVMovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92669CFF2649FB0F009E0018 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92669D012649FB0F009E0018 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		9231EA492653BEF9006F42F6 /* Date */ = {
 			isa = PBXGroup;
 			children = (
-				9231EA4F2653C030006F42F6 /* DateTVC.swift */,
+				9231EA4F2653C030006F42F6 /* DateTimeTVC.swift */,
 				929D0EFC2653FDA600F326C0 /* DateCVC.swift */,
 				929D0EFF2653FDB200F326C0 /* TimeCVC.swift */,
 			);
@@ -346,7 +346,7 @@
 				92753C34264E3045005B6CC1 /* MovieServices.swift in Sources */,
 				92753C43264E37EC005B6CC1 /* MoreVC.swift in Sources */,
 				92669D002649FB0F009E0018 /* AppDelegate.swift in Sources */,
-				9231EA502653C030006F42F6 /* DateTVC.swift in Sources */,
+				9231EA502653C030006F42F6 /* DateTimeTVC.swift in Sources */,
 				92753C37264E30C6005B6CC1 /* MovieRequest.swift in Sources */,
 				9231EA412653AA0E006F42F6 /* TheaterTownCVC.swift in Sources */,
 				92753C31264E2F9E005B6CC1 /* GeneralAPI.swift in Sources */,

@@ -16,16 +16,18 @@ class TheaterTownCVC: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                townLabel.font = .boldSystemFont(ofSize: 15)
-                townLabel.textColor = .systemRed
                 buttonView.backgroundColor = .white
                 buttonView.layer.borderColor = UIColor.systemRed.cgColor
-                self.layer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
+                
+                townLabel.font = .boldSystemFont(ofSize: 15)
+                townLabel.textColor = .systemRed
+                
             } else {
+                buttonView.backgroundColor = .systemGray6
+                buttonView.layer.borderColor = UIColor.systemGray5.cgColor
+                
                 townLabel.font = .systemFont(ofSize: 15)
                 townLabel.textColor = .darkGray
-                buttonView.layer.borderColor = UIColor.systemGray5.cgColor
-                self.layer.shadowColor = UIColor.white.cgColor
             }
         }
     }
