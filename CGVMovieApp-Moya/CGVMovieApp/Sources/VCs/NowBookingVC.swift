@@ -10,6 +10,7 @@ import SnapKit
 
 class NowBookingVC: UIViewController {
     private var viewTranslation = CGPoint(x: 0, y: 0)
+    private var foldButtonTouched = false
     
     @IBOutlet weak var swipeButton: UIView!
     @IBOutlet weak var selectTableView: UITableView!
@@ -27,6 +28,7 @@ class NowBookingVC: UIViewController {
         setUI()
         swipeDownToDismiss()
         setTableView()
+        setNotification()
         
         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
     }
@@ -119,9 +121,13 @@ extension NowBookingVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 155
+            if foldButtonTouched {
+                return 300
+            } else {
+                return 125
+            }
         }
-        return 225
+        return 277
     }
     
 }
@@ -152,6 +158,29 @@ extension NowBookingVC: UITableViewDataSource {
         return UITableViewCell()
     }
     
+}
+
+// MARK: Notification
+extension NowBookingVC {
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(cellIncrease), name: NSNotification.Name("increaseCell"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(cellDecrease), name: NSNotification.Name("decreaseCell"), object: nil)
+    }
+    
+    @objc
+    func cellIncrease(_ notification: Notification) {
+        foldButtonTouched = true
+        selectTableView.beginUpdates()
+        selectTableView.endUpdates()
+    }
+    
+    @objc
+    func cellDecrease() {
+        foldButtonTouched = false
+        selectTableView.beginUpdates()
+        selectTableView.endUpdates()
+    }
 }
 
 

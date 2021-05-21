@@ -51,6 +51,7 @@ class MovieListTVC: UITableViewCell {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.tintColor = .white
         button.backgroundColor = UIColor(red: 185/255, green: 51/255, blue: 49/255, alpha: 1)
+        button.layer.cornerRadius = 10
         return button
     }()
 

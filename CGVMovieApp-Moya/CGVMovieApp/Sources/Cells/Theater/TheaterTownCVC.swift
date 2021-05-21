@@ -18,6 +18,7 @@ class TheaterTownCVC: UICollectionViewCell {
             if isSelected {
                 buttonView.backgroundColor = .white
                 buttonView.layer.borderColor = UIColor.systemRed.cgColor
+                self.layer.shadowColor = UIColor.black.withAlphaComponent(0.3).cgColor
                 
                 townLabel.font = .boldSystemFont(ofSize: 15)
                 townLabel.textColor = .systemRed
@@ -25,10 +26,13 @@ class TheaterTownCVC: UICollectionViewCell {
             } else {
                 buttonView.backgroundColor = .systemGray6
                 buttonView.layer.borderColor = UIColor.systemGray5.cgColor
+                self.layer.shadowColor = UIColor.white.cgColor
                 
                 townLabel.font = .systemFont(ofSize: 15)
                 townLabel.textColor = .darkGray
             }
+            buttonView.layer.borderWidth = 1
+            buttonView.layer.cornerRadius = 10
         }
     }
     

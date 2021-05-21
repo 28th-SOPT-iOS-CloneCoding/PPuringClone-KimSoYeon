@@ -17,25 +17,26 @@ class DateCVC: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                self.layer.shadowColor = UIColor.black.withAlphaComponent(0.5).cgColor
-                
-                buttonView.backgroundColor = .white
                 buttonView.layer.borderColor = UIColor.systemRed.cgColor
+                self.layer.shadowColor = UIColor.black.withAlphaComponent(0.3).cgColor
+                buttonView.layer.borderWidth = 1
+                buttonView.layer.cornerRadius = 10
                 
                 dateLabel.font = .boldSystemFont(ofSize: 15)
                 dateLabel.textColor = .systemRed
                 
-                dayLabel.font = .systemFont(ofSize: 10)
+                dayLabel.font = .systemFont(ofSize: 13)
                 dayLabel.textColor = .systemRed
             } else {
+                buttonView.layer.borderColor = UIColor.white.cgColor
                 self.layer.shadowColor = UIColor.white.cgColor
-                
-                buttonView.layer.borderColor = UIColor.systemGray5.cgColor
+                buttonView.layer.borderWidth = 1
+                buttonView.layer.cornerRadius = 10
                 
                 dateLabel.font = .systemFont(ofSize: 15)
                 dateLabel.textColor = .darkGray
                 
-                dayLabel.font = .systemFont(ofSize: 10)
+                dayLabel.font = .systemFont(ofSize: 13)
                 dayLabel.textColor = .darkGray
             }
         }

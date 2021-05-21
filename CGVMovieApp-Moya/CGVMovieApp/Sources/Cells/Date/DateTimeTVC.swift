@@ -120,4 +120,30 @@ extension DateTimeTVC: UICollectionViewDataSource {
     }
 }
 
-
+// MARK: - COllectionView DelegateFlowLayout
+extension DateTimeTVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let label = UILabel()
+        var width: CGFloat = 0
+        var height: CGFloat = 0
+        
+        if collectionView == dateCollectionView {
+            label.text = dates[indexPath.row]
+            label.sizeToFit()
+            width = 50
+            height = 60
+        } else if collectionView == timeCollectionView {
+            label.text = times[indexPath.row]
+            label.sizeToFit()
+            
+            width = label.frame.width + 30
+            height = 60
+        }
+        
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 5
+        }
+}
