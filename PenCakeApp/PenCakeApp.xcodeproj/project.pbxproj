@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,9 +13,13 @@
 		92BD60A2265A45B400094B59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A0265A45B400094B59 /* Main.storyboard */; };
 		92BD60A4265A45B500094B59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A3265A45B500094B59 /* Assets.xcassets */; };
 		92BD60A7265A45B500094B59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A5265A45B500094B59 /* LaunchScreen.storyboard */; };
+		92D141FF265A558E00077B12 /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D141FD265A558E00077B12 /* StoryVC.swift */; };
+		B5F9F3435F9C7768AFE3C916 /* Pods_PenCakeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D269FD7FED1C400877241323 /* Pods_PenCakeApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B1C1777066F61A0283282C5 /* Pods-PenCakeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenCakeApp.release.xcconfig"; path = "Target Support Files/Pods-PenCakeApp/Pods-PenCakeApp.release.xcconfig"; sourceTree = "<group>"; };
+		534A0157F588A5BCE8C630AB /* Pods-PenCakeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenCakeApp.debug.xcconfig"; path = "Target Support Files/Pods-PenCakeApp/Pods-PenCakeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		92BD6097265A45B400094B59 /* PenCakeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenCakeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BD609A265A45B400094B59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92BD609C265A45B400094B59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		92BD60A3265A45B500094B59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92BD60A6265A45B500094B59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92BD60A8265A45B500094B59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92D141FD265A558E00077B12 /* StoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
+		D269FD7FED1C400877241323 /* Pods_PenCakeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PenCakeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F9F3435F9C7768AFE3C916 /* Pods_PenCakeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AAD1974CDEB3F12C76A9222 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				534A0157F588A5BCE8C630AB /* Pods-PenCakeApp.debug.xcconfig */,
+				2B1C1777066F61A0283282C5 /* Pods-PenCakeApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		92BD608E265A45B400094B59 = {
 			isa = PBXGroup;
 			children = (
 				92BD6099265A45B400094B59 /* PenCakeApp */,
 				92BD6098265A45B400094B59 /* Products */,
+				3AAD1974CDEB3F12C76A9222 /* Pods */,
+				BF4A04DA81601A11ACFD2859 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				92BD609E265A45B400094B59 /* ViewController.swift */,
+				92D141FD265A558E00077B12 /* StoryVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -123,6 +142,14 @@
 			path = SBs;
 			sourceTree = "<group>";
 		};
+		BF4A04DA81601A11ACFD2859 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D269FD7FED1C400877241323 /* Pods_PenCakeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -130,9 +157,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92BD60AB265A45B500094B59 /* Build configuration list for PBXNativeTarget "PenCakeApp" */;
 			buildPhases = (
+				D9387FFC82E4428FE4C823FA /* [CP] Check Pods Manifest.lock */,
 				92BD6093265A45B400094B59 /* Sources */,
 				92BD6094265A45B400094B59 /* Frameworks */,
 				92BD6095265A45B400094B59 /* Resources */,
+				C8C353638F273E123A525344 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,6 +217,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C8C353638F273E123A525344 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PenCakeApp/Pods-PenCakeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PenCakeApp/Pods-PenCakeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PenCakeApp/Pods-PenCakeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9387FFC82E4428FE4C823FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PenCakeApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		92BD6093265A45B400094B59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -195,6 +266,7 @@
 			files = (
 				92BD609F265A45B400094B59 /* ViewController.swift in Sources */,
 				92BD609B265A45B400094B59 /* AppDelegate.swift in Sources */,
+				92D141FF265A558E00077B12 /* StoryVC.swift in Sources */,
 				92BD609D265A45B400094B59 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +411,7 @@
 		};
 		92BD60AC265A45B500094B59 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 534A0157F588A5BCE8C630AB /* Pods-PenCakeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -357,6 +430,7 @@
 		};
 		92BD60AD265A45B500094B59 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B1C1777066F61A0283282C5 /* Pods-PenCakeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
