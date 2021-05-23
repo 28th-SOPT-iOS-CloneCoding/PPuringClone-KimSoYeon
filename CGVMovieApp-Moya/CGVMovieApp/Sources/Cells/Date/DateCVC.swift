@@ -46,6 +46,7 @@ class DateCVC: UICollectionViewCell {
         super.awakeFromNib()
         dateLabel.font = UIFont.systemFont(ofSize: 15)
         dayLabel.font = UIFont.systemFont(ofSize: 10)
+        self.setViewShadow(backView: buttonView)
     }
     
     func setDate(date: String, day: String) {

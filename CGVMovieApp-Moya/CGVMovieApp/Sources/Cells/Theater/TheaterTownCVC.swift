@@ -39,6 +39,7 @@ class TheaterTownCVC: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         townLabel.font = UIFont.systemFont(ofSize: 15)
+        self.setViewShadow(backView: buttonView)
     }
     
     func setTown(town: String) {

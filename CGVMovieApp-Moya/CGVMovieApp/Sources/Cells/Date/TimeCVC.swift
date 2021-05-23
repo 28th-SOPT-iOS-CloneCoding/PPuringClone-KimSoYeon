@@ -38,6 +38,7 @@ class TimeCVC: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         timeLabel.font = UIFont.systemFont(ofSize: 15)
+        self.setViewShadow(backView: buttonView)
     }
     
     func setTime(time: String) {
