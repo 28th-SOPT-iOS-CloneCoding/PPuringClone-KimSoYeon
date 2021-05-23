@@ -251,6 +251,7 @@ extension MoreVC: UITableViewDataSource {
     }
 }
 
+// MARK: - Network
 extension MoreVC {
     private func getPopularMovie(page: Int) {
         

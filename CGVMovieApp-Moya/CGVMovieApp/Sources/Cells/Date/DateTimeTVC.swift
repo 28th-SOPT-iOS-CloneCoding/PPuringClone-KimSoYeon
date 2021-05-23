@@ -19,6 +19,7 @@ class DateTimeTVC: UITableViewCell {
     private var times: [String] = ["전체", "오전", "오후", "18시이후", "심야"]
     
     private var dateFormatter = DateFormatter()
+    private var isButtonActive = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +33,7 @@ class DateTimeTVC: UITableViewCell {
         setUI()
         setFormatter()
         setDate()
+        setNotification()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -68,7 +70,11 @@ class DateTimeTVC: UITableViewCell {
 // MARK: - UI
 extension DateTimeTVC {
     func setUI() {
+        searchButton.setTitle("조회하기", for: .normal)
+        searchButton.setTitleColor(.white, for: .normal)
+        searchButton.titleLabel?.font = .boldSystemFont(ofSize: 17)
         searchButton.layer.cornerRadius = 10
+        searchButton.backgroundColor = .systemRed
     }
 }
 
@@ -146,4 +152,25 @@ extension DateTimeTVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
             return 5
         }
+}
+
+// MARK: - Notification
+extension DateTimeTVC {
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(buttonInActive), name: NSNotification.Name("buttonInActive"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(buttonActive), name: NSNotification.Name("buttonActive"), object: nil)
+    }
+    
+    @objc
+    func buttonInActive() {
+//        isButtonActive = false
+        searchButton.backgroundColor = .darkGray
+    }
+    
+    @objc
+    func buttonActive(_ notification: Notification) {
+//        isButtonActive = true
+        searchButton.backgroundColor = .systemRed
+    }
 }

@@ -13,7 +13,7 @@ class TheaterTVC: UITableViewCell {
     @IBOutlet weak var areaCollectionView: UICollectionView!
     @IBOutlet weak var townCollectionView: UICollectionView!
     
-    private var downButton: UIButton = {
+    private var expandButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         button.tintColor = .gray
@@ -27,6 +27,9 @@ class TheaterTVC: UITableViewCell {
     private let areas: [String] = ["추천 CGV", "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주"]
     private var towns: [String] = ["건대입구", "왕십리", "청담씨네시티"]
     private var foldButtonTouched = false
+    private var isFirst = true
+    
+    private let flowLayout = UICollectionViewFlowLayout()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,15 +40,15 @@ class TheaterTVC: UITableViewCell {
         townCollectionView.delegate = self
         townCollectionView.dataSource = self
         
-        self.addSubview(downButton)
-        downButton.snp.makeConstraints { make in
+        self.addSubview(expandButton)
+        expandButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(5)
             make.top.equalTo(areaCollectionView.snp.top).offset(50)
             make.width.height.equalTo(30)
         }
-        downButton.addTarget(self,
-                             action: #selector(foldList),
-                             for: .touchUpInside)
+        expandButton.addTarget(self,
+                               action: #selector(foldList),
+                               for: .touchUpInside)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -55,14 +58,18 @@ class TheaterTVC: UITableViewCell {
     @objc
     func foldList() {
         if !foldButtonTouched {
-            downButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+            expandButton.setImage(UIImage(systemName: "chevron.up"), for: .normal)
             foldButtonTouched = true
-            areaCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
-            NotificationCenter.default.post(name: NSNotification.Name("increaseCell"), object: areas.count)
+            flowLayout.scrollDirection = .vertical
+            townCollectionView.collectionViewLayout = flowLayout
+            townCollectionView.isScrollEnabled = false
+            NotificationCenter.default.post(name: NSNotification.Name("increaseCell"), object: towns.count)
         } else {
-            downButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            expandButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             foldButtonTouched = false
-            areaCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+            flowLayout.scrollDirection = .horizontal
+            townCollectionView.collectionViewLayout = flowLayout
+            townCollectionView.isScrollEnabled = true
             NotificationCenter.default.post(name: NSNotification.Name("decreaseCell"), object: nil)
         }
     }
@@ -74,14 +81,13 @@ extension TheaterTVC: UICollectionViewDelegate {
         if collectionView == areaCollectionView {
             areaCollectionView.scrollToItem(at: IndexPath(item: indexPath.row, section: 0), at: .centeredHorizontally, animated: true)
             setTowns(index: indexPath.row)
-            print("지역 버튼 눌림")
-            
+            NotificationCenter.default.post(name: NSNotification.Name("buttonInActive"), object: nil)
             if foldButtonTouched {
-                NotificationCenter.default.post(name: NSNotification.Name("increaseCell"), object: areas.count)
+                NotificationCenter.default.post(name: NSNotification.Name("increaseCell"), object: towns.count)
             }
-            
         } else if collectionView == townCollectionView {
-            townCollectionView.scrollToItem(at: IndexPath(item: indexPath.row, section: 0), at: .centeredVertically, animated: true)
+            townCollectionView.scrollToItem(at: IndexPath(item: indexPath.row, section: 0), at: .centeredHorizontally, animated: true)
+            NotificationCenter.default.post(name: NSNotification.Name("buttonActive"), object: towns[indexPath.item])
         }
     }
 }
@@ -112,9 +118,10 @@ extension TheaterTVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TheaterTownCVC.identifier, for: indexPath) as? TheaterTownCVC else {
             return UICollectionViewCell()
         }
-        if indexPath.row == 0 {
+        if indexPath.row == 0 && isFirst {
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            isFirst = false
         } else  {
             cell.isSelected = false
         }
@@ -133,25 +140,45 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
         if collectionView == areaCollectionView {
             label.text = areas[indexPath.row]
             label.sizeToFit()
-            width = label.frame.width + 10
-            height = 40
+            
+            width = label.frame.width
+            height = 30
         } else if collectionView == townCollectionView {
             label.text = towns[indexPath.row]
             label.sizeToFit()
-            width = label.frame.width + 10
-            height = 60
+            
+            if label.text?.count ?? 0 < 3 {
+                width = label.frame.width + 50
+            } else if label.text?.count ?? 0 <= 4 {
+                width = label.frame.width + 40
+            } else if label.text?.count ?? 0 <= 5 {
+                width = label.frame.width + 30
+            } else {
+                width = label.frame.width + 20
+            }
+            height = 65
         }
         
         return CGSize(width: width, height: height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == areaCollectionView {
-            return 7
+            return 10
         }
         return 5
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if collectionView == areaCollectionView {
+            return UIEdgeInsets(top: 13, left: 15, bottom: 5, right: 15)
+        }
+        return UIEdgeInsets(top: 10, left: 15, bottom: 15, right: 15)
+    }
     
 }
 
@@ -176,8 +203,8 @@ extension TheaterTVC {
         }
         
         towns = townArr
-        areaCollectionView.reloadData()
-        areaCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+        townCollectionView.reloadData()
+        townCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
 

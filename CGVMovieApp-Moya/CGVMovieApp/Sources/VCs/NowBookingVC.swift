@@ -11,6 +11,7 @@ import SnapKit
 class NowBookingVC: UIViewController {
     private var viewTranslation = CGPoint(x: 0, y: 0)
     private var foldButtonTouched = false
+    private var townCount = 0
     
     @IBOutlet weak var swipeButton: UIView!
     @IBOutlet weak var selectTableView: UITableView!
@@ -129,6 +130,7 @@ extension NowBookingVC: UITableViewDelegate {
         }
         return 277
     }
+        
     
 }
 
@@ -147,12 +149,14 @@ extension NowBookingVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TheaterTVC.identifier) as? TheaterTVC else {
                 return UITableViewCell()
             }
+            cell.selectionStyle = .none
             return cell
         }
         else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DateTimeTVC.identifier) as? DateTimeTVC else {
                 return UITableViewCell()
             }
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
@@ -171,6 +175,7 @@ extension NowBookingVC {
     @objc
     func cellIncrease(_ notification: Notification) {
         foldButtonTouched = true
+        townCount = notification.object as! Int
         selectTableView.beginUpdates()
         selectTableView.endUpdates()
     }
