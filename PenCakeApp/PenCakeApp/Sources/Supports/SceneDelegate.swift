@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
@@ -22,9 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window?.rootViewController = ContainerVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: .none)
         
-        let navVC = UINavigationController(rootViewController: MainVC())
-        self.window?.rootViewController = navVC
-        self.window?.makeKeyAndVisible()
+//        let navVC = UINavigationController(rootViewController: MainVC())
+//        self.window?.rootViewController = navVC
+//        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

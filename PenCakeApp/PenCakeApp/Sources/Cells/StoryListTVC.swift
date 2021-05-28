@@ -15,6 +15,7 @@ class StoryListTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setUI()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,7 +24,13 @@ class StoryListTVC: UITableViewCell {
 }
 
 extension StoryListTVC {
-    func setData() {
+    func setUI() {
+        titleLabel.font = UIFont.NotoSerif(.semiBold, size: 15)
+        titleLabel.textColor = .darkGray
+        titleLabel.text = "글"
         
+        dateLabel.font = UIFont.NotoSerif(.light, size: 15)
+        dateLabel.textColor = .lightGray
+        dateLabel.text = "05.28"
     }
 }

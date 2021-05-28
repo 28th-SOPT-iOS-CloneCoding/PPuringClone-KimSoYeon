@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ContainerVC: UIPageViewController {
     private lazy var moreButton: UIButton = {
@@ -20,28 +21,34 @@ class ContainerVC: UIPageViewController {
                                                      weight: .light,
                                                      scale: .large),
                                                forImageIn: .normal)
-        button.addTarget(self, action: #selector(touchUpMore), for: .touchUpInside)
         return button
     }()
     
-    var pages: [UIViewController] = [MainVC(), AddStoryVC()]
+    static var pages: [UIViewController] = [UINavigationController(rootViewController: MainVC()), AddStoryVC()]
     private var currPage: Int = 0
+    
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let rappers = realm.objects(Story.self)
+        print(Realm.Configuration.defaultConfiguration.fileURL)
 
         setPageController()
         setUI()
+        
     }
 }
 
 extension ContainerVC {
     private func setPageController() {
-        setViewControllers([pages[currPage]], direction: .forward, animated: true, completion: nil)
+        setViewControllers([ContainerVC.pages[currPage]], direction: .forward, animated: true, completion: nil)
         dataSource = self
     }
     
     private func setUI() {
+        view.backgroundColor = .white
         view.addSubview(moreButton)
         
         moreButton.snp.makeConstraints { make in
@@ -53,31 +60,34 @@ extension ContainerVC {
 }
 
 extension ContainerVC {
-    @objc func touchUpMore(_ : UIButton) {
-        print("더보기 버튼")
+    @objc func touchUpMoreInStory(_ : UIButton) {
+        print("이야기에서 더보기 버튼 클릭")
+    }
+    
+    @objc func touchUpMoreInAdd(_ : UIButton) {
+        print("이야기 추가에서 더보기 버튼 클릭")
     }
 }
 
 extension ContainerVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
-        let previousIndex = viewControllerIndex - 1
+        guard let index = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
         
-        if previousIndex < 0 {
+        if index - 1 < 0 {
             return nil
         } else {
-            return pages[previousIndex]
+            return ContainerVC.pages[index - 1]
         }
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
-        let nextIndex = viewControllerIndex + 1
+        guard let index = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
         
-        if nextIndex >= pages.count {
+        if index + 1 >= ContainerVC.pages.count {
             return nil
         } else {
-            return pages[nextIndex]
+            return ContainerVC.pages[index + 1]
         }
+        
     }
 }

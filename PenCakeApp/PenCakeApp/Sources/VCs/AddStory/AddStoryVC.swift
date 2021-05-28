@@ -69,6 +69,10 @@ extension AddStoryVC {
 extension AddStoryVC {
     @objc func touchUpAdd(_ : UIButton) {
         print("새 이야기를 추가합니다.")
+        let titleVC = AddStoryTitleVC()
+        let navigationController = UINavigationController(rootViewController: titleVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
     }
     
     @objc func touchUpMore(_ : UIButton) {

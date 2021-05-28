@@ -10,55 +10,61 @@ import SnapKit
 import RealmSwift
 
 class MainVC: UIViewController {
-    var customBar: UINavigationBar = UINavigationBar()
     private lazy var headerView: UIView = {
         let view = UIView()
-        view.addSubview(storyTitle)
-        view.addSubview(storySubTitle)
+        view.backgroundColor = .white
+        view.addSubview(titleButton)
+        view.addSubview(subTitleButton)
         
-//        view.snp.makeConstraints { make in
-//            make.width.equalTo(view)
-//            make.height.equalTo(100)
-//        }
-        
-        storyTitle.snp.makeConstraints { make in
-            make.top.equalTo(view).inset(20)
+        titleButton.snp.makeConstraints { make in
+            make.top.equalTo(view).inset(15)
             make.centerX.equalTo(view)
             make.width.equalTo(200)
             make.height.equalTo(30)
         }
-        storySubTitle.snp.makeConstraints { make in
-            make.top.equalTo(storyTitle.snp.bottom).offset(15)
-            make.centerX.equalTo(storyTitle)
-            make.width.equalTo(200)
+        subTitleButton.snp.makeConstraints { make in
+            make.top.equalTo(titleButton.snp.bottom).offset(20)
+            make.centerX.equalTo(subTitleButton)
+            make.width.equalTo(400)
             make.height.equalTo(30)
         }
         return view
     }()
-    private lazy var storyTitle: UILabel = {
-        let label = UILabel()
-        label.text = "첫번째 이야기"
-        label.font = .NotoSerif(.semiBold, size: 20)
-        return label
-    }()
-    private lazy var storySubTitle: UILabel = {
-        let label = UILabel()
-        label.text = "새로운 이야기 소제목"
-        label.font = .NotoSerif(.light, size: 15)
-        return label
+    
+    private let titleButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("이야기 1", for: .normal)
+        button.titleLabel?.font = UIFont.NotoSerif(.semiBold, size: 20)
+        button.setTitleColor(.black, for: .normal)
+        button.sizeToFit()
+        
+        return button
     }()
     
-    private lazy var storyListTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.removeExtraCellLines()
+    private let subTitleButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("여기를 눌러서 제목을 변경하세요", for: .normal)
+        button.titleLabel?.font = UIFont.NotoSerif(.light, size: 14)
+        button.setTitleColor(.black, for: .normal)
+        button.sizeToFit()
         
-        let selectNib = UINib(nibName: "StoryListTVC", bundle: nil)
-        tableView.register(selectNib, forCellReuseIdentifier: StoryListTVC.identifier)
-        
-        return tableView
+        return button
     }()
+    
+    private let tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .grouped)
+        
+        return table
+    }()
+    
+    private lazy var newWritingControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(addNewWriting(_:)), for: .valueChanged)
+        control.tintColor = .clear
+        
+        return control
+    }()
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,57 +72,79 @@ class MainVC: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationItem.titleView = headerView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
+        setTableView()
     }
-
+    
 }
 
+// MARK: - UI
 extension MainVC {
-    private func setUI() {
-        view.addSubview(storyListTableView)
+    func setUI() {
+        view.backgroundColor = .white
         
-        storyListTableView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+        view.addSubview(tableView)
+        
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
+    
+    func setTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let storylistNib = UINib(nibName: "StoryListTVC", bundle: nil)
+        tableView.register(storylistNib, forCellReuseIdentifier: StoryListTVC.identifier)
+        tableView.refreshControl = newWritingControl
+        
+        tableView.separatorStyle = .none
+    }
 }
 
+// MARK: - Action
+extension MainVC {
+    @objc func addNewWriting(_ sender: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            sender.endRefreshing()
+        }
+    
+        let writingVC = UINavigationController(rootViewController: WritingVC())
+        writingVC.modalPresentationStyle = .overFullScreen
+        present(writingVC, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UITableViewDelegate
 extension MainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         100
     }
-
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        UIView()
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        80
     }
 }
 
+// MARK: - UITableViewDataSource
 extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoryListTVC") as? StoryListTVC else {
             return UITableViewCell()
         }
-        cell.selectionStyle = .none
         return cell
     }
-  
 }
