@@ -8,7 +8,6 @@
 import UIKit
 
 class AddStorySubTitleVC: UIViewController {
-    
     private lazy var completionButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpCompletionButton(_:)))
         
@@ -22,13 +21,13 @@ class AddStorySubTitleVC: UIViewController {
         self.navigationItem.rightBarButtonItem = self.completionButton
         
     }
-    
 }
 
 extension AddStorySubTitleVC {
     @objc func touchUpCompletionButton(_ sender: UIBarButtonItem) {
         ContainerVC.pages.insert(UINavigationController(rootViewController: MainVC()), at: 0)
         
+        // TODO: - 제일 처음 화면으로 돌아가도록
         self.dismiss(animated: true, completion: nil)
     }
 }

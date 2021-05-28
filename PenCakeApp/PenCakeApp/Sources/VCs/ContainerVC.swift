@@ -37,7 +37,6 @@ class ContainerVC: UIPageViewController {
 
         setPageController()
         setUI()
-        
     }
 }
 

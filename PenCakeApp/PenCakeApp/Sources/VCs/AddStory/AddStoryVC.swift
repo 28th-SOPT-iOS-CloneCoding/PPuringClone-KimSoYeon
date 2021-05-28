@@ -45,8 +45,6 @@ class AddStoryVC: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-
-
 }
 
 extension AddStoryVC {

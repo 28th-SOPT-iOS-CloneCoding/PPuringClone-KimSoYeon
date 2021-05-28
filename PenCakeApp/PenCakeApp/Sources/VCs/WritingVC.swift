@@ -8,7 +8,6 @@
 import UIKit
 
 class WritingVC: UIViewController {
-
     private lazy var cancleButton: UIBarButtonItem = {
             let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(touchUpCancleButton(_:)))
         button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)

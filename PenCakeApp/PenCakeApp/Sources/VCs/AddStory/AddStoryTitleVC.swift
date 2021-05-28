@@ -26,7 +26,6 @@ class AddStoryTitleVC: UIViewController {
         setUI()
         setNavigation()
     }
-
 }
 
 // MARK: - UI
