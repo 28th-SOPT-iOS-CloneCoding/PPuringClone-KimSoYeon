@@ -9,9 +9,9 @@ import Foundation
 import RealmSwift
 
 class Writing: Object {
-    dynamic var title: String
-    dynamic var date: Date
-    dynamic var content: String
+    @objc dynamic var title: String
+    @objc dynamic var date: Date
+    @objc dynamic var content: String
 
     override init() {
         title = "글 1"

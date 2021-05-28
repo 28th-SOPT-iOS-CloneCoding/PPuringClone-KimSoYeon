@@ -9,8 +9,8 @@ import Foundation
 import RealmSwift
 
 class Story: Object{
-    dynamic var title: String
-    dynamic var subTitle: String
+    @objc dynamic var title: String
+    @objc dynamic var subTitle: String
     
     override init() {
         title = "이야기 1"

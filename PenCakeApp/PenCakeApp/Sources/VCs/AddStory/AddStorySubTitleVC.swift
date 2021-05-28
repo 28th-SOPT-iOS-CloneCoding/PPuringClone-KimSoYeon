@@ -27,7 +27,6 @@ extension AddStorySubTitleVC {
     @objc func touchUpCompletionButton(_ sender: UIBarButtonItem) {
         ContainerVC.pages.insert(UINavigationController(rootViewController: MainVC()), at: 0)
         
-        // TODO: - 제일 처음 화면으로 돌아가도록
         self.dismiss(animated: true, completion: nil)
     }
 }
