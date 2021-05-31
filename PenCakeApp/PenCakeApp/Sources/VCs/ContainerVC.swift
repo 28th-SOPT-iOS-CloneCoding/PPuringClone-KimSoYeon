@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 class ContainerVC: UIPageViewController {
-    private lazy var moreButton: UIButton = {
+    lazy var moreButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
         button.layer.cornerRadius = 25
@@ -21,14 +21,16 @@ class ContainerVC: UIPageViewController {
                                                      weight: .light,
                                                      scale: .large),
                                                forImageIn: .normal)
+        button.addTarget(self, action: #selector(touchUpMore), for: .touchUpInside)
         return button
     }()
     
-    static var pages: [UIViewController] = [UINavigationController(rootViewController: MainVC()), AddStoryVC()]
-    private var currPage: Int = 0
+    static var pages: [UIViewController] = [UINavigationController(rootViewController: MainStoryVC()), AddStoryVC()]
+    var completeHandler: ((Int) -> ())?
+    var currentIndex = ContainerVC.pages.firstIndex(of: MainStoryVC()) ?? 0
     
     let realm = try! Realm()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +44,7 @@ class ContainerVC: UIPageViewController {
 
 extension ContainerVC {
     private func setPageController() {
-        setViewControllers([ContainerVC.pages[currPage]], direction: .forward, animated: true, completion: nil)
+        setViewControllers([ContainerVC.pages[currentIndex]], direction: .forward, animated: true, completion: nil)
         dataSource = self
     }
     
@@ -56,16 +58,24 @@ extension ContainerVC {
             make.trailing.equalTo(view).inset(20)
         }
     }
+    
+    func setViewControllersFromIndex(index: Int) {
+        if index < 0 && index >= ContainerVC.pages.count { return }
+        self.setViewControllers([ContainerVC.pages[index]], direction: .forward, animated: true, completion: nil)
+        completeHandler?(currentIndex)
+    }
+    
 }
 
 extension ContainerVC {
-    @objc func touchUpMoreInStory(_ : UIButton) {
-        print("이야기에서 더보기 버튼 클릭")
+    @objc func touchUpMore() {
+        if currentIndex == ContainerVC.pages.count - 1 {
+            print("이야기 추가하기 화면에서 더보기 버튼 클릭")
+        } else {
+            print("이야기 화면에서 더보기 버튼 클릭")
+        }
     }
     
-    @objc func touchUpMoreInAdd(_ : UIButton) {
-        print("이야기 추가에서 더보기 버튼 클릭")
-    }
 }
 
 extension ContainerVC: UIPageViewControllerDataSource {
@@ -88,5 +98,13 @@ extension ContainerVC: UIPageViewControllerDataSource {
             return ContainerVC.pages[index + 1]
         }
         
+    }
+}
+
+extension ContainerVC: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            completeHandler?(currentIndex)
+        }
     }
 }

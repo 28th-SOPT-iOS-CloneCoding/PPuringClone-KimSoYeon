@@ -13,7 +13,7 @@ class AddStoryVC: UIViewController {
     private lazy var addStoryButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "plus"), for: .normal)
-        button.tintColor = .systemGray5
+        button.tintColor = .systemGray4
         button.setPreferredSymbolConfiguration(.init(pointSize: 50,
                                                      weight: .light,
                                                      scale: .large),
@@ -25,9 +25,9 @@ class AddStoryVC: UIViewController {
     }()
     private let newLabel: UILabel = {
         let label = UILabel()
-        label.text = "+를 눌러서 새 이야기를 시작하세요."
-        label.textColor = .systemGray4
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.text = "+ 를 눌러서 새 이야기를 시작하세요."
+        label.textColor = .systemGray3
+        label.font = UIFont.NotoSerif(.light, size: 13)
         return label
     }()
     
@@ -66,14 +66,9 @@ extension AddStoryVC {
 
 extension AddStoryVC {
     @objc func touchUpAdd(_ : UIButton) {
-        print("새 이야기를 추가합니다.")
         let titleVC = AddStoryTitleVC()
         let navigationController = UINavigationController(rootViewController: titleVC)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true, completion: nil)
-    }
-    
-    @objc func touchUpMore(_ : UIButton) {
-        
     }
 }

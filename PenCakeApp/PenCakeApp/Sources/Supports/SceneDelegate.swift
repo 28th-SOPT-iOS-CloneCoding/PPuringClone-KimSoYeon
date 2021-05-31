@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.backgroundColor = .white
         
         self.window?.rootViewController = ContainerVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: .none)
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
