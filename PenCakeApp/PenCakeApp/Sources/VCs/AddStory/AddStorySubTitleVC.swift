@@ -31,18 +31,12 @@ class AddStorySubTitleVC: UIViewController {
         return label
     }()
     
-    private lazy var titleTextField: UITextField = {
+    private var titleTextField: UITextField = {
         let textField = UITextField()
+        textField.textAlignment = .center
+        textField.attributedPlaceholder = NSAttributedString(string: "예) 오늘도 수고했어!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray2])
         textField.font = .NotoSerif(.light, size: 13)
-        textField.borderStyle = .none
-        textField.backgroundColor = .clear
-        textField.attributedPlaceholder = NSAttributedString(string: "예) 오늘도 수고했어!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
-        
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        textField.spellCheckingType = .no
-        textField.textContentType = .none
-        
+        textField.removeAuto()
         return textField
     }()
     
@@ -84,10 +78,7 @@ extension AddStorySubTitleVC {
     func setUI() {
         view.backgroundColor = .white
         
-        view.addSubview(contentLabel)
-        view.addSubview(subContentLabel)
-        view.addSubview(titleTextField)
-        view.addSubview(bottomLine)
+        view.addSubviews([contentLabel, subContentLabel, titleTextField, bottomLine])
         
         contentLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(50)

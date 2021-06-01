@@ -49,8 +49,7 @@ class AddStoryVC: UIViewController {
 
 extension AddStoryVC {
     func setUI() {
-        view.addSubview(addStoryButton)
-        view.addSubview(newLabel)
+        view.addSubviews([addStoryButton, newLabel])
         
         addStoryButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)

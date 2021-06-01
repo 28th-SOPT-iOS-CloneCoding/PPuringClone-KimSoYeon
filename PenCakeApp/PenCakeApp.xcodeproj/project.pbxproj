@@ -16,6 +16,7 @@
 		922589382660DBA90066892D /* AddStoryTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922589372660DBA90066892D /* AddStoryTitleVC.swift */; };
 		9225893C2660DBCC0066892D /* AddStorySubTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9225893B2660DBCC0066892D /* AddStorySubTitleVC.swift */; };
 		926C9A61266526DF00C9BAF5 /* DetailStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C9A60266526DF00C9BAF5 /* DetailStoryVC.swift */; };
+		929ECBE826656438002A9E1A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929ECBE726656438002A9E1A /* UITextField+.swift */; };
 		92B1FAB0265B935400A3AD37 /* AddStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B1FAAF265B935400A3AD37 /* AddStoryVC.swift */; };
 		92B32B57265EB25A0025F7E7 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B32B56265EB25A0025F7E7 /* ContainerVC.swift */; };
 		92B32B5A265EB3C60025F7E7 /* MainStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B32B59265EB3C60025F7E7 /* MainStoryVC.swift */; };
@@ -24,6 +25,7 @@
 		92BD60A2265A45B400094B59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A0265A45B400094B59 /* Main.storyboard */; };
 		92BD60A4265A45B500094B59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A3265A45B500094B59 /* Assets.xcassets */; };
 		92BD60A7265A45B500094B59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A5265A45B500094B59 /* LaunchScreen.storyboard */; };
+		92C00BAE2665E6080078521C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C00BAD2665E6080078521C /* UIView+.swift */; };
 		92E8EBF0265F885400739B8B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E8EBEF265F885400739B8B /* UIFont+.swift */; };
 		92E8EBF6265F8F4C00739B8B /* NotoSerifKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92E8EBF4265F8F4C00739B8B /* NotoSerifKR-Light.otf */; };
 		92E8EBF7265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92E8EBF5265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf */; };
@@ -42,6 +44,7 @@
 		922589372660DBA90066892D /* AddStoryTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryTitleVC.swift; sourceTree = "<group>"; };
 		9225893B2660DBCC0066892D /* AddStorySubTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStorySubTitleVC.swift; sourceTree = "<group>"; };
 		926C9A60266526DF00C9BAF5 /* DetailStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStoryVC.swift; sourceTree = "<group>"; };
+		929ECBE726656438002A9E1A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		92B1FAAF265B935400A3AD37 /* AddStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryVC.swift; sourceTree = "<group>"; };
 		92B32B56265EB25A0025F7E7 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		92B32B59265EB3C60025F7E7 /* MainStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStoryVC.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		92BD60A3265A45B500094B59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92BD60A6265A45B500094B59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92BD60A8265A45B500094B59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92C00BAD2665E6080078521C /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		92E8EBEF265F885400739B8B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		92E8EBF4265F8F4C00739B8B /* NotoSerifKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Light.otf"; sourceTree = "<group>"; };
 		92E8EBF5265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-SemiBold.otf"; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 			children = (
 				9211A475265E5EFD0074A814 /* UITableView+.swift */,
 				92E8EBEF265F885400739B8B /* UIFont+.swift */,
+				929ECBE726656438002A9E1A /* UITextField+.swift */,
+				92C00BAD2665E6080078521C /* UIView+.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -345,11 +351,13 @@
 				9214B4E9265E016A00A6F8CC /* StoryListTVC.swift in Sources */,
 				922589342660D5F60066892D /* WritingVC.swift in Sources */,
 				92B1FAB0265B935400A3AD37 /* AddStoryVC.swift in Sources */,
+				929ECBE826656438002A9E1A /* UITextField+.swift in Sources */,
 				92B32B57265EB25A0025F7E7 /* ContainerVC.swift in Sources */,
 				9225893C2660DBCC0066892D /* AddStorySubTitleVC.swift in Sources */,
 				9211A476265E5EFD0074A814 /* UITableView+.swift in Sources */,
 				92BD609B265A45B400094B59 /* AppDelegate.swift in Sources */,
 				9225892E2660D4020066892D /* Writing.swift in Sources */,
+				92C00BAE2665E6080078521C /* UIView+.swift in Sources */,
 				92BD609D265A45B400094B59 /* SceneDelegate.swift in Sources */,
 				922589382660DBA90066892D /* AddStoryTitleVC.swift in Sources */,
 				9211A47A265E63720074A814 /* Story.swift in Sources */,

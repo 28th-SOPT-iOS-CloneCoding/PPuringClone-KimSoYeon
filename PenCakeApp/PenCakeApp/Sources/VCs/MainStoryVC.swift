@@ -82,8 +82,7 @@ extension MainStoryVC {
     func setUI() {
         view.backgroundColor = .white
         
-        view.addSubview(headerView)
-        view.addSubview(tableView)
+        view.addSubviews([headerView, tableView])
         
         headerView.snp.makeConstraints { make in
             make.top.equalToSuperview()

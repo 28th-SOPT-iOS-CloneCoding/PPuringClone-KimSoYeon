@@ -36,17 +36,12 @@ class AddStoryTitleVC: UIViewController {
         return label
     }()
     
-    private lazy var titleTextField: UITextField = {
+    private var titleTextField: UITextField = {
         let textField = UITextField()
+        textField.textAlignment = .center
+        textField.attributedPlaceholder = NSAttributedString(string: "예) 일기, 일상을 끄적이다", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray2])
         textField.font = .NotoSerif(.light, size: 13)
-        textField.borderStyle = .none
-        textField.backgroundColor = .clear
-        textField.attributedPlaceholder = NSAttributedString(string: "예) 일기, 일상을 끄적이다", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
-        
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .none
-        textField.spellCheckingType = .no
-        textField.textContentType = .none
+        textField.removeAuto()
         return textField
     }()
     
@@ -68,10 +63,7 @@ extension AddStoryTitleVC {
     func setUI() {
         view.backgroundColor = .white
         
-        view.addSubview(contentLabel)
-        view.addSubview(subContentLabel)
-        view.addSubview(titleTextField)
-        view.addSubview(bottomLine)
+        view.addSubviews([contentLabel, subContentLabel, titleTextField, bottomLine])
         
         contentLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(50)
@@ -88,6 +80,8 @@ extension AddStoryTitleVC {
             make.centerX.equalToSuperview()
             make.height.equalTo(30)
         }
+        
+        titleTextField.becomeFirstResponder()
         
         bottomLine.snp.makeConstraints { make in
             make.top.equalTo(titleTextField.snp.bottom).offset(2)

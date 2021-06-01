@@ -98,9 +98,7 @@ extension WritingVC {
 // MARK: - Custom Methods
 extension WritingVC {
     func setUI() {
-        view.addSubview(titleTextField)
-        view.addSubview(bottomLine)
-        view.addSubview(contentTextView)
+        view.addSubviews([titleTextField, bottomLine, contentTextView])
         
         titleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview()
