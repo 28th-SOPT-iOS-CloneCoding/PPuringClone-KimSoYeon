@@ -10,31 +10,7 @@ import SnapKit
 import RealmSwift
 
 class MainStoryVC: UIViewController {
-    private var headerView: UIView = {
-        let view = UIView()
-        
-        return view
-    }()
-    
-    private var titleButton: UIButton = {
-        let button = UIButton()
-        button.titleLabel?.font = .NotoSerif(.semiBold, size: 15)
-        button.setTitleColor(.black, for: .normal)
-        return button
-    }()
-    
-    private var subTitleButton: UIButton = {
-        let button = UIButton()
-        button.titleLabel?.font = .NotoSerif(.light, size: 12)
-        button.setTitleColor(.black, for: .normal)
-        return button
-    }()
-    
-    private var bottomLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray4
-        return view
-    }()
+    private let headerView = StoryHeaderView()
     
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)

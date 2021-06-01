@@ -125,7 +125,8 @@ extension AddStorySubTitleVC {
         }
         
         self.dismiss(animated: true) {
-//            self.present(ContainerVC.pages[0], animated: true, completion: nil)
+            let dvc = MainStoryVC()
+            self.present(dvc, animated: true, completion: nil)
         }
         
     }

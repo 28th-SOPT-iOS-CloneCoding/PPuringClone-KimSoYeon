@@ -26,6 +26,7 @@
 		92BD60A4265A45B500094B59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A3265A45B500094B59 /* Assets.xcassets */; };
 		92BD60A7265A45B500094B59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A5265A45B500094B59 /* LaunchScreen.storyboard */; };
 		92C00BAE2665E6080078521C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C00BAD2665E6080078521C /* UIView+.swift */; };
+		92C00BB12665EA340078521C /* StoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C00BB02665EA340078521C /* StoryHeaderView.swift */; };
 		92E8EBF0265F885400739B8B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E8EBEF265F885400739B8B /* UIFont+.swift */; };
 		92E8EBF6265F8F4C00739B8B /* NotoSerifKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92E8EBF4265F8F4C00739B8B /* NotoSerifKR-Light.otf */; };
 		92E8EBF7265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92E8EBF5265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf */; };
@@ -56,6 +57,7 @@
 		92BD60A6265A45B500094B59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92BD60A8265A45B500094B59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92C00BAD2665E6080078521C /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		92C00BB02665EA340078521C /* StoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryHeaderView.swift; sourceTree = "<group>"; };
 		92E8EBEF265F885400739B8B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		92E8EBF4265F8F4C00739B8B /* NotoSerifKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Light.otf"; sourceTree = "<group>"; };
 		92E8EBF5265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-SemiBold.otf"; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		9284F6BF2664C6B7000709A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				92C00BB02665EA340078521C /* StoryHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				922589342660D5F60066892D /* WritingVC.swift in Sources */,
 				92B1FAB0265B935400A3AD37 /* AddStoryVC.swift in Sources */,
 				929ECBE826656438002A9E1A /* UITextField+.swift in Sources */,
+				92C00BB12665EA340078521C /* StoryHeaderView.swift in Sources */,
 				92B32B57265EB25A0025F7E7 /* ContainerVC.swift in Sources */,
 				9225893C2660DBCC0066892D /* AddStorySubTitleVC.swift in Sources */,
 				9211A476265E5EFD0074A814 /* UITableView+.swift in Sources */,
