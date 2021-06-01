@@ -8,7 +8,6 @@
 import UIKit
 
 class DetailStoryVC: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -26,8 +26,8 @@ class MainStoryVC: UIViewController {
         return control
     }()
     
-    var lists: Results<Writing>?
-    var realm: Realm?
+    private var lists: Results<Writing>?
+    private var realm: Realm?
     
     let dateFormatter = DateFormatter()
     
@@ -77,7 +77,7 @@ extension MainStoryVC {
         
         let storylistNib = UINib(nibName: "StoryListTVC", bundle: nil)
         tableView.register(storylistNib, forCellReuseIdentifier: StoryListTVC.identifier)
-//        tableView.refreshControl = newWritingControl
+        tableView.refreshControl = newWritingControl
         
         tableView.separatorStyle = .none
     }

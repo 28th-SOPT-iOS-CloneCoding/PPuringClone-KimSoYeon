@@ -50,7 +50,7 @@ class AddStorySubTitleVC: UIViewController {
     var subStoryTitle: String?
     
     private var realm: Realm?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

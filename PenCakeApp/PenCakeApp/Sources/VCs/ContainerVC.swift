@@ -36,7 +36,7 @@ class ContainerVC: UIPageViewController {
         
         let rappers = realm.objects(Story.self)
         print(Realm.Configuration.defaultConfiguration.fileURL)
-
+        
         setPageController()
         setUI()
     }
@@ -70,9 +70,16 @@ extension ContainerVC {
 extension ContainerVC {
     @objc func touchUpMore() {
         if currentIndex == ContainerVC.pages.count - 1 {
-            print("이야기 추가하기 화면에서 더보기 버튼 클릭")
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "글 추가", style: .default, handler: nil))
+            alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            
         } else {
-            print("이야기 화면에서 더보기 버튼 클릭")
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "이야기 추가", style: .default, handler: nil))
+            alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -85,16 +92,18 @@ extension ContainerVC: UIPageViewControllerDataSource {
         if index - 1 < 0 {
             return nil
         } else {
+            currentIndex -= 1
             return ContainerVC.pages[index - 1]
         }
     }
-
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
         
         if index + 1 >= ContainerVC.pages.count {
             return nil
         } else {
+            currentIndex += 1
             return ContainerVC.pages[index + 1]
         }
         

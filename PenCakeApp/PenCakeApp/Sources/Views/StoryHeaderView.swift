@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class StoryHeaderView: UIView {
     private var titleButton: UIButton = {
@@ -27,6 +28,9 @@ class StoryHeaderView: UIView {
         view.backgroundColor = .systemGray4
         return view
     }()
+    
+    private var realm: Realm?
+    private var lists: Results<Story>?
     
     // MARK: - init
     override init(frame: CGRect) {
@@ -64,8 +68,11 @@ class StoryHeaderView: UIView {
     }
     
     func setData() {
-        titleButton.setTitle("Title", for: .normal)
-        subTitleButton.setTitle("SubTitle", for: .normal)
+        realm = try? Realm()
+        lists = realm?.objects(Story.self)
+        
+        titleButton.setTitle(lists![0].title, for: .normal)
+        subTitleButton.setTitle(lists![0].subTitle, for: .normal)
     }
 
 }
