@@ -35,11 +35,20 @@ class StoryHeaderView: UIView {
     // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+//        setData()
         addSubviews([titleButton, subTitleButton, bottomLine])
-        setData()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //
+    init(title: String, subTitle: String) {
+        super.init(frame: .zero)
+        titleButton.setTitle(title, for: .normal)
+        subTitleButton.setTitle(subTitle, for: .normal)
+        addSubviews([titleButton, subTitleButton, bottomLine])
     }
     
     // MARK: - layout
@@ -71,8 +80,21 @@ class StoryHeaderView: UIView {
         realm = try? Realm()
         lists = realm?.objects(Story.self)
         
+//        let vc = ContainerVC()
+//        let index = vc.currentIndex
+//
+//        switch index {
+//        case 0:
+//            titleButton.setTitle(lists![0].title, for: .normal)
+//            subTitleButton.setTitle(lists![0].subTitle, for: .normal)
+//        default:
+//            titleButton.setTitle("제목", for: .normal)
+//            subTitleButton.setTitle("소제목", for: .normal)
+//        }
+        
         titleButton.setTitle(lists![0].title, for: .normal)
         subTitleButton.setTitle(lists![0].subTitle, for: .normal)
     }
+    
 
 }

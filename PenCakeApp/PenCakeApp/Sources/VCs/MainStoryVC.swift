@@ -10,7 +10,7 @@ import SnapKit
 import RealmSwift
 
 class MainStoryVC: UIViewController {
-    private let headerView = StoryHeaderView()
+    var headerView = StoryHeaderView()
     
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -44,6 +44,7 @@ class MainStoryVC: UIViewController {
         
         realm = try? Realm()
         lists = realm?.objects(Writing.self)
+        
         
         dateFormatter.dateFormat = "MM-dd"
         

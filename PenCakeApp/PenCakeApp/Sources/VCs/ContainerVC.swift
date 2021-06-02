@@ -29,7 +29,15 @@ class ContainerVC: UIPageViewController {
     var completeHandler: ((Int) -> ())?
     var currentIndex = ContainerVC.pages.firstIndex(of: MainStoryVC()) ?? 0
     
+    private var canReload = true
+    private var currentPage = 0
+    
     let realm = try! Realm()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setViewControllersFromIndex(index: currentPage)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +45,22 @@ class ContainerVC: UIPageViewController {
         let rappers = realm.objects(Story.self)
         print(Realm.Configuration.defaultConfiguration.fileURL)
         
-        setPageController()
         setUI()
+        setPageController()
     }
 }
 
 extension ContainerVC {
     private func setPageController() {
-        setViewControllers([ContainerVC.pages[currentIndex]], direction: .forward, animated: true, completion: nil)
         dataSource = self
+        delegate = self
+        
+        if let firstVC = ContainerVC.pages.first {
+            self.setViewControllers([firstVC],
+                                    direction: .forward,
+                                    animated: true,
+                                    completion: nil)
+        }
     }
     
     private func setUI() {
@@ -60,9 +75,26 @@ extension ContainerVC {
     }
     
     func setViewControllersFromIndex(index: Int) {
-        if index < 0 && index >= ContainerVC.pages.count { return }
-        self.setViewControllers([ContainerVC.pages[index]], direction: .forward, animated: true, completion: nil)
-        completeHandler?(currentIndex)
+        if canReload {
+            if index < 0 && index >= ContainerVC.pages.count { return }
+            self.setViewControllers([ContainerVC.pages[index]], direction: .forward, animated: true, completion: nil)
+            completeHandler?(currentIndex)
+            
+            canReload = false
+        } else {
+            print("didnt Reload")
+        }
+    }
+    
+    func makeNewViewController(title: String, subTitle: String) {
+        let newVC = MainStoryVC()
+        
+        guard let embedVC = newVC.children.first as? MainStoryVC else { return }
+        embedVC.headerView = StoryHeaderView(title: title, subTitle: subTitle)
+        ContainerVC.pages.insert(newVC, at: 0)
+        
+        canReload = true
+        currentPage = 0
     }
     
 }
