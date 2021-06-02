@@ -15,6 +15,7 @@
 		922589342660D5F60066892D /* WritingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922589332660D5F60066892D /* WritingVC.swift */; };
 		922589382660DBA90066892D /* AddStoryTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922589372660DBA90066892D /* AddStoryTitleVC.swift */; };
 		9225893C2660DBCC0066892D /* AddStorySubTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9225893B2660DBCC0066892D /* AddStorySubTitleVC.swift */; };
+		923047582667C49A0000D2A2 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923047572667C49A0000D2A2 /* SettingVC.swift */; };
 		926C9A61266526DF00C9BAF5 /* DetailStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C9A60266526DF00C9BAF5 /* DetailStoryVC.swift */; };
 		929ECBE826656438002A9E1A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929ECBE726656438002A9E1A /* UITextField+.swift */; };
 		92B1FAB0265B935400A3AD37 /* AddStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B1FAAF265B935400A3AD37 /* AddStoryVC.swift */; };
@@ -44,6 +45,7 @@
 		922589332660D5F60066892D /* WritingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingVC.swift; sourceTree = "<group>"; };
 		922589372660DBA90066892D /* AddStoryTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryTitleVC.swift; sourceTree = "<group>"; };
 		9225893B2660DBCC0066892D /* AddStorySubTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStorySubTitleVC.swift; sourceTree = "<group>"; };
+		923047572667C49A0000D2A2 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		926C9A60266526DF00C9BAF5 /* DetailStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStoryVC.swift; sourceTree = "<group>"; };
 		929ECBE726656438002A9E1A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		92B1FAAF265B935400A3AD37 /* AddStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryVC.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				92B32B59265EB3C60025F7E7 /* MainStoryVC.swift */,
 				922589332660D5F60066892D /* WritingVC.swift */,
 				926C9A60266526DF00C9BAF5 /* DetailStoryVC.swift */,
+				923047572667C49A0000D2A2 /* SettingVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E8EBF0265F885400739B8B /* UIFont+.swift in Sources */,
+				923047582667C49A0000D2A2 /* SettingVC.swift in Sources */,
 				926C9A61266526DF00C9BAF5 /* DetailStoryVC.swift in Sources */,
 				92B32B5A265EB3C60025F7E7 /* MainStoryVC.swift in Sources */,
 				9214B4E9265E016A00A6F8CC /* StoryListTVC.swift in Sources */,

@@ -50,7 +50,7 @@ class AddStorySubTitleVC: UIViewController {
     
     private var realm: Realm?
     private var lists: Results<Story>?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -116,24 +116,26 @@ extension AddStorySubTitleVC {
     }
 }
 
- // MARK: - Action
+// MARK: - Action
 extension AddStorySubTitleVC {
     @objc func touchUpCompletionButton(_ sender: UIBarButtonItem) {
         
         if ((titleTextField.text?.isEmpty) != nil) {
+            let dvc = ContainerVC()
+            dvc.makeNewViewController(title: storyTitle ?? "", subTitle: titleTextField.text ?? "")
+            
+//            try! realm?.write {
+//                realm?.add(inputData(database: Story()))
+//            }
+            
+            dismiss(animated: true, completion: nil)
+        } else {
             let alertViewController = UIAlertController(title: nil,
                                                         message: "소제목을 입력해주세요.",
                                                         preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
             alertViewController.addAction(okAction)
             present(alertViewController, animated: true, completion: nil)
-        } else {
-            let dvc = ContainerVC()
-            dvc.makeNewViewController(title: storyTitle ?? "", subTitle: titleTextField.text ?? "")
-            
-            try! realm?.write {
-                realm?.add(inputData(database: Story()))
-            }
             
         }
         

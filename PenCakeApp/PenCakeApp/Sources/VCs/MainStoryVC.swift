@@ -45,7 +45,6 @@ class MainStoryVC: UIViewController {
         realm = try? Realm()
         lists = realm?.objects(Writing.self)
         
-        
         dateFormatter.dateFormat = "MM-dd"
         
         setUI()
@@ -56,6 +55,12 @@ class MainStoryVC: UIViewController {
 
 // MARK: - UI
 extension MainStoryVC {
+    func setNavivationUI() {
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
     func setUI() {
         view.backgroundColor = .white
         
@@ -78,7 +83,7 @@ extension MainStoryVC {
         
         let storylistNib = UINib(nibName: "StoryListTVC", bundle: nil)
         tableView.register(storylistNib, forCellReuseIdentifier: StoryListTVC.identifier)
-        tableView.refreshControl = newWritingControl
+//        tableView.refreshControl = newWritingControl
         
         tableView.separatorStyle = .none
     }
@@ -100,13 +105,40 @@ extension MainStoryVC {
 // MARK: - UITableViewDelegate
 extension MainStoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        50
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = DetailStoryVC()
         self.navigationItem.backButtonTitle = ""
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = tableView.contentOffset.y
+        
+        if offset > 0 {
+            headerView.updateHeaderLayout(offset: offset)
+            
+            if offset > 46 {
+                tableView.transform = CGAffineTransform(translationX: 0, y: -110)
+            } else {
+                tableView.transform = CGAffineTransform(translationX: 0, y: -offset*2.5)
+            }
+        } else if offset == 0 {
+            headerView.backToOriginalHeaderLayout()
+            tableView.transform = .identity
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offset = tableView.contentOffset.y
+        
+        if offset < -100 {
+            let nextVC = DetailStoryVC()
+            self.navigationItem.backButtonTitle = ""
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
 }
 
@@ -124,5 +156,11 @@ extension MainStoryVC: UITableViewDataSource {
         cell.dateLabel?.text = dateFormatter.string(from: lists![indexPath.row].date)
         cell.selectionStyle = .none
         return cell
+    }
+}
+
+extension MainStoryVC: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

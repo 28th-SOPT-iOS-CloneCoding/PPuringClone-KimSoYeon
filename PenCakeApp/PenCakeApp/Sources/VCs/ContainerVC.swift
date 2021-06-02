@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 class ContainerVC: UIPageViewController {
-    lazy var moreButton: UIButton = {
+    lazy var settingButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
         button.layer.cornerRadius = 25
@@ -21,7 +21,7 @@ class ContainerVC: UIPageViewController {
                                                      weight: .light,
                                                      scale: .large),
                                                forImageIn: .normal)
-        button.addTarget(self, action: #selector(touchUpMore), for: .touchUpInside)
+        button.addTarget(self, action: #selector(touchUpSetting), for: .touchUpInside)
         return button
     }()
     
@@ -36,7 +36,6 @@ class ContainerVC: UIPageViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setViewControllersFromIndex(index: currentPage)
     }
     
     override func viewDidLoad() {
@@ -65,24 +64,12 @@ extension ContainerVC {
     
     private func setUI() {
         view.backgroundColor = .white
-        view.addSubview(moreButton)
+        view.addSubview(settingButton)
         
-        moreButton.snp.makeConstraints { make in
+        settingButton.snp.makeConstraints { make in
             make.width.height.equalTo(50)
             make.bottom.equalTo(view).inset(50)
             make.trailing.equalTo(view).inset(20)
-        }
-    }
-    
-    func setViewControllersFromIndex(index: Int) {
-        if canReload {
-            if index < 0 && index >= ContainerVC.pages.count { return }
-            self.setViewControllers([ContainerVC.pages[index]], direction: .forward, animated: true, completion: nil)
-            completeHandler?(currentIndex)
-            
-            canReload = false
-        } else {
-            print("didnt Reload")
         }
     }
     
@@ -100,19 +87,14 @@ extension ContainerVC {
 }
 
 extension ContainerVC {
-    @objc func touchUpMore() {
-        if currentIndex == ContainerVC.pages.count - 1 {
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alertController.addAction(UIAlertAction(title: "글 추가", style: .default, handler: nil))
-            alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-            
-        } else {
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alertController.addAction(UIAlertAction(title: "이야기 추가", style: .default, handler: nil))
-            alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+    @objc func touchUpSetting() {
+        let vc = SettingVC()
+        if self.currentIndex == ContainerVC.pages.count - 1 {
+            vc.isCreateView = true
         }
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
 }

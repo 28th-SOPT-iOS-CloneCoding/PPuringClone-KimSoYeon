@@ -109,18 +109,19 @@ extension AddStoryTitleVC {
 
     @objc func touchUpNextButton(_ sender: UIBarButtonItem) {
         if ((titleTextField.text?.isEmpty) != nil) {
+            let nextVC = AddStorySubTitleVC()
+            nextVC.storyTitle = titleTextField.text
+            
+            self.navigationItem.backButtonTitle = ""
+            navigationController?.pushViewController(nextVC, animated: true)
+            
+        } else {
             let alertViewController = UIAlertController(title: nil,
                                                         message: "제목을 입력해주세요.",
                                                         preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
             alertViewController.addAction(okAction)
             present(alertViewController, animated: true, completion: nil)
-        } else {
-            let nextVC = AddStorySubTitleVC()
-            nextVC.storyTitle = titleTextField.text
-            
-            self.navigationItem.backButtonTitle = ""
-            navigationController?.pushViewController(nextVC, animated: true)
         }
     }
 }
