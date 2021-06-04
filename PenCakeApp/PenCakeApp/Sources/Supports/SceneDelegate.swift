@@ -18,8 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         self.window?.backgroundColor = .white
         
-        self.window?.rootViewController = ContainerVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: .none)
+        let containerVC = ContainerVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: .none)
+        let navigationController = UINavigationController(rootViewController: containerVC)
+        navigationController.isNavigationBarHidden = true
         
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
