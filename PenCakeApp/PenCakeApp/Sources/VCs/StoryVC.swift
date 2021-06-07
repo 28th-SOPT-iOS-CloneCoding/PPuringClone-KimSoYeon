@@ -81,6 +81,12 @@ class StoryVC: UIViewController {
     }
 
     // MARK: - LifeCycle Methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // TODO: -스토리 업데이트 하기 
+        tableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
