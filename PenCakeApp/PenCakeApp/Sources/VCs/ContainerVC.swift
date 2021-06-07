@@ -71,13 +71,11 @@ extension ContainerVC {
         let stories = realm.objects(Story.self)
 
         if stories.isEmpty {
-            /// 초기값 세팅
             let mainStory = Story()
             mainStory.index = 1
             mainStory.title = "이야기1"
             mainStory.subTitle = "여기를 눌러서 제목을 변경하세요"
 
-            mainStory.writings.append(Writing())
             mainStory.writings.append(Writing())
             mainStory.writings.append(Writing())
 
