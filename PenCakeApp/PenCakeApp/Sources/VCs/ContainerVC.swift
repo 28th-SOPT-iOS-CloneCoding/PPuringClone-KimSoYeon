@@ -46,7 +46,7 @@ class ContainerVC: UIPageViewController {
         super.viewDidLoad()
         
         setRealm()
-        setConstraint()
+        setUI()
         setPageController()
         setNotification()
     }
@@ -120,7 +120,7 @@ extension ContainerVC {
         delegate = self
     }
     
-    private func setConstraint() {
+    private func setUI() {
         view.addSubviews([moreButton])
         
         moreButton.snp.makeConstraints { make in

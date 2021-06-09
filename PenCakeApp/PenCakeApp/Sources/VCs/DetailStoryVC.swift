@@ -30,7 +30,7 @@ class DetailStoryVC: UIViewController {
 
     private var detailCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    var textCount: CGFloat = 5
+    var textCount: CGFloat = 2
     private var currentIndex: CGFloat = 0
     private let flowLayout = UICollectionViewFlowLayout()
     
@@ -76,6 +76,8 @@ extension DetailStoryVC {
     }
     
     private func setCollectionView() {
+        detailCollectionView.backgroundColor = .white
+        
         detailCollectionView.delegate = self
         detailCollectionView.dataSource = self
         
@@ -83,7 +85,6 @@ extension DetailStoryVC {
         detailCollectionView.collectionViewLayout = flowLayout
         detailCollectionView.isPagingEnabled = true
         
-//        let nib = UINib(nibName: "StoryDetailCVC", bundle: nil)
         detailCollectionView.register(StoryDetailCVC.self, forCellWithReuseIdentifier: StoryDetailCVC.identifier)
         
         if textCount == 1 {
