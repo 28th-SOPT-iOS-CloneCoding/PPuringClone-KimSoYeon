@@ -22,7 +22,7 @@ class SettingVC: UIViewController {
         return button
     }()
     
-    var isCreateView = false
+    var isStoryPage = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -40,6 +40,12 @@ class SettingVC: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        
+        if !isStoryPage {
+            print("🙀 plus화면에서 이동")
+        } else {
+            print("😽 story화면에서 이동")
+        }
     }
 }
 

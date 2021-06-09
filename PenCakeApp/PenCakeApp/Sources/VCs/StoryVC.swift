@@ -85,7 +85,6 @@ class StoryVC: UIViewController {
         super.viewWillAppear(true)
         
         // TODO: -스토리 업데이트 하기 
-        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -194,6 +193,11 @@ extension StoryVC: UITableViewDelegate {
         headerView.snp.updateConstraints { make in
             make.height.equalTo(height)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dvc = DetailStoryVC()
+        navigationController?.pushViewController(dvc, animated: true)
     }
 }
 

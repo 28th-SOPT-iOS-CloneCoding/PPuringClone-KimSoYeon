@@ -24,8 +24,6 @@ class ContainerVC: UIPageViewController {
         button.layer.borderColor = UIColor.lightGray.cgColor
         
         return button
-        
-        
     }()
     
     // MARK: - Local Variables
@@ -60,9 +58,14 @@ extension ContainerVC {
     @objc func touchUpMoreButton(_ sender: UIButton) {
         print("현재 페이지: \(currPage)")
         if currPage == 0 {
-            
+            let dvc = SettingVC()
+            dvc.isStoryPage = false
+            dvc.modalTransitionStyle = .crossDissolve
+            dvc.modalPresentationStyle = .fullScreen
+            self.present(dvc, animated: true, completion: nil)
         } else {
             let dvc = SettingVC()
+            dvc.isStoryPage = true
             dvc.modalTransitionStyle = .crossDissolve
             dvc.modalPresentationStyle = .fullScreen
             self.present(dvc, animated: true, completion: nil)
