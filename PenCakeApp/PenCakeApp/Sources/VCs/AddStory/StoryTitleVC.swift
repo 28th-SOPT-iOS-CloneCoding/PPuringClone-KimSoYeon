@@ -8,19 +8,16 @@
 import UIKit
 
 class StoryTitleVC: UIViewController {
-    // MARK: - UIComponents
-
     private lazy var closeButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "닫기", style: .plain, target: self, action: #selector(touchUpCloseButton(_:)))
         button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
-
+        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .selected)
         return button
     }()
 
     private lazy var nextButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "다음", style: .plain, target: self, action: #selector(touchUpNextButton(_:)))
         button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17)], for: .normal)
-
         return button
     }()
 
@@ -30,7 +27,6 @@ class StoryTitleVC: UIViewController {
         textField.font = UIFont.NotoSerif(.light, size: 18)
         textField.textAlignment = .center
         textField.borderStyle = .none
-
         return textField
     }()
 
@@ -41,14 +37,12 @@ class StoryTitleVC: UIViewController {
         label.numberOfLines = 2
         label.sizeToFit()
         label.textAlignment = .center
-
         return label
     }()
 
-    // MARK: - local variables
-
     let labelTopAnchor: CGFloat = -120
 
+    // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -9,17 +9,13 @@
 import UIKit
 
 class AddStoryVC: UIViewController {
-    // MARK: - UIComponents
-
     private let plusButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(systemName: "plus"), for: .normal)
-        btn.tintColor = UIColor.lightGray
-        btn.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 100, weight: .light), forImageIn: .normal)
-
-        btn.addTarget(self, action: #selector(touchUpPlus(_:)), for: .touchUpInside)
-
-        return btn
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.tintColor = UIColor.lightGray
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 100, weight: .light), forImageIn: .normal)
+        button.addTarget(self, action: #selector(touchUpPlus(_:)), for: .touchUpInside)
+        return button
     }()
 
     private let descriptionLabel: UILabel = {
@@ -27,7 +23,6 @@ class AddStoryVC: UIViewController {
         label.font = UIFont.NotoSerif(.light, size: 13)
         label.textColor = UIColor.lightGray
         label.text = "+를 눌러서 새 이야기를 시작하세요"
-
         return label
     }()
 
@@ -42,8 +37,6 @@ class AddStoryVC: UIViewController {
 
 extension AddStoryVC {
     func setUI() {
-        view.backgroundColor = .white
-        
         view.addSubviews([plusButton, descriptionLabel])
 
         plusButton.snp.makeConstraints { make in

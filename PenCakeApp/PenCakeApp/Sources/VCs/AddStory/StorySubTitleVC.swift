@@ -9,8 +9,6 @@ import RealmSwift
 import UIKit
 
 class StorySubTitleVC: UIViewController {
-    // MARK: - UIComponents
-
     private lazy var completionButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpCompletionButton(_:)))
         return button
@@ -22,7 +20,6 @@ class StorySubTitleVC: UIViewController {
         textField.font = UIFont.NotoSerif(.light, size: 18)
         textField.textAlignment = .center
         textField.borderStyle = .none
-
         return textField
     }()
 
@@ -33,12 +30,9 @@ class StorySubTitleVC: UIViewController {
         label.numberOfLines = 2
         label.sizeToFit()
         label.textAlignment = .center
-
         return label
     }()
-
-    // MARK: - local variables
-
+    
     let labelTopAnchor: CGFloat = -120
     let realm = try! Realm()
 
@@ -52,7 +46,7 @@ class StorySubTitleVC: UIViewController {
         setView()
         setNavigationBar()
         setNotification()
-        setConstraint()
+        setUI()
     }
 
     override func viewDidLayoutSubviews() {
@@ -117,12 +111,10 @@ extension StorySubTitleVC {
     }
 }
 
-// MARK: - Custom Methods
+// MARK: - UI
 
 extension StorySubTitleVC {
     func setView() {
-        view.backgroundColor = .white
-
         self.subTitleTextField.becomeFirstResponder()
     }
 
@@ -136,7 +128,7 @@ extension StorySubTitleVC {
         navigationController?.navigationBar.topItem?.title = ""
     }
 
-    func setConstraint() {
+    func setUI() {
         view.addSubviews([self.contentLabel, self.subTitleTextField])
 
         self.contentLabel.snp.makeConstraints { make in
@@ -152,7 +144,7 @@ extension StorySubTitleVC {
     }
 }
 
-// MARK: - Data Parsing
+// MARK: - DB
 
 extension StorySubTitleVC {
     func addNewStory() {
