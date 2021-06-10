@@ -13,7 +13,6 @@ class StorySubTitleVC: UIViewController {
 
     private lazy var completionButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpCompletionButton(_:)))
-
         return button
     }()
 
@@ -157,27 +156,28 @@ extension StorySubTitleVC {
 
 extension StorySubTitleVC {
     func addNewStory() {
-        do {
-            try self.realm.write {
-                let newStory = Story()
-
-                if let title = storyTitle,
-                   let subTitle = subTitleTextField.text
-                {
-                    newStory.title = title
-                    newStory.subTitle = subTitle
-                    newStory.index = realm.objects(Story.self).count + 1
-                }
-
-                realm.add(newStory)
-            }
-            
+        let newStory = Story()
+        
+        if let title = storyTitle,
+           let subTitle = subTitleTextField.text
+        {
+            newStory.title = title
+            newStory.subTitle = subTitle
+            newStory.index = Database.shared.getTotalCount(model: Story.self) + 1
+        }
+        
+        let result = Database.shared.saveModelData(model: newStory)
+        
+        if result {
             let newStoryVC = StoryVC(viewModel: StoryViewModel())
             ContainerVC.pages.append(newStoryVC)
-
+            
             NotificationCenter.default.post(name: Notification.Name.savedNewStory, object: newStoryVC)
-        } catch {
-            print("FAIL TO SAVE")
+            
+            Database.shared.updateStories()
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            print("😱 FAIL TO SAVE")
         }
     }
 }

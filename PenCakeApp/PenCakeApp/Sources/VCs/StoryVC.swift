@@ -81,18 +81,11 @@ class StoryVC: UIViewController {
     }
 
     // MARK: - LifeCycle Methods
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        // TODO: -스토리 업데이트 하기 
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.storyDelegate = self
-
         setUI()
+        setViewModel()
         setTableView()
         setNavigationBar()
     }
@@ -110,10 +103,6 @@ extension StoryVC {
 
             self.present(writingVC, animated: true, completion: nil)
         }
-    }
-    
-    @objc func reloadTableView(_ sender: Notification) {
-        tableView.reloadData()
     }
 }
 
@@ -152,6 +141,10 @@ extension StoryVC {
         }
     }
 
+    func setViewModel() {
+        viewModel.storyDelegate = self
+    }
+    
     func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -164,10 +157,6 @@ extension StoryVC {
 
     func setNavigationBar() {
         navigationController?.navigationBar.isHidden = true
-    }
-    
-    private func setNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(_:)), name: Notification.Name.savedNewStory, object: nil)
     }
 }
 

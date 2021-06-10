@@ -15,6 +15,7 @@ class StoryViewModel {
     // MARK: - property
     var story: Story? {
         willSet(newStory) {
+            print("📌 Add New Story")
             guard let story = newStory else { return }
 
             storyDelegate?.changedStory(story: story)

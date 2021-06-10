@@ -29,18 +29,7 @@ class ContainerVC: UIPageViewController {
     // MARK: - Local Variables
     
     static var pages: [UIViewController] = [AddStoryVC()]
-    private var currPage: Int = 0
-    
-    // MARK: - local variables
-    
-    let realm = try! Realm()
-    
-    // MARK: - LifeCycle Methods
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        // current index 설정 
-    }
+    static var currPage: Int = ContainerVC.pages.count - 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +45,8 @@ class ContainerVC: UIPageViewController {
 
 extension ContainerVC {
     @objc func touchUpMoreButton(_ sender: UIButton) {
-        print("현재 페이지: \(currPage)")
-        if currPage == 0 {
+        print("현재 페이지: \(ContainerVC.currPage)")
+        if ContainerVC.currPage == 0 {
             let dvc = SettingVC()
             dvc.isStoryPage = false
             dvc.modalTransitionStyle = .crossDissolve
@@ -75,7 +64,6 @@ extension ContainerVC {
     @objc func changeCurrPage(_ sender: Notification) {
         guard let newStoryVC = sender.object as? StoryVC else { return }
         guard let idx = ContainerVC.pages.firstIndex(of: newStoryVC) else { return }
-        
         setViewControllers([ContainerVC.pages[idx]], direction: .forward, animated: false, completion: nil)
     }
 }
@@ -84,37 +72,11 @@ extension ContainerVC {
 
 extension ContainerVC {
     private func setRealm() {
-        print(Realm.Configuration.defaultConfiguration.fileURL)
-        
-        let stories = realm.objects(Story.self)
-        
-        if stories.isEmpty {
-            let mainStory = Story()
-            mainStory.index = 1
-            mainStory.title = "이야기1"
-            mainStory.subTitle = "여기를 눌러서 제목을 변경하세요"
-            
-            mainStory.writings.append(Writing())
-            mainStory.writings.append(Writing())
-            
-            try! realm.write {
-                realm.add(mainStory)
-            }
-        } else {
-            for idx in 1 ... stories.count {
-                guard let story = stories.filter("index == \(idx)").first else { return }
-                
-                let storyVC = StoryVC(viewModel: StoryViewModel())
-                storyVC.viewModel.storyDelegate = storyVC
-                storyVC.viewModel.story = story
-                
-                ContainerVC.pages.append(storyVC)
-            }
-        }
+        Database.shared.initStoryData()
     }
     
     private func setPageController() {
-        setViewControllers([ContainerVC.pages[ContainerVC.pages.count - currPage - 1]], direction: .forward, animated: true, completion: nil)
+        setViewControllers([ContainerVC.pages[ContainerVC.pages.count - ContainerVC.currPage - 1]], direction: .forward, animated: true, completion: nil)
         
         dataSource = self
         delegate = self
@@ -145,7 +107,7 @@ extension ContainerVC: UIPageViewControllerDelegate {
         if completed {
             if let currVC = viewControllers?.first {
                 guard let idx = ContainerVC.pages.firstIndex(of: currVC) else { return }
-                currPage = idx
+                ContainerVC.currPage = idx
             }
         }
     }

@@ -22,6 +22,24 @@ class SettingVC: UIViewController {
         return button
     }()
     
+    private lazy var deleteStoryButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("이야기 제거", for: .normal)
+        button.titleLabel?.font = UIFont.NotoSerif(.light, size: 20)
+        button.setTitleColor(UIColor.systemPink, for: .normal)
+        
+        return button
+    }()
+    
+    private lazy var addWritingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("글 추가", for: .normal)
+        button.titleLabel?.font = UIFont.NotoSerif(.light, size: 20)
+        button.setTitleColor(UIColor.black, for: .normal)
+        
+        return button
+    }()
+    
     var isStoryPage = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,14 +69,24 @@ class SettingVC: UIViewController {
 
 extension SettingVC {
     func setUI() {
-        view.addSubview(exitButton)
+        view.backgroundColor = .white
+        view.addSubviews([deleteStoryButton, addWritingButton, exitButton])
+
+        deleteStoryButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(250)
+            make.centerX.equalToSuperview()
+        }
+        
+        addWritingButton.snp.makeConstraints { make in
+            make.top.equalTo(deleteStoryButton.snp.bottom).offset(60)
+            make.centerX.equalToSuperview()
+        }
         
         exitButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalToSuperview().offset(-40)
             make.width.height.equalTo(60)
         }
-        
         exitButton.layer.cornerRadius = exitButton.frame.height / 2
         exitButton.layer.masksToBounds = true
     }

@@ -28,6 +28,8 @@
 		92C818072669543800D857FF /* WritingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C818062669543800D857FF /* WritingTVC.swift */; };
 		92C8180E2669551F00D857FF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8180D2669551F00D857FF /* Date+.swift */; };
 		92C8181626695A7400D857FF /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8181526695A7400D857FF /* Notification+.swift */; };
+		92CDF29D2671B1E6009FE8FD /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CDF29C2671B1E6009FE8FD /* Database.swift */; };
+		92CDF2A02671B5B8009FE8FD /* WritingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CDF29F2671B5B8009FE8FD /* WritingViewModel.swift */; };
 		92E8EBF0265F885400739B8B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E8EBEF265F885400739B8B /* UIFont+.swift */; };
 		92E8EBF6265F8F4C00739B8B /* NotoSerifKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92E8EBF4265F8F4C00739B8B /* NotoSerifKR-Light.otf */; };
 		92E8EBF7265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92E8EBF5265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf */; };
@@ -61,6 +63,8 @@
 		92C818062669543800D857FF /* WritingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTVC.swift; sourceTree = "<group>"; };
 		92C8180D2669551F00D857FF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		92C8181526695A7400D857FF /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		92CDF29C2671B1E6009FE8FD /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		92CDF29F2671B5B8009FE8FD /* WritingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewModel.swift; sourceTree = "<group>"; };
 		92E8EBEF265F885400739B8B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		92E8EBF4265F8F4C00739B8B /* NotoSerifKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Light.otf"; sourceTree = "<group>"; };
 		92E8EBF5265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-SemiBold.otf"; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				92C00BB02665EA340078521C /* StoryViewModel.swift */,
+				92CDF29F2671B5B8009FE8FD /* WritingViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 			children = (
 				9211A479265E63720074A814 /* Story.swift */,
 				9225892D2660D4020066892D /* Writing.swift */,
+				92CDF29C2671B1E6009FE8FD /* Database.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -380,7 +386,9 @@
 				922589382660DBA90066892D /* StoryTitleVC.swift in Sources */,
 				9211A47A265E63720074A814 /* Story.swift in Sources */,
 				92FDD01B266A01720050F9DD /* WritingVC.swift in Sources */,
+				92CDF29D2671B1E6009FE8FD /* Database.swift in Sources */,
 				92C8181626695A7400D857FF /* Notification+.swift in Sources */,
+				92CDF2A02671B5B8009FE8FD /* WritingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

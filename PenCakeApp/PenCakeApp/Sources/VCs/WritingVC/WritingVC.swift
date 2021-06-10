@@ -50,6 +50,7 @@ class WritingVC: UIViewController {
     }()
     
     let realm = try! Realm()
+    var writing: Writing?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +81,15 @@ extension WritingVC {
 // MARK: - Custom Methods
 
 extension WritingVC {
+    func setView() {
+        view.backgroundColor = .white
+        
+        if let writing = self.writing {
+            self.titleTextField.text = writing.title
+            self.contentTextView.text = writing.content
+        }
+    }
+    
     func setUI() {
         view.backgroundColor = .white
         
@@ -156,25 +166,27 @@ extension WritingVC: UITextFieldDelegate {
 
 extension WritingVC {
     func saveNewWriting() {
-        do {
-            try self.realm.write {
-                let newWrting = Writing()
+        guard let title = self.titleTextField.text,
+              let content = self.contentTextView.text else { return }
 
-                if let title = titleTextField.text,
-                   let content = contentTextView.text
-                {
-                    newWrting.title = title
-                    newWrting.content = content
-                }
-
-                realm.add(newWrting)
-                
-                let newWritingTVC = WritingTVC()
-                NotificationCenter.default.post(name: Notification.Name.savedNewWriting, object: newWritingTVC)
-            }
-            
-        } catch {
-            print("FAIL TO SAVE")
+        let writing = Writing()
+        writing.title = title
+        writing.content = content
+        
+        if let existingWriting = self.writing {
+            writing.id = existingWriting.id
+            writing.date = existingWriting.date
         }
+        
+        Database.shared.updateWriting(idx: ContainerVC.currPage, writing: writing) { result in
+            if result {
+                Database.shared.updateStory(idx: ContainerVC.currPage)
+                
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                print("😱 FAIL TO SAVE")
+            }
+        }
+        
     }
 }
