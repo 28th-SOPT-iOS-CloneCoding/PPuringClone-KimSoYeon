@@ -10,8 +10,6 @@ import SnapKit
 import RealmSwift
 
 class StoryVC: UIViewController {
-    // MARK: - UIComponents
-
     private let headerView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
         view.backgroundColor = .white
@@ -64,8 +62,6 @@ class StoryVC: UIViewController {
         return control
     }()
 
-    // MARK: - local variables
-
     var viewModel: StoryViewModel
 
     // MARK: - Initializer
@@ -91,7 +87,7 @@ class StoryVC: UIViewController {
     }
 }
 
-// MARK: - Action Methods
+// MARK: - Action
 
 extension StoryVC {
     @objc func addNewWriting(_ sender: UIRefreshControl) {
@@ -106,7 +102,7 @@ extension StoryVC {
     }
 }
 
-// MARK: - Custom Methods
+// MARK: - UI
 
 extension StoryVC {
     func setUI() {

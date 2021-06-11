@@ -5,13 +5,10 @@
 //  Created by soyeon on 2021/05/27.
 //
 
-
 import RealmSwift
 import UIKit
 
 class ContainerVC: UIPageViewController {
-    // MARK: - UIComponents
-    
     private lazy var moreButton: UIButton = {
         let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 60, height: 60)))
         button.addTarget(self, action: #selector(touchUpMoreButton(_:)), for: .touchUpInside)
@@ -25,8 +22,6 @@ class ContainerVC: UIPageViewController {
         
         return button
     }()
-    
-    // MARK: - Local Variables
     
     static var pages: [UIViewController] = [AddStoryVC()]
     static var currPage: Int = ContainerVC.pages.count - 1

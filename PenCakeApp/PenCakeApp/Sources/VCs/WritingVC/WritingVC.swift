@@ -9,8 +9,6 @@ import UIKit
 import RealmSwift
 
 class WritingVC: UIViewController {
-    // MARK: - UIComponents
-
     private lazy var cancleButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(touchUpCancleButton(_:)))
         button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
@@ -65,7 +63,7 @@ class WritingVC: UIViewController {
     }
 }
 
-// MARK: - Action Methods
+// MARK: - Action
 
 extension WritingVC {
     @objc func touchUpCancleButton(_ sender: UIBarButtonItem) {
@@ -78,7 +76,7 @@ extension WritingVC {
     }
 }
 
-// MARK: - Custom Methods
+// MARK: - UI
 
 extension WritingVC {
     func setView() {
@@ -162,7 +160,7 @@ extension WritingVC: UITextFieldDelegate {
     }
 }
 
-// MARK: - Data Parsing
+// MARK: - DB
 
 extension WritingVC {
     func saveNewWriting() {
