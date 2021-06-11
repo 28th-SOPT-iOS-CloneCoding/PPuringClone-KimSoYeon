@@ -47,12 +47,12 @@ class WritingVC: UIViewController {
         return view
     }()
     
-    let realm = try! Realm()
     var writing: Writing?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setView()
         setUI()
         setTextField()
         setNavigationBar()
@@ -89,8 +89,6 @@ extension WritingVC {
     }
     
     func setUI() {
-        view.backgroundColor = .white
-        
         view.addSubviews([self.titleTextField, self.contentTextView, self.separator])
 
         self.titleTextField.snp.makeConstraints { make in
@@ -166,7 +164,7 @@ extension WritingVC {
     func saveNewWriting() {
         guard let title = self.titleTextField.text,
               let content = self.contentTextView.text else { return }
-
+        
         let writing = Writing()
         writing.title = title
         writing.content = content
@@ -180,9 +178,16 @@ extension WritingVC {
             if result {
                 Database.shared.updateStory(idx: ContainerVC.currPage)
                 
+                if let presentingVC = self.presentingViewController as? UINavigationController,
+                   let detailVC = presentingVC.topViewController as? DetailWritingVC
+                {
+                    detailVC.viewModel.writing =
+                        writing
+                }
+                
                 self.dismiss(animated: true, completion: nil)
             } else {
-                print("😱 FAIL TO SAVE")
+                print("FAIL TO SAVE")
             }
         }
         

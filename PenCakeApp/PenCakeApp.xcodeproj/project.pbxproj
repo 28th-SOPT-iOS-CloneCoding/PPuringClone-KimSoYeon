@@ -23,6 +23,7 @@
 		92BD60A2265A45B400094B59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A0265A45B400094B59 /* Main.storyboard */; };
 		92BD60A4265A45B500094B59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A3265A45B500094B59 /* Assets.xcassets */; };
 		92BD60A7265A45B500094B59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BD60A5265A45B500094B59 /* LaunchScreen.storyboard */; };
+		92BF93E72673659900E3B317 /* DetailWritingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BF93E62673659900E3B317 /* DetailWritingVC.swift */; };
 		92C00BAE2665E6080078521C /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C00BAD2665E6080078521C /* UIView+.swift */; };
 		92C00BB12665EA340078521C /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C00BB02665EA340078521C /* StoryViewModel.swift */; };
 		92C818072669543800D857FF /* WritingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C818062669543800D857FF /* WritingTVC.swift */; };
@@ -58,6 +59,7 @@
 		92BD60A3265A45B500094B59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92BD60A6265A45B500094B59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92BD60A8265A45B500094B59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92BF93E62673659900E3B317 /* DetailWritingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWritingVC.swift; sourceTree = "<group>"; };
 		92C00BAD2665E6080078521C /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		92C00BB02665EA340078521C /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 		92C818062669543800D857FF /* WritingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTVC.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				92FDD01A266A01720050F9DD /* WritingVC.swift */,
+				92BF93E62673659900E3B317 /* DetailWritingVC.swift */,
 			);
 			path = WritingVC;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				92FDD01B266A01720050F9DD /* WritingVC.swift in Sources */,
 				92CDF29D2671B1E6009FE8FD /* Database.swift in Sources */,
 				92C8181626695A7400D857FF /* Notification+.swift in Sources */,
+				92BF93E72673659900E3B317 /* DetailWritingVC.swift in Sources */,
 				92CDF2A02671B5B8009FE8FD /* WritingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

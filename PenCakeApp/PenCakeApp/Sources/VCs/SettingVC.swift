@@ -50,9 +50,12 @@ class SettingVC: UIViewController {
     }()
     
     var isStoryPage = false
+    var storyNum: Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        print("🔗 \(storyNum)번째 스토리")
         
         self.exitButton.transform = CGAffineTransform(rotationAngle: -(.pi/4))
         
@@ -72,10 +75,8 @@ class SettingVC: UIViewController {
             settingButton.isHidden = false
             deleteStoryButton.isHidden = true
             addWritingButton.isHidden = true
-            print("🙀 plus화면에서 이동")
         } else {
             settingButton.isHidden = true
-            print("😽 story화면에서 이동")
         }
     }
 }

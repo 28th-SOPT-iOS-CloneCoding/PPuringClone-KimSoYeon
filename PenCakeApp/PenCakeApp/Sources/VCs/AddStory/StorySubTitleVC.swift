@@ -11,6 +11,8 @@ import UIKit
 class StorySubTitleVC: UIViewController {
     private lazy var completionButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpCompletionButton(_:)))
+        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17)], for: .normal)
+        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .selected)
         return button
     }()
 
@@ -154,18 +156,18 @@ extension StorySubTitleVC {
             newStory.index = Database.shared.getTotalCount(model: Story.self) + 1
         }
         
-        let result = Database.shared.saveModelData(model: newStory)
-        
-        if result {
-            let newStoryVC = StoryVC(viewModel: StoryViewModel())
-            ContainerVC.pages.append(newStoryVC)
-            
-            NotificationCenter.default.post(name: Notification.Name.savedNewStory, object: newStoryVC)
-            
-            Database.shared.updateStories()
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            print("😱 FAIL TO SAVE")
+        Database.shared.saveModelData(model: newStory) { result in
+            if result {
+                let newStoryVC = StoryVC(viewModel: StoryViewModel())
+                ContainerVC.pages.append(newStoryVC)
+                
+                NotificationCenter.default.post(name: Notification.Name.savedNewStory, object: newStoryVC)
+                
+                Database.shared.updateStories()
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                print("FAIL TO SAVE")
+            }
         }
     }
 }

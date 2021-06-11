@@ -40,16 +40,21 @@ class ContainerVC: UIPageViewController {
 
 extension ContainerVC {
     @objc func touchUpMoreButton(_ sender: UIButton) {
-        print("현재 페이지: \(ContainerVC.currPage)")
         if ContainerVC.currPage == 0 {
             let dvc = SettingVC()
+            
             dvc.isStoryPage = false
+            dvc.storyNum = ContainerVC.currPage
+            
             dvc.modalTransitionStyle = .crossDissolve
             dvc.modalPresentationStyle = .fullScreen
             self.present(dvc, animated: true, completion: nil)
         } else {
             let dvc = SettingVC()
+            
             dvc.isStoryPage = true
+            dvc.storyNum = ContainerVC.currPage
+            
             dvc.modalTransitionStyle = .crossDissolve
             dvc.modalPresentationStyle = .fullScreen
             self.present(dvc, animated: true, completion: nil)
