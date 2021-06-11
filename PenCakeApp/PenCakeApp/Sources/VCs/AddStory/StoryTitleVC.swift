@@ -27,6 +27,7 @@ class StoryTitleVC: UIViewController {
         textField.font = UIFont.NotoSerif(.light, size: 18)
         textField.textAlignment = .center
         textField.borderStyle = .none
+        
         return textField
     }()
 
@@ -43,6 +44,7 @@ class StoryTitleVC: UIViewController {
     let labelTopAnchor: CGFloat = -120
 
     // MARK: - LifeCycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,8 +72,6 @@ class StoryTitleVC: UIViewController {
 extension StoryTitleVC {
     func setUI() {
         view.backgroundColor = .white
-
-        self.titleTextField.becomeFirstResponder()
         
         view.addSubviews([self.contentLabel, self.titleTextField])
 

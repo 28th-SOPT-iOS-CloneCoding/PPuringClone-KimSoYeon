@@ -42,11 +42,10 @@ class StorySubTitleVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setView()
+        
+        setUI()
         setNavigationBar()
         setNotification()
-        setUI()
     }
 
     override func viewDidLayoutSubviews() {
@@ -104,32 +103,13 @@ extension StorySubTitleVC {
             self.view.layoutIfNeeded()
         }
     }
-    
-    func setNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.willShowKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.willHideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
 }
 
 // MARK: - UI
 
 extension StorySubTitleVC {
-    func setView() {
-        view.backgroundColor = .white
-        self.subTitleTextField.becomeFirstResponder()
-    }
-
-    func setNavigationBar() {
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.shadowImage = UIImage()
-
-        navigationItem.rightBarButtonItem = self.completionButton
-        navigationItem.backBarButtonItem?.tintColor = .lightGray
-        navigationController?.navigationBar.topItem?.title = ""
-    }
-
     func setUI() {
+        view.backgroundColor = .white
         view.addSubviews([self.contentLabel, self.subTitleTextField])
 
         self.contentLabel.snp.makeConstraints { make in
@@ -142,6 +122,21 @@ extension StorySubTitleVC {
             make.height.equalTo(contentLabel.bounds.height + 10)
             make.leading.trailing.equalToSuperview().inset(40)
         }
+    }
+    
+    func setNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.shadowImage = UIImage()
+
+        navigationItem.rightBarButtonItem = self.completionButton
+        navigationItem.backBarButtonItem?.tintColor = .lightGray
+        navigationController?.navigationBar.topItem?.title = ""
+    }
+    
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willShowKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willHideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
