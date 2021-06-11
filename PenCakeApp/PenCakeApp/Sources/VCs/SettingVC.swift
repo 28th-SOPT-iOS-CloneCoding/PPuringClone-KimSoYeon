@@ -40,6 +40,15 @@ class SettingVC: UIViewController {
         return button
     }()
     
+    private lazy var settingButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("앱 설정", for: .normal)
+        button.titleLabel?.font = UIFont.NotoSerif(.semiBold, size: 20)
+        button.setTitleColor(UIColor.systemTeal, for: .normal)
+        
+        return button
+    }()
+    
     var isStoryPage = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +69,12 @@ class SettingVC: UIViewController {
         setUI()
         
         if !isStoryPage {
+            settingButton.isHidden = false
+            deleteStoryButton.isHidden = true
+            addWritingButton.isHidden = true
             print("🙀 plus화면에서 이동")
         } else {
+            settingButton.isHidden = true
             print("😽 story화면에서 이동")
         }
     }
@@ -70,9 +83,14 @@ class SettingVC: UIViewController {
 extension SettingVC {
     func setUI() {
         view.backgroundColor = .white
-        view.addSubviews([deleteStoryButton, addWritingButton, exitButton])
+        view.addSubviews([deleteStoryButton, settingButton, addWritingButton, exitButton])
 
         deleteStoryButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(250)
+            make.centerX.equalToSuperview()
+        }
+        
+        settingButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(250)
             make.centerX.equalToSuperview()
         }
