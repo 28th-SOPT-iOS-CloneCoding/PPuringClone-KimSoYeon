@@ -44,7 +44,7 @@ extension ContainerVC {
             let dvc = SettingVC()
             
             dvc.isStoryPage = false
-            dvc.storyNum = ContainerVC.currPage
+            SettingVC.storyNum = ContainerVC.currPage
             
             dvc.modalTransitionStyle = .crossDissolve
             dvc.modalPresentationStyle = .fullScreen
@@ -53,7 +53,7 @@ extension ContainerVC {
             let dvc = SettingVC()
             
             dvc.isStoryPage = true
-            dvc.storyNum = ContainerVC.currPage
+            SettingVC.storyNum = ContainerVC.currPage
             
             dvc.modalTransitionStyle = .crossDissolve
             dvc.modalPresentationStyle = .fullScreen
@@ -65,6 +65,14 @@ extension ContainerVC {
         guard let newStoryVC = sender.object as? StoryVC else { return }
         guard let index = ContainerVC.pages.firstIndex(of: newStoryVC) else { return }
         ContainerVC.currPage = index
+        setViewControllers([ContainerVC.pages[index]], direction: .forward, animated: false, completion: nil)
+    }
+    
+    // MARK: - Fix: 이야기 삭제 후 화면 전환
+    @objc func deletePage(_ sender: Notification) {
+        guard let deleteStoryVC = sender.object as? StoryVC else { return }
+        guard let index = ContainerVC.pages.firstIndex(of: deleteStoryVC) else { return }
+        ContainerVC.currPage = index - 1
         setViewControllers([ContainerVC.pages[index]], direction: .forward, animated: false, completion: nil)
     }
 }
@@ -97,6 +105,8 @@ extension ContainerVC {
     
     private func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(changeCurrPage(_:)), name: Notification.Name.savedNewStory, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(deletePage(_:)), name: Notification.Name.deletedStory, object: nil)
     }
 }
 

@@ -10,4 +10,5 @@ import UIKit
 
 extension Notification.Name {
     static let savedNewStory = Notification.Name("savedNewStory")
+    static let deletedStory = Notification.Name("deletedStory")
 }

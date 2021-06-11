@@ -158,7 +158,6 @@ extension StorySubTitleVC {
 
         Database.shared.saveModelData(model: newStory) { result in
             if result {
-                /// local 저장
                 let newStoryVC = StoryVC(viewModel: StoryViewModel())
                 ContainerVC.pages.append(newStoryVC)
 

@@ -27,6 +27,7 @@ class SettingVC: UIViewController {
         button.setTitle("이야기 제거", for: .normal)
         button.titleLabel?.font = UIFont.NotoSerif(.light, size: 20)
         button.setTitleColor(UIColor.systemPink, for: .normal)
+        button.addTarget(self, action: #selector(touchUpDelete), for: .touchUpInside)
         
         return button
     }()
@@ -50,12 +51,13 @@ class SettingVC: UIViewController {
     }()
     
     var isStoryPage = false
-    var storyNum: Int = 0
+    static var storyNum: Int = 0
     
+    // MARK: - LifeCycle Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        print("🔗 \(storyNum)번째 스토리")
+        print("🔗 \(SettingVC.storyNum)번째 스토리")
         
         self.exitButton.transform = CGAffineTransform(rotationAngle: -(.pi/4))
         
@@ -81,6 +83,7 @@ class SettingVC: UIViewController {
     }
 }
 
+// MARK: - UI Methods
 extension SettingVC {
     func setUI() {
         view.backgroundColor = .white
@@ -111,6 +114,7 @@ extension SettingVC {
     }
 }
 
+// MARK: - Action Methods
 extension SettingVC {
     @objc func touchUpExit() {
         UIView.animate(withDuration: 0.3, animations: {
@@ -121,4 +125,19 @@ extension SettingVC {
         })
     }
     
+    // MARK: - Fix: 이야기 삭제 후 화면 전환
+    @objc func touchUpDelete() {
+        Database.shared.deleteStory(idx: ContainerVC.currPage) { result in
+            if result {
+                let deleteStoryVC = ContainerVC.pages[SettingVC.storyNum]
+               
+                NotificationCenter.default.post(name: Notification.Name.deletedStory, object: deleteStoryVC)
+                
+                Database.shared.updateStories()
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                print("FAIL TO DELETE")
+            }
+        }
+    }
 }

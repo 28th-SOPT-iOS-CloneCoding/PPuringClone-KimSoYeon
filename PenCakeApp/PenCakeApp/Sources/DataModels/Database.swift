@@ -139,18 +139,12 @@ class Database {
     }
     
     // MARK: - Delete
-    func deleteStory(idx: Int, writing: Writing, completion: @escaping (Bool) -> Void) {
+    func deleteStory(idx: Int, completion: @escaping (Bool) -> Void) {
         guard let story = realm.objects(Story.self).filter("index == \(idx)").first else { return }
         
         do {
             try realm.write {
-                if let existingWriting = story.writings.filter(NSPredicate(format: "id ==  %@", writing.id)).first,
-                   let idx = story.writings.index(of: existingWriting)
-                {
-                    realm.delete(story.writings[idx])
-                } else {
-                    
-                }
+                realm.delete(story)
             }
             
             completion(true)

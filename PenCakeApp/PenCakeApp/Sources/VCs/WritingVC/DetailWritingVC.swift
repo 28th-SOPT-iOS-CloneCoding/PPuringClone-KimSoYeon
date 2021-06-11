@@ -119,7 +119,7 @@ extension DetailWritingVC {
                 Database.shared.updateStory(idx: ContainerVC.currPage)
                 self.navigationController?.popViewController(animated: true)
             } else {
-                print("FAIL TO SAVE")
+                print("FAIL TO DELETE")
             }
         }
     }
