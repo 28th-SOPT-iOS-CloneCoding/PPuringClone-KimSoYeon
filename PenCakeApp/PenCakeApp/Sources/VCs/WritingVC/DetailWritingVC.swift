@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class DetailWritingVC: UIViewController {
     // MARK: - UIComponents

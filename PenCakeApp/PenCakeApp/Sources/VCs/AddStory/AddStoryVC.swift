@@ -20,7 +20,7 @@ class AddStoryVC: UIViewController {
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.NotoSerif(.light, size: 13)
+        label.font = UIFont.NotoSerif(.light, size: 17)
         label.textColor = UIColor.lightGray
         label.text = "+를 눌러서 새 이야기를 시작하세요"
         return label

@@ -6,18 +6,23 @@
 //
 
 import UIKit
+import SnapKit
 import RealmSwift
 
 class WritingVC: UIViewController {
+    // MARK: - UIComponents
+
     private lazy var cancleButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(touchUpCancleButton(_:)))
         button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
+
         return button
     }()
 
     private lazy var completionButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpCompletionButton(_:)))
-        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17)], for: .normal)
+        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
+
         return button
     }()
 
@@ -25,12 +30,14 @@ class WritingVC: UIViewController {
         let textfield = UITextField()
         textfield.placeholder = "제목"
         textfield.font = UIFont.NotoSerif(.semiBold, size: 20)
+
         return textfield
     }()
 
     private let contentTextView: UITextView = {
         let textview = UITextView()
         textview.font = UIFont.NotoSerif(.light, size: 15)
+
         return textview
     }()
 
@@ -38,24 +45,29 @@ class WritingVC: UIViewController {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.NotoSerif(.light, size: 17)
+        button.addTarget(self, action: #selector(touchUpNavigation(_:)), for: .touchUpInside)
+
         return button
     }()
 
     private let separator: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.systemGray5
+
         return view
     }()
-    
+
+    // MARK: - local variables
+
     var writing: Writing?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setView()
-        setUI()
         setTextField()
         setNavigationBar()
+        setConstraint()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -63,32 +75,74 @@ class WritingVC: UIViewController {
     }
 }
 
-// MARK: - Action
+// MARK: - Action Methods
 
 extension WritingVC {
     @objc func touchUpCancleButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
+    @objc func touchUpNavigation(_ sender: UIButton) {
+        deRegisterNavigationTitleButton()
+    }
+
     @objc func touchUpCompletionButton(_ sender: UIBarButtonItem) {
-        saveNewWriting()
-        self.dismiss(animated: true, completion: nil)
+        guard let title = self.titleTextField.text,
+              let content = self.contentTextView.text else { return }
+
+        let writing = Writing()
+        writing.title = title
+        writing.content = content
+
+        if let existingWriting = self.writing {
+            writing.id = existingWriting.id
+            writing.date = existingWriting.date
+        }
+
+        Database.shared.updateWriting(idx: ContainerVC.currPage, writing: writing) { result in
+            if result {
+                Database.shared.updateStory(idx: ContainerVC.currPage)
+
+                if let presentingVC = self.presentingViewController as? UINavigationController,
+                   let detailVC = presentingVC.topViewController as? DetailWritingVC
+                {
+                    detailVC.viewModel.writing =
+                        writing
+                }
+
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                print("FAIL TO SAVE")
+            }
+        }
     }
 }
 
-// MARK: - UI
+// MARK: - Custom Methods
 
 extension WritingVC {
     func setView() {
         view.backgroundColor = .white
-        
+
         if let writing = self.writing {
             self.titleTextField.text = writing.title
             self.contentTextView.text = writing.content
         }
     }
-    
-    func setUI() {
+
+    func setNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
+        self.navigationItem.leftBarButtonItem = self.cancleButton
+        self.navigationItem.rightBarButtonItem = self.completionButton
+
+        self.navigationItem.titleView = .none
+        self.navigationItem.titleView?.alpha = 0
+    }
+
+    func setConstraint() {
         view.addSubviews([self.titleTextField, self.contentTextView, self.separator])
 
         self.titleTextField.snp.makeConstraints { make in
@@ -110,18 +164,6 @@ extension WritingVC {
         }
     }
 
-    func setNavigationBar() {
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-
-        self.navigationItem.leftBarButtonItem = self.cancleButton
-        self.navigationItem.rightBarButtonItem = self.completionButton
-
-        self.navigationItem.titleView = .none
-        self.navigationItem.titleView?.alpha = 0
-    }
-
     func setTextField() {
         self.titleTextField.delegate = self
         self.titleTextField.becomeFirstResponder()
@@ -131,18 +173,33 @@ extension WritingVC {
         guard let title = self.titleTextField.text else { return }
         self.naviTitleButton.setTitle(title, for: .normal)
 
-        UIView.animate(withDuration: 0.4) {
+        self.titleTextField.snp.updateConstraints { make in
+            make.height.equalTo(0)
+        }
+
+        UIView.animate(withDuration: 0.6) {
             self.navigationItem.titleView = self.naviTitleButton
             self.navigationItem.titleView?.alpha = 1
 
-            self.titleTextField.snp.updateConstraints { make in
-                make.height.equalTo(0)
-            }
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    func deRegisterNavigationTitleButton() {
+        self.titleTextField.snp.updateConstraints { make in
+            make.height.equalTo(60)
+        }
+
+        UIView.animate(withDuration: 0.6) {
+            self.navigationItem.titleView?.alpha = 0
+
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.navigationItem.titleView = .none
+            self.titleTextField.becomeFirstResponder()
         }
     }
 }
-
-// MARK: - TextField
 
 extension WritingVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -155,41 +212,5 @@ extension WritingVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.titleTextField.resignFirstResponder()
         self.registerNavigationTitleButton()
-    }
-}
-
-// MARK: - DB
-
-extension WritingVC {
-    func saveNewWriting() {
-        guard let title = self.titleTextField.text,
-              let content = self.contentTextView.text else { return }
-        
-        let writing = Writing()
-        writing.title = title
-        writing.content = content
-        
-        if let existingWriting = self.writing {
-            writing.id = existingWriting.id
-            writing.date = existingWriting.date
-        }
-        
-        Database.shared.updateWriting(idx: ContainerVC.currPage, writing: writing) { result in
-            if result {
-                Database.shared.updateStory(idx: ContainerVC.currPage)
-                
-                if let presentingVC = self.presentingViewController as? UINavigationController,
-                   let detailVC = presentingVC.topViewController as? DetailWritingVC
-                {
-                    detailVC.viewModel.writing =
-                        writing
-                }
-                
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                print("FAIL TO SAVE")
-            }
-        }
-        
     }
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9211A47A265E63720074A814 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9211A479265E63720074A814 /* Story.swift */; };
 		921A514C26711055008F2420 /* StoryDetailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A514A26711055008F2420 /* StoryDetailCVC.swift */; };
-		921A514D26711055008F2420 /* StoryDetailCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921A514B26711055008F2420 /* StoryDetailCVC.xib */; };
 		9225892E2660D4020066892D /* Writing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9225892D2660D4020066892D /* Writing.swift */; };
 		922589382660DBA90066892D /* StoryTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922589372660DBA90066892D /* StoryTitleVC.swift */; };
 		9225893C2660DBCC0066892D /* StorySubTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9225893B2660DBCC0066892D /* StorySubTitleVC.swift */; };
@@ -43,7 +42,6 @@
 		534A0157F588A5BCE8C630AB /* Pods-PenCakeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenCakeApp.debug.xcconfig"; path = "Target Support Files/Pods-PenCakeApp/Pods-PenCakeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9211A479265E63720074A814 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		921A514A26711055008F2420 /* StoryDetailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailCVC.swift; sourceTree = "<group>"; };
-		921A514B26711055008F2420 /* StoryDetailCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryDetailCVC.xib; sourceTree = "<group>"; };
 		9225892D2660D4020066892D /* Writing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writing.swift; sourceTree = "<group>"; };
 		922589372660DBA90066892D /* StoryTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTitleVC.swift; sourceTree = "<group>"; };
 		9225893B2660DBCC0066892D /* StorySubTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySubTitleVC.swift; sourceTree = "<group>"; };
@@ -116,13 +114,13 @@
 			path = AddStory;
 			sourceTree = "<group>";
 		};
-		9284F6BF2664C6B7000709A6 /* Views */ = {
+		9284F6BF2664C6B7000709A6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				92C00BB02665EA340078521C /* StoryViewModel.swift */,
 				92CDF29F2671B5B8009FE8FD /* WritingViewModel.swift */,
 			);
-			path = Views;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		92BD608E265A45B400094B59 = {
@@ -158,9 +156,9 @@
 			children = (
 				92BD60B4265A45F100094B59 /* Supports */,
 				9211A474265E5ED40074A814 /* Extentions */,
-				92BD60B3265A45EB00094B59 /* Models */,
+				92BD60B3265A45EB00094B59 /* DataModels */,
 				92BD60B2265A45E500094B59 /* Cells */,
-				9284F6BF2664C6B7000709A6 /* Views */,
+				9284F6BF2664C6B7000709A6 /* ViewModels */,
 				92BD60B1265A45D800094B59 /* VCs */,
 			);
 			path = Sources;
@@ -169,7 +167,6 @@
 		92BD60B0265A45CD00094B59 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				921A514B26711055008F2420 /* StoryDetailCVC.xib */,
 				92BD60A3265A45B500094B59 /* Assets.xcassets */,
 				92E8EBEC265F87B600739B8B /* Font */,
 				92BD60B5265A460300094B59 /* Storyboards */,
@@ -199,14 +196,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		92BD60B3265A45EB00094B59 /* Models */ = {
+		92BD60B3265A45EB00094B59 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
 				9211A479265E63720074A814 /* Story.swift */,
 				9225892D2660D4020066892D /* Writing.swift */,
 				92CDF29C2671B1E6009FE8FD /* Database.swift */,
 			);
-			path = Models;
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 		92BD60B4265A45F100094B59 /* Supports */ = {
@@ -316,7 +313,6 @@
 				92BD60A7265A45B500094B59 /* LaunchScreen.storyboard in Resources */,
 				92E8EBF7265F8F4C00739B8B /* NotoSerifKR-SemiBold.otf in Resources */,
 				92E8EBF6265F8F4C00739B8B /* NotoSerifKR-Light.otf in Resources */,
-				921A514D26711055008F2420 /* StoryDetailCVC.xib in Resources */,
 				92BD60A4265A45B500094B59 /* Assets.xcassets in Resources */,
 				92BD60A2265A45B400094B59 /* Main.storyboard in Resources */,
 			);

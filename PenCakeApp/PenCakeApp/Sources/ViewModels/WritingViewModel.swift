@@ -15,7 +15,6 @@ class WritingViewModel {
     // MARK: - property
     var writing: Writing? {
         willSet(newWriting) {
-            print("📍 Add New Writing")
             guard let writing = newWriting else { return }
 
             writingDelegate?.didChangedWriting(writing: writing)

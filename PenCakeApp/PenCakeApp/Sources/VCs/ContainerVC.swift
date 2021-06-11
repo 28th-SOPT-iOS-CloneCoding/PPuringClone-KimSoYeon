@@ -64,6 +64,7 @@ extension ContainerVC {
     @objc func changeCurrPage(_ sender: Notification) {
         guard let newStoryVC = sender.object as? StoryVC else { return }
         guard let index = ContainerVC.pages.firstIndex(of: newStoryVC) else { return }
+        ContainerVC.currPage = index
         setViewControllers([ContainerVC.pages[index]], direction: .forward, animated: false, completion: nil)
     }
 }
@@ -116,22 +117,14 @@ extension ContainerVC: UIPageViewControllerDelegate {
 
 extension ContainerVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
-        
-        if index + 1 >= ContainerVC.pages.count {
-            return nil
-        } else {
-            return ContainerVC.pages[index + 1]
-        }
+        guard let idx = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
+
+        return idx + 1 >= ContainerVC.pages.count ? nil : ContainerVC.pages[idx + 1]
     }
-    
+
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
-        
-        if index - 1 < 0 {
-            return nil
-        } else {
-            return ContainerVC.pages[index - 1]
-        }
+        guard let idx = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
+
+        return idx - 1 < 0 ? nil : ContainerVC.pages[idx - 1]
     }
 }
