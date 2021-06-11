@@ -30,7 +30,7 @@ class DetailStoryVC: UIViewController {
 
     private var detailCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    var textCount: CGFloat = 2
+    var writingCount: CGFloat = 0
     private var currentIndex: CGFloat = 0
     private let flowLayout = UICollectionViewFlowLayout()
     
@@ -65,7 +65,7 @@ extension DetailStoryVC {
         lineView.snp.makeConstraints { make in
             make.top.equalTo(backButton.snp.bottom).offset(10)
             make.leading.equalToSuperview()
-            make.width.equalTo(UIScreen.main.bounds.size.width/textCount)
+            make.width.equalTo(UIScreen.main.bounds.size.width/writingCount)
             make.height.equalTo(1)
         }
         
@@ -87,9 +87,13 @@ extension DetailStoryVC {
         
         detailCollectionView.register(StoryDetailCVC.self, forCellWithReuseIdentifier: StoryDetailCVC.identifier)
         
-        if textCount == 1 {
+        if writingCount == 1 {
             detailCollectionView.isScrollEnabled = false
         }
+    }
+    
+    private func setWritingCount() {
+        
     }
 }
 
@@ -103,7 +107,7 @@ extension DetailStoryVC {
 
 extension DetailStoryVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(textCount)
+        return Int(writingCount)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -164,13 +168,13 @@ extension DetailStoryVC: UICollectionViewDelegate {
     
     func movePositiveDirection() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.lineView.transform = CGAffineTransform(translationX: UIScreen.main.bounds.size.width/self.textCount * self.currentIndex, y: 0)
+            self.lineView.transform = CGAffineTransform(translationX: UIScreen.main.bounds.size.width/self.writingCount * self.currentIndex, y: 0)
         })
     }
     
     func moveNegativeDirection() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.lineView.transform = CGAffineTransform(translationX: UIScreen.main.bounds.size.width - UIScreen.main.bounds.size.width/self.textCount * (self.textCount - self.currentIndex), y: 0)
+            self.lineView.transform = CGAffineTransform(translationX: UIScreen.main.bounds.size.width - UIScreen.main.bounds.size.width/self.writingCount * (self.writingCount - self.currentIndex), y: 0)
         })
     }
 }

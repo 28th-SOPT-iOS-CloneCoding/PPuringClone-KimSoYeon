@@ -70,7 +70,7 @@ extension WritingTVC {
 
     func setCellData(writing: Writing) {
         titleLabel.text = writing.title
-        dateLabel.text = Date().getDateToString(format: "MM.dd", date: writing.date)
+        dateLabel.text = Date().slicingDate(date: writing.date)
     }
 }
 
