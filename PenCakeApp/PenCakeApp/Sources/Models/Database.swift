@@ -73,7 +73,6 @@ class Database {
             try realm.write {
                 realm.add(model)
             }
-
             return true
         } catch {
             return false
@@ -100,7 +99,6 @@ class Database {
                     story.writings.append(writing)
                 }
             }
-
             completion(true)
         } catch {
             completion(false)

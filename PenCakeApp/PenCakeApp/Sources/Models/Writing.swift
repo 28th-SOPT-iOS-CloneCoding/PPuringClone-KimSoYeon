@@ -15,7 +15,7 @@ class Writing: Object {
     @objc dynamic var content: String
     
     override init() {
-        title = "글 1"
+        title = "첫번째 글"
         date = Date()
         content = "세상에는 수많은 이야기로 넘쳐납니다."
     }

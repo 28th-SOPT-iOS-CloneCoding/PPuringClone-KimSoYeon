@@ -16,7 +16,7 @@ class Story: Object {
 
     override init() {
         index = 0
-        title = "이야기 1"
+        title = "첫번째 이야기"
         subTitle = "여기를 눌러서 제목을 변경하세요"
         writings = List<Writing>()
     }
