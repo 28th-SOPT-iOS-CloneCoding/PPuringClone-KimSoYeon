@@ -115,6 +115,7 @@ extension StorySubTitleVC {
 
 extension StorySubTitleVC {
     func setView() {
+        view.backgroundColor = .white
         self.subTitleTextField.becomeFirstResponder()
     }
 
