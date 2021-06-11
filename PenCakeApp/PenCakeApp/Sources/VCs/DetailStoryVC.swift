@@ -91,10 +91,6 @@ extension DetailStoryVC {
             detailCollectionView.isScrollEnabled = false
         }
     }
-    
-    private func setWritingCount() {
-        
-    }
 }
 
 // MARK: - Action

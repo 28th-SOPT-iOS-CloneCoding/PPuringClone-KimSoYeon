@@ -9,8 +9,6 @@ import RealmSwift
 import UIKit
 
 class StorySubTitleVC: UIViewController {
-    // MARK: - UIComponents
-
     private lazy var completionButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpCompletionButton(_:)))
 
@@ -38,10 +36,7 @@ class StorySubTitleVC: UIViewController {
         return label
     }()
 
-    // MARK: - local variables
-
     let labelTopAnchor: CGFloat = -120
-
     var storyTitle: String?
 
     // MARK: - LifeCycle Methods
@@ -58,7 +53,6 @@ class StorySubTitleVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        /// textfield border
         let border = CALayer()
         border.frame = CGRect(x: 0, y: self.subTitleTextField.frame.size.height - 1, width: self.subTitleTextField.frame.width, height: 1)
         border.backgroundColor = UIColor.systemGray4.cgColor
@@ -70,7 +64,7 @@ class StorySubTitleVC: UIViewController {
     }
 }
 
-// MARK: - Action Methods
+// MARK: - Action
 
 extension StorySubTitleVC {
     @objc func touchUpCompletionButton(_ sender: UIBarButtonItem) {

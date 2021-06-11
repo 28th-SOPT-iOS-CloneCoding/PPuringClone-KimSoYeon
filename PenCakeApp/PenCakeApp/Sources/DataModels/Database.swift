@@ -32,7 +32,6 @@ class Database {
 
             mainStory.writings.append(Writing())
             mainStory.writings.append(Writing())
-            mainStory.writings.append(Writing())
 
             let storyVC = StoryVC(viewModel: StoryViewModel())
             storyVC.viewModel.story = mainStory

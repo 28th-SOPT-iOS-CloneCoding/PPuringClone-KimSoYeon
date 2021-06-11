@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 
 class DetailWritingVC: UIViewController {
-    // MARK: - UIComponents
-
     private var navigationView: UIView = {
         let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 44)))
         view.backgroundColor = .white
@@ -69,8 +67,6 @@ class DetailWritingVC: UIViewController {
         return label
     }()
 
-    // MARK: - local Variables
-
     var viewModel: WritingViewModel
     var writing: Writing?
 
@@ -89,9 +85,8 @@ class DetailWritingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setConstraint()
+        setUI()
         setNavigationBar()
-        setView()
         setViewModel()
     }
 }
@@ -143,7 +138,15 @@ extension DetailWritingVC {
 // MARK: - Custom Method
 
 extension DetailWritingVC {
-    func setConstraint() {
+    func setUI() {
+        view.backgroundColor = .white
+
+        if let writing = self.writing {
+            titleLabel.text = writing.title
+            contentLabel.text = writing.content
+            dateLabel.text = Date().getDateToString(format: "yyyy년 M월 d일 E a h:mm", date: writing.date)
+        }
+        
         view.addSubviews([navigationView, backButton, moreButton, separator, titleLabel, dateLabel, contentLabel])
         
         navigationView.snp.makeConstraints { make in
@@ -187,19 +190,9 @@ extension DetailWritingVC {
             make.trailing.equalTo(titleLabel.snp.trailing)
         }
     }
-
+    
     func setNavigationBar() {
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
-    }
-
-    func setView() {
-        view.backgroundColor = .white
-
-        if let writing = self.writing {
-            titleLabel.text = writing.title
-            contentLabel.text = writing.content
-            dateLabel.text = Date().getDateToString(format: "yyyy년 M월 d일 E a h:mm", date: writing.date)
-        }
     }
 
     func setViewModel() {
@@ -208,7 +201,7 @@ extension DetailWritingVC {
 }
 
 extension DetailWritingVC: writingViewModelDelegate {
-    func didChangedWriting(writing: Writing) {
+    func changedWriting(writing: Writing) {
         titleLabel.text = writing.title
         contentLabel.text = writing.content
         dateLabel.text = Date().getDateToString(format: "yyyy년 M월 d일 E a h:mm", date: writing.date)

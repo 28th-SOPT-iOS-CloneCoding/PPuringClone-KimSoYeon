@@ -8,7 +8,7 @@
 import Foundation
 
 protocol writingViewModelDelegate {
-    func didChangedWriting(writing: Writing)
+    func changedWriting(writing: Writing)
 }
 
 class WritingViewModel {
@@ -17,7 +17,7 @@ class WritingViewModel {
         willSet(newWriting) {
             guard let writing = newWriting else { return }
 
-            writingDelegate?.didChangedWriting(writing: writing)
+            writingDelegate?.changedWriting(writing: writing)
         }
     }
 
