@@ -8,6 +8,8 @@
 import UIKit
 
 class SettingVC: UIViewController {
+    // MARK: - UIComponents
+    
     private lazy var exitButton: UIButton = {
         let button = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 60, height: 60)))
         button.addTarget(self, action: #selector(touchUpExit), for: .touchUpInside)
@@ -54,6 +56,7 @@ class SettingVC: UIViewController {
     static var storyNum: Int = 0
     
     // MARK: - LifeCycle Methods
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -84,6 +87,7 @@ class SettingVC: UIViewController {
 }
 
 // MARK: - UI Methods
+
 extension SettingVC {
     func setUI() {
         view.backgroundColor = .white
@@ -115,6 +119,7 @@ extension SettingVC {
 }
 
 // MARK: - Action Methods
+
 extension SettingVC {
     @objc func touchUpExit() {
         UIView.animate(withDuration: 0.3, animations: {

@@ -78,6 +78,7 @@ extension ContainerVC {
 }
 
 // MARK: - UI
+
 extension ContainerVC {
     private func setRealm() {
         Database.shared.initStoryData()

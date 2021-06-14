@@ -15,14 +15,12 @@ class WritingVC: UIViewController {
     private lazy var cancleButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(touchUpCancleButton(_:)))
         button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
-
         return button
     }()
 
     private lazy var completionButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpCompletionButton(_:)))
         button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerif(.light, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
-
         return button
     }()
 
@@ -30,14 +28,12 @@ class WritingVC: UIViewController {
         let textfield = UITextField()
         textfield.placeholder = "제목"
         textfield.font = UIFont.NotoSerif(.semiBold, size: 20)
-
         return textfield
     }()
 
     private let contentTextView: UITextView = {
         let textview = UITextView()
         textview.font = UIFont.NotoSerif(.light, size: 15)
-
         return textview
     }()
 
@@ -46,14 +42,12 @@ class WritingVC: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.NotoSerif(.light, size: 17)
         button.addTarget(self, action: #selector(touchUpNavigation(_:)), for: .touchUpInside)
-
         return button
     }()
 
     private let separator: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.systemGray5
-
         return view
     }()
 
@@ -200,6 +194,8 @@ extension WritingVC {
         }
     }
 }
+
+// MARK: -UITextFieldDelegate
 
 extension WritingVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

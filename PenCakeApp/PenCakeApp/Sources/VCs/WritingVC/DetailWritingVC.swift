@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class DetailWritingVC: UIViewController {
+    // MARK: - UIComponents
+    
     private var navigationView: UIView = {
         let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 44)))
         view.backgroundColor = .white
@@ -199,6 +201,8 @@ extension DetailWritingVC {
         viewModel.writingDelegate = self
     }
 }
+
+// MARK: - ViewModelDelegate
 
 extension DetailWritingVC: writingViewModelDelegate {
     func changedWriting(writing: Writing) {

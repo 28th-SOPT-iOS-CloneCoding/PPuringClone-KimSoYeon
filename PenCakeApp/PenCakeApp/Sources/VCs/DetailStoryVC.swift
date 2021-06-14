@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class DetailStoryVC: UIViewController {
+    // MARK: - UIComponents
+    
     private lazy var backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
@@ -30,7 +32,7 @@ class DetailStoryVC: UIViewController {
 
     private var detailCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    var writingCount: CGFloat = 0
+    var writingCount: CGFloat = 3
     private var currentIndex: CGFloat = 0
     private let flowLayout = UICollectionViewFlowLayout()
     
