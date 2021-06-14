@@ -26,7 +26,6 @@ class DetailStoryVC: UIViewController {
     private lazy var lineView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
-        
         return view
     }()
 
@@ -75,6 +74,11 @@ extension DetailStoryVC {
             make.top.equalTo(lineView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.05, execute: {
+            self.detailCollectionView.scrollToItem(at: IndexPath(item: Int(self.currentIndex), section: 0), at: .centeredHorizontally, animated: false)
+        })
+        movePositiveDirection()
     }
     
     private func setCollectionView() {
@@ -133,6 +137,8 @@ extension DetailStoryVC: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets.zero
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension DetailStoryVC: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

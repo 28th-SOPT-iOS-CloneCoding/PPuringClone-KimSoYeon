@@ -14,7 +14,6 @@ class DetailWritingVC: UIViewController {
     private var navigationView: UIView = {
         let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: 44)))
         view.backgroundColor = .white
-
         return view
     }()
 
@@ -23,7 +22,6 @@ class DetailWritingVC: UIViewController {
         button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         button.tintColor = .lightGray
         button.addTarget(self, action: #selector(touchUpBackButton(_:)), for: .touchUpInside)
-
         return button
     }()
 
@@ -32,14 +30,12 @@ class DetailWritingVC: UIViewController {
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         button.tintColor = .lightGray
         button.addTarget(self, action: #selector(touchUpMoreButton(_:)), for: .touchUpInside)
-
         return button
     }()
 
     private var separator: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.systemGray4
-
         return view
     }()
 
@@ -47,7 +43,6 @@ class DetailWritingVC: UIViewController {
         let label = UILabel()
         label.text = "안녕하세요"
         label.font = UIFont.NotoSerif(.semiBold, size: 18)
-
         return label
     }()
 
@@ -56,7 +51,6 @@ class DetailWritingVC: UIViewController {
         label.text = Date().getDateToString(date: Date())
         label.font = UIFont.NotoSerif(.light, size: 15)
         label.textColor = UIColor.lightGray
-
         return label
     }()
 
@@ -65,7 +59,6 @@ class DetailWritingVC: UIViewController {
         label.text = "내용을 적어주세요."
         label.font = UIFont.NotoSerif(.light, size: 16)
         label.numberOfLines = 0
-
         return label
     }()
 

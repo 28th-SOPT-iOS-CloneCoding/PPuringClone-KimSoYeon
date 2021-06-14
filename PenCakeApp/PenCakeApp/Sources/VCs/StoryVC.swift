@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class StoryVC: UIViewController {
+class StoryVC: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - UIComponents
 
     private let headerView: UIView = {
@@ -78,6 +78,7 @@ class StoryVC: UIViewController {
     // MARK: - local variables
 
     var viewModel: StoryViewModel
+    var story: Story?
 
     // MARK: - Initializer
 
@@ -101,6 +102,7 @@ class StoryVC: UIViewController {
         setTableView()
         setConstraint()
         setNavigationBar()
+        setupLongPressGesture()
     }
 }
 
@@ -212,6 +214,42 @@ extension StoryVC: UITableViewDelegate {
         }
 
         navigationController?.pushViewController(detailWritingVC, animated: true)
+    }
+    
+    func setupLongPressGesture() {
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        longPressGesture.minimumPressDuration = 1.0 // 1 second press
+        longPressGesture.delegate = self
+        self.tableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer){
+        if gestureRecognizer.state == .began {
+            let touchPoint = gestureRecognizer.location(in: self.tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+                let submitAction = UIAlertAction(title: "확인", style: .default) { _ in
+                    print("🙀 삭제하기")
+                    
+                    let writing = self.story?.writings[indexPath.row]
+                    dump(writing)
+                    
+//                    Database.shared.deleteWriting(idx: ContainerVC.currPage, writing: writing!) { result in
+//                        if result {
+//                            Database.shared.updateStory(idx: ContainerVC.currPage)
+//                        } else {
+//                            print("FAIL TO DELETE")
+//                        }
+//                    }
+                    self.tableView.reloadData()
+                }
+                alert.addAction(cancelAction)
+                alert.addAction(submitAction)
+
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
 
