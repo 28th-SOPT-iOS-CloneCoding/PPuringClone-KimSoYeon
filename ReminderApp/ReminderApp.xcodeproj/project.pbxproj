@@ -3,16 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		922A553A267F96480003A047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922A5539267F96480003A047 /* AppDelegate.swift */; };
 		922A553C267F96480003A047 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922A553B267F96480003A047 /* SceneDelegate.swift */; };
-		922A553E267F96480003A047 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922A553D267F96480003A047 /* ViewController.swift */; };
 		922A5541267F96480003A047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922A553F267F96480003A047 /* Main.storyboard */; };
 		922A5543267F96490003A047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922A5542267F96490003A047 /* Assets.xcassets */; };
 		922A5546267F96490003A047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922A5544267F96490003A047 /* LaunchScreen.storyboard */; };
+		922A5558267F9E9C0003A047 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922A5557267F9E9C0003A047 /* MainVC.swift */; };
 		B4089D5009B75164D66427D3 /* Pods_ReminderApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DD11956C45500CEB603C16 /* Pods_ReminderApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,11 +21,11 @@
 		922A5536267F96480003A047 /* ReminderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReminderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		922A5539267F96480003A047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		922A553B267F96480003A047 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		922A553D267F96480003A047 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		922A5540267F96480003A047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		922A5542267F96490003A047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		922A5545267F96490003A047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		922A5547267F96490003A047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		922A5557267F9E9C0003A047 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		99607396A926E691F550436F /* Pods-ReminderApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReminderApp.release.xcconfig"; path = "Target Support Files/Pods-ReminderApp/Pods-ReminderApp.release.xcconfig"; sourceTree = "<group>"; };
 		F8DD11956C45500CEB603C16 /* Pods_ReminderApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReminderApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -56,7 +56,6 @@
 				20161B51D4A96C3106A21978 /* Pods-ReminderApp.debug.xcconfig */,
 				99607396A926E691F550436F /* Pods-ReminderApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -120,7 +119,7 @@
 		922A5551267F998E0003A047 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				922A553D267F96480003A047 /* ViewController.swift */,
+				922A5557267F9E9C0003A047 /* MainVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -246,7 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				922A553E267F96480003A047 /* ViewController.swift in Sources */,
+				922A5558267F9E9C0003A047 /* MainVC.swift in Sources */,
 				922A553A267F96480003A047 /* AppDelegate.swift in Sources */,
 				922A553C267F96480003A047 /* SceneDelegate.swift in Sources */,
 			);
