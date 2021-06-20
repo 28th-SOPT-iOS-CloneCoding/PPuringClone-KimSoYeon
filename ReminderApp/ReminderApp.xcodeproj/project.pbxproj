@@ -56,15 +56,55 @@
 		922A5538267F96480003A047 /* ReminderApp */ = {
 			isa = PBXGroup;
 			children = (
-				922A5539267F96480003A047 /* AppDelegate.swift */,
-				922A553B267F96480003A047 /* SceneDelegate.swift */,
-				922A553D267F96480003A047 /* ViewController.swift */,
+				922A5547267F96490003A047 /* Info.plist */,
+				922A554F267F99600003A047 /* Sources */,
+				922A554E267F99580003A047 /* Resources */,
+			);
+			path = ReminderApp;
+			sourceTree = "<group>";
+		};
+		922A554E267F99580003A047 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				922A553F267F96480003A047 /* Main.storyboard */,
 				922A5542267F96490003A047 /* Assets.xcassets */,
 				922A5544267F96490003A047 /* LaunchScreen.storyboard */,
-				922A5547267F96490003A047 /* Info.plist */,
 			);
-			path = ReminderApp;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		922A554F267F99600003A047 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				922A5550267F99690003A047 /* Supports */,
+				922A5552267F9A4B0003A047 /* Cells */,
+				922A5551267F998E0003A047 /* VCs */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		922A5550267F99690003A047 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				922A5539267F96480003A047 /* AppDelegate.swift */,
+				922A553B267F96480003A047 /* SceneDelegate.swift */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		922A5551267F998E0003A047 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				922A553D267F96480003A047 /* ViewController.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		922A5552267F9A4B0003A047 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
