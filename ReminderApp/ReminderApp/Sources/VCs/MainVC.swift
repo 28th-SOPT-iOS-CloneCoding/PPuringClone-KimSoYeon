@@ -23,6 +23,13 @@ class MainVC: UIViewController {
         return searchController
     }()
     
+    private lazy var mainTableView: UITableView = {
+        let tableView = UITableView()
+        
+        return tableView
+    }()
+    
+    var isEdit = false
     
     // MARK: - LifeCycle Methods
     
@@ -30,6 +37,8 @@ class MainVC: UIViewController {
         super.viewDidLoad()
 
         setNavigationController()
+        setTableView()
+        setConstraint()
     }
 }
 
@@ -43,7 +52,21 @@ extension MainVC {
         
         let backBarButtonItem = UIBarButtonItem(title: "목록", style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backBarButtonItem
-
+    }
+    
+    func setTableView() {
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        
+        mainTableView.register(MainListTVC.self, forCellReuseIdentifier: MainListTVC.identifier)
+    }
+    
+    func setConstraint() {
+        view.addSubview(mainTableView)
+        
+        mainTableView.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
     }
 }
 
@@ -52,6 +75,31 @@ extension MainVC {
 extension MainVC {
     @objc
     func pressEditButton(_ sender: UIBarButtonItem) {
-        print("편집 버튼 누름")
+        if isEdit {
+            editButton.title = "편집"
+            isEdit = false
+            mainTableView.setEditing(false, animated: true)
+        } else {
+            editButton.title = "완료"
+            isEdit = true
+            mainTableView.setEditing(true, animated: true)
+        }
+    }
+}
+
+extension MainVC: UITableViewDelegate {
+    
+}
+
+extension MainVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainListTVC.identifier) as? MainListTVC else {
+            return UITableViewCell()
+        }
+        return cell
     }
 }
