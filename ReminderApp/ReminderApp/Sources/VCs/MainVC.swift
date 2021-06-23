@@ -24,12 +24,63 @@ class MainVC: UIViewController {
         return searchController
     }()
     
+    private lazy var mainCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isScrollEnabled = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.allowsMultipleSelection = true
+        return collectionView
+    }()
+    
     private lazy var mainTableView: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
     
+    private lazy var newAlertButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        button.setTitle(" 새로운 미리 알림", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        button.sizeToFit()
+        return button
+    }()
+    
+    private lazy var addListButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            title: "목록 추가",
+            style: .plain,
+            target: self,
+            action: #selector(touchUpAddList(_:)))
+        return button
+    }()
+    
+    private lazy var toolBar: UIToolbar = {
+        let toolbar = UIToolbar()
+        view.addSubview(toolbar)
+        
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 0).isActive = true
+        toolbar.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 0).isActive = true
+        toolbar.trailingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.trailingAnchor, multiplier: 0).isActive = true
+        
+        toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+        toolbar.isTranslucent = true
+        toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+        return toolbar
+    }()
+    
+    // MARK: - Local Variables
+    
     var isEdit = false
+    let collectionViewTopAnchor: CGFloat = 0
+    let tableViewTopAnchor: CGFloat = -300
+    
+    var items: [UIBarButtonItem] = []
     
     // MARK: - LifeCycle Methods
     
@@ -38,15 +89,31 @@ class MainVC: UIViewController {
 
         setView()
         setNavigationController()
+        setCollectionView()
         setTableView()
-        setConstraint()
+        setToolbarItem()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        mainCollectionView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(300)
+        }
+        
+        mainTableView.snp.makeConstraints { make in
+            make.top.equalTo(mainCollectionView.snp.bottom).offset(20)
+            make.bottom.leading.trailing.equalToSuperview()
+        }
     }
 }
 
 // MARK: - Custom Methods
+
 extension MainVC {
     func setView() {
         view.backgroundColor = .systemGray6
+        
+        view.addSubviews([mainCollectionView, mainTableView, toolBar])
     }
     
     func setNavigationController() {
@@ -55,6 +122,15 @@ extension MainVC {
         navigationItem.searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController?.searchBar.placeholder = "검색"
         navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
+    func setCollectionView() {
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
+        
+        mainCollectionView.register(MainListCVC.self, forCellWithReuseIdentifier: MainListCVC.identifier)
+        
+        mainCollectionView.backgroundColor = .systemGray6
     }
     
     func setTableView() {
@@ -68,12 +144,15 @@ extension MainVC {
         mainTableView.backgroundColor = .systemGray6
     }
     
-    func setConstraint() {
-        view.addSubview(mainTableView)
+    func setToolbarItem() {
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let leftButton = UIBarButtonItem(customView: newAlertButton)
         
-        mainTableView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
+        items.append(leftButton)
+        items.append(flexibleSpace)
+        items.append(addListButton)
+        
+        toolBar.setItems(items, animated: true)
     }
 }
 
@@ -92,11 +171,44 @@ extension MainVC {
             mainTableView.setEditing(true, animated: true)
         }
     }
+    
+    @objc
+    private func touchUpAddList(_ sender: Any) {
+        print("🐾 목록 추가 버튼 클릭")
+    }
 }
+
+// MARK: - UICollectionView Delegate
+
+extension MainVC: UICollectionViewDelegate {
+    
+}
+
+extension MainVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainListCVC.identifier, for: indexPath) as? MainListCVC else {
+            return UICollectionViewCell()
+        }
+        return cell
+    }
+}
+
+extension MainVC: UICollectionViewDelegateFlowLayout {
+    
+}
+
+
+// MARK: - UITableView Delegate
 
 extension MainVC: UITableViewDelegate {
     
 }
+
+// MARK: - UITableView DataSource
 
 extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
