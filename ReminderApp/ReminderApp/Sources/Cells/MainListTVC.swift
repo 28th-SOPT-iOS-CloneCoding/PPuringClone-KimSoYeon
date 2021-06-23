@@ -14,6 +14,11 @@ class MainListTVC: UITableViewCell {
     private var icon: UIButton = {
         let button = UIButton()
         button.tintColor = .blue
+        button.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 10,
+                                                    weight: .ultraLight,
+                                                    scale: .large),
+                                               forImageIn: .normal)
         button.layer.cornerRadius = button.bounds.width / 2
         
         return button
@@ -38,6 +43,7 @@ class MainListTVC: UITableViewCell {
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         setView()
         setConstraint()
     }
@@ -70,7 +76,8 @@ extension MainListTVC {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.leading.equalTo(10)
+            make.top.equalTo(5)
+            make.leading.equalTo(icon.snp.trailing).offset(5)
         }
         
         countsLabel.snp.makeConstraints { make in
