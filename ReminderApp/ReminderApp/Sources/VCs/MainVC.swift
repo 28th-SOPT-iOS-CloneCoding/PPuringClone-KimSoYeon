@@ -11,6 +11,7 @@ import SnapKit
 class MainVC: UIViewController {
     
     // MARK: - UIComponents
+    
     private lazy var editButton: UIBarButtonItem = {
         let editButton = UIBarButtonItem(title: "편집", style: .plain, target: self, action: #selector(self.pressEditButton(_:)))
         editButton.title = "편집"
@@ -25,7 +26,6 @@ class MainVC: UIViewController {
     
     private lazy var mainTableView: UITableView = {
         let tableView = UITableView()
-        
         return tableView
     }()
     
@@ -36,6 +36,7 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setView()
         setNavigationController()
         setTableView()
         setConstraint()
@@ -44,14 +45,16 @@ class MainVC: UIViewController {
 
 // MARK: - Custom Methods
 extension MainVC {
+    func setView() {
+        view.backgroundColor = .systemGray6
+    }
+    
     func setNavigationController() {
-        navigationItem.rightBarButtonItem = editButton
-        navigationItem.searchController = searchController
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .never
+        self.navigationItem.rightBarButtonItem = self.editButton
         
-        let backBarButtonItem = UIBarButtonItem(title: "목록", style: .plain, target: self, action: nil)
-        navigationItem.backBarButtonItem = backBarButtonItem
+        navigationItem.searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController?.searchBar.placeholder = "검색"
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     func setTableView() {
@@ -59,6 +62,10 @@ extension MainVC {
         mainTableView.dataSource = self
         
         mainTableView.register(MainListTVC.self, forCellReuseIdentifier: MainListTVC.identifier)
+        
+        mainTableView.separatorStyle = .none
+        mainTableView.separatorColor = .clear
+        mainTableView.backgroundColor = .systemGray6
     }
     
     func setConstraint() {

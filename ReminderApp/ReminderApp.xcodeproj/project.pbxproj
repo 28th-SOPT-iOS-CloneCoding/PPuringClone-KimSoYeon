@@ -14,6 +14,7 @@
 		922A5546267F96490003A047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922A5544267F96490003A047 /* LaunchScreen.storyboard */; };
 		922A5558267F9E9C0003A047 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922A5557267F9E9C0003A047 /* MainVC.swift */; };
 		92DB533926821FE200E8C9D9 /* MainListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB533826821FE200E8C9D9 /* MainListTVC.swift */; };
+		92DB538326823A9200E8C9D9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB538226823A9200E8C9D9 /* UIView+.swift */; };
 		B4089D5009B75164D66427D3 /* Pods_ReminderApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DD11956C45500CEB603C16 /* Pods_ReminderApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		922A5547267F96490003A047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		922A5557267F9E9C0003A047 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		92DB533826821FE200E8C9D9 /* MainListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListTVC.swift; sourceTree = "<group>"; };
+		92DB538226823A9200E8C9D9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		99607396A926E691F550436F /* Pods-ReminderApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReminderApp.release.xcconfig"; path = "Target Support Files/Pods-ReminderApp/Pods-ReminderApp.release.xcconfig"; sourceTree = "<group>"; };
 		F8DD11956C45500CEB603C16 /* Pods_ReminderApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReminderApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 		922A554F267F99600003A047 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				92DB538526823A9800E8C9D9 /* Extensions */,
 				922A5550267F99690003A047 /* Supports */,
 				922A5552267F9A4B0003A047 /* Cells */,
 				922A5551267F998E0003A047 /* VCs */,
@@ -132,6 +135,14 @@
 				92DB533826821FE200E8C9D9 /* MainListTVC.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		92DB538526823A9800E8C9D9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				92DB538226823A9200E8C9D9 /* UIView+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 				922A553A267F96480003A047 /* AppDelegate.swift in Sources */,
 				92DB533926821FE200E8C9D9 /* MainListTVC.swift in Sources */,
 				922A553C267F96480003A047 /* SceneDelegate.swift in Sources */,
+				92DB538326823A9200E8C9D9 /* UIView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

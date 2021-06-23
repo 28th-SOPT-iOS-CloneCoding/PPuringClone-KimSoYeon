@@ -11,7 +11,15 @@ class MainListTVC: UITableViewCell {
     static let identifier = "MainListTVC"
     
     // MARK: - UIComponents
-    private let titleLabel: UILabel = {
+    private var icon: UIButton = {
+        let button = UIButton()
+        button.tintColor = .blue
+        button.layer.cornerRadius = button.bounds.width / 2
+        
+        return button
+    }()
+    
+    private var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "새로운 목록"
         return label
@@ -30,7 +38,7 @@ class MainListTVC: UITableViewCell {
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        setView()
         setConstraint()
     }
     
@@ -48,16 +56,25 @@ class MainListTVC: UITableViewCell {
 // MARK: - Custom Methods
 
 extension MainListTVC {
+    func setView() {
+        contentView.backgroundColor = .white
+    }
+    
     func setConstraint(){
+        contentView.addSubview(icon)
         contentView.addSubview(titleLabel)
         contentView.addSubview(countsLabel)
+        
+        icon.snp.makeConstraints { make in
+            make.top.leading.equalTo(5)
+        }
         
         titleLabel.snp.makeConstraints { make in
             make.top.leading.equalTo(10)
         }
         
         countsLabel.snp.makeConstraints { make in
-            make.top.trailing.equalTo(10)
+            make.top.trailing.equalToSuperview().inset(10)
         }
     }
     
