@@ -13,7 +13,7 @@ class MainVC: UIViewController {
     // MARK: - UIComponents
     
     private lazy var editButton: UIBarButtonItem = {
-        let editButton = UIBarButtonItem(title: "편집", style: .plain, target: self, action: #selector(self.pressEditButton(_:)))
+        let editButton = UIBarButtonItem(title: "편집", style: .plain, target: self, action: #selector(self.touchUpEdit(_:)))
         editButton.title = "편집"
         return editButton
     }()
@@ -47,6 +47,7 @@ class MainVC: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 17)
         button.sizeToFit()
+        button.addTarget(self, action: #selector(touchUpNewAlert(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -160,7 +161,7 @@ extension MainVC {
 
 extension MainVC {
     @objc
-    func pressEditButton(_ sender: UIBarButtonItem) {
+    func touchUpEdit(_ sender: UIBarButtonItem) {
         if isEdit {
             editButton.title = "편집"
             isEdit = false
@@ -170,6 +171,13 @@ extension MainVC {
             isEdit = true
             mainTableView.setEditing(true, animated: true)
         }
+    }
+    
+    @objc
+    private func touchUpNewAlert(_ sender: UIButton) {
+        let dvc = AddNewAlertVC()
+        dvc.modalPresentationStyle = .popover
+        self.present(dvc, animated: true, completion: nil)
     }
     
     @objc
