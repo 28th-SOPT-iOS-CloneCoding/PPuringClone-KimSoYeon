@@ -14,11 +14,23 @@ class NewReminderTVC: UITableViewCell {
     
     var textField: UITextField = {
         let textField = UITextField()
+        let attributes = [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)
+        ]
+        textField.attributedPlaceholder = NSAttributedString(string: "제목", attributes: attributes)
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.borderStyle = .none
+        textField.resignFirstResponder()
         return textField
     }()
     
     var textView: UITextView = {
         let textView = UITextView()
+        textView.text = ""
+        textView.isHidden = true
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont.systemFont(ofSize: 16, weight: .light)
         return textView
     }()
 
@@ -33,27 +45,11 @@ class NewReminderTVC: UITableViewCell {
         contentView.addSubview(textField)
         contentView.addSubview(textView)
         
-        setConstraint()
-        
-        let attributes = [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)
-        ]
-        
-        textView.text = ""
-        textView.isHidden = true
-        textView.delegate = self
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        
-        setTextView()
-        
-        textField.attributedPlaceholder = NSAttributedString(string: "제목", attributes: attributes)
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.borderStyle = .none
         textField.delegate = self
-        textField.resignFirstResponder()
+        textView.delegate = self
         
+        setConstraint()
+        setTextView()
     }
     
     @available(*, unavailable)
@@ -124,4 +120,6 @@ extension NewReminderTVC: UITextViewDelegate {
     }
 }
 
-extension NewReminderTVC: UITextFieldDelegate {}
+extension NewReminderTVC: UITextFieldDelegate {
+    
+}

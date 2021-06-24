@@ -40,7 +40,9 @@ class AddHeader: UIView {
     // MARK: - Local Variables
     
     private var viewController: UIViewController?
-    private var addNewAlertVC: AddNewAlertVC?
+    private var newAlertVC: NewAlertVC?
+    
+    var canSaved:Bool = true
     
     // MARK: - LifeCycle Methods
     
@@ -52,10 +54,10 @@ class AddHeader: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(root viewController: UIViewController, with addNewAlertVC: AddNewAlertVC) {
+    init(root viewController: UIViewController, with newAlertVC: NewAlertVC) {
         super.init(frame: .zero)
         self.viewController = viewController
-        self.addNewAlertVC = addNewAlertVC
+        self.newAlertVC = newAlertVC
         addSubviews([cancelButton, addButton])
         setButtonAction()
     }
@@ -74,10 +76,30 @@ class AddHeader: UIView {
     
     // MARK: - Action Methods
     
+    // MARK: - FixMe: cancel button
+    
     private func setButtonAction() {
         let cancelAction = UIAction { _ in
-            self.viewController?.dismiss(animated: true, completion: nil)
+//            self.viewController?.dismiss(animated: true, completion: nil)
+            if self.canSaved {
+                let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                let dismiss = UIAlertAction(title: "변경 사항 폐기", style: .destructive) { (_) in
+                    self.resignFirstResponder()
+                    self.viewController?.dismiss(animated: true, completion: nil)
+                }
+                let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+                alert.addAction(dismiss)
+                alert.addAction(cancel)
+                self.viewController?.present(alert, animated: true, completion: nil)
+            } else {
+                self.viewController?.dismiss(animated: true, completion: nil)
+            }
         }
         cancelButton.addAction(cancelAction, for: .touchUpInside)
+        
+        let addAction = UIAction { _ in
+            print("👍 add button")
+        }
+        addButton.addAction(addAction, for: .touchUpInside)
     }
 }

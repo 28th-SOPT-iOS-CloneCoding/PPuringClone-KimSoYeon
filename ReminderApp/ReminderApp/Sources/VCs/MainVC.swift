@@ -82,6 +82,8 @@ class MainVC: UIViewController {
     let tableViewTopAnchor: CGFloat = -300
     
     var items: [UIBarButtonItem] = []
+    var lists: [String] = ["뿌링클론코딩", "미라클론코딩", "스펙타클론코딩", "오라클론코딩"]
+    var menus: [String] = ["전체", "오늘", "예정"]
     
     // MARK: - LifeCycle Methods
     
@@ -175,7 +177,7 @@ extension MainVC {
     
     @objc
     private func touchUpNewAlert(_ sender: UIButton) {
-        let dvc = AddNewAlertVC()
+        let dvc = NewAlertVC()
         dvc.modalPresentationStyle = .popover
         self.present(dvc, animated: true, completion: nil)
     }

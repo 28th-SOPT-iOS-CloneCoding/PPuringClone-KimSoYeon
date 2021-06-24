@@ -16,7 +16,7 @@
 		922A5558267F9E9C0003A047 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922A5557267F9E9C0003A047 /* MainVC.swift */; };
 		92DB533926821FE200E8C9D9 /* MainListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB533826821FE200E8C9D9 /* MainListTVC.swift */; };
 		92DB538326823A9200E8C9D9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB538226823A9200E8C9D9 /* UIView+.swift */; };
-		92EE63B82684D522005C28B5 /* AddNewAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE63B72684D522005C28B5 /* AddNewAlertVC.swift */; };
+		92EE63B82684D522005C28B5 /* NewAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE63B72684D522005C28B5 /* NewAlertVC.swift */; };
 		92EE63BC2684DB19005C28B5 /* AddHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE63BB2684DB19005C28B5 /* AddHeader.swift */; };
 		92EE63C02684E164005C28B5 /* NewReminderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE63BF2684E164005C28B5 /* NewReminderTVC.swift */; };
 		B4089D5009B75164D66427D3 /* Pods_ReminderApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DD11956C45500CEB603C16 /* Pods_ReminderApp.framework */; };
@@ -35,7 +35,7 @@
 		922A5557267F9E9C0003A047 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		92DB533826821FE200E8C9D9 /* MainListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListTVC.swift; sourceTree = "<group>"; };
 		92DB538226823A9200E8C9D9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		92EE63B72684D522005C28B5 /* AddNewAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAlertVC.swift; sourceTree = "<group>"; };
+		92EE63B72684D522005C28B5 /* NewAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlertVC.swift; sourceTree = "<group>"; };
 		92EE63BB2684DB19005C28B5 /* AddHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHeader.swift; sourceTree = "<group>"; };
 		92EE63BF2684E164005C28B5 /* NewReminderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderTVC.swift; sourceTree = "<group>"; };
 		99607396A926E691F550436F /* Pods-ReminderApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReminderApp.release.xcconfig"; path = "Target Support Files/Pods-ReminderApp/Pods-ReminderApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				922A5557267F9E9C0003A047 /* MainVC.swift */,
-				92EE63B72684D522005C28B5 /* AddNewAlertVC.swift */,
+				92EE63B72684D522005C28B5 /* NewAlertVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				922A5558267F9E9C0003A047 /* MainVC.swift in Sources */,
-				92EE63B82684D522005C28B5 /* AddNewAlertVC.swift in Sources */,
+				92EE63B82684D522005C28B5 /* NewAlertVC.swift in Sources */,
 				922A553A267F96480003A047 /* AppDelegate.swift in Sources */,
 				92EE63C02684E164005C28B5 /* NewReminderTVC.swift in Sources */,
 				92DB533926821FE200E8C9D9 /* MainListTVC.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddNewAlertVC: UIViewController {
+class NewAlertVC: UIViewController {
     
     // MARK: - UIComponents
     
@@ -20,7 +20,7 @@ class AddNewAlertVC: UIViewController {
     
     // MARK: - Local Variables
     
-    var isEdit:Bool = false
+    var isEdit: Bool = false
     
     // MARK: - LifeCycle Methods
     
@@ -49,11 +49,13 @@ class AddNewAlertVC: UIViewController {
 
 // MARK: - Custom Methods
 
-extension AddNewAlertVC {
+extension NewAlertVC {
     func setView() {
         view.backgroundColor = .white
-        
         view.addSubviews([header, newReminderTableView])
+        
+        self.presentationController?.delegate = self
+        isModalInPresentation = true
     }
     
     func setTableView() {
@@ -64,9 +66,24 @@ extension AddNewAlertVC {
     }
 }
 
+// MARK: - Action Methods
+
+extension NewAlertVC {
+    @objc
+    func saveAction() {
+        if header.canSaved {
+            header.canSaved = false
+            header.addButton.isEnabled = false
+        } else {
+            header.canSaved = true
+            header.addButton.isEnabled = true
+        }
+    }
+}
+
 // MARK: - UITableView Delegate
 
-extension AddNewAlertVC: UITableViewDelegate {
+extension NewAlertVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0, indexPath.item == 1 {
             return 80
@@ -75,7 +92,7 @@ extension AddNewAlertVC: UITableViewDelegate {
     }
 }
 
-extension AddNewAlertVC: UITableViewDataSource {
+extension NewAlertVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 2
@@ -113,7 +130,34 @@ extension AddNewAlertVC: UITableViewDataSource {
             return UITableViewCell()
         }
     }
-    
-    
 }
 
+// MARK: - PresentationController Delegate
+
+// MARK: - FixME: cancel button
+
+extension NewAlertVC: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        if header.canSaved {
+            let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let dismiss = UIAlertAction(title: "변경 사항 폐기", style: .destructive) { (_) in
+                self.resignFirstResponder()
+                self.dismiss(animated: true, completion: nil)
+            }
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            alert.addAction(dismiss)
+            alert.addAction(cancel)
+            present(alert, animated: true, completion: nil)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+
+// MARK: - Notification
+extension NewAlertVC {
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(saveAction), name: NSNotification.Name("Save"), object: nil)
+    }
+}
