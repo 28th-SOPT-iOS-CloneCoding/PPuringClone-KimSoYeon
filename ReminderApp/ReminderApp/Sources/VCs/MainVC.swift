@@ -184,7 +184,9 @@ extension MainVC {
     
     @objc
     private func touchUpAddList(_ sender: Any) {
-        print("🐾 목록 추가 버튼 클릭")
+        let dvc = NewListVC()
+        dvc.modalPresentationStyle = .popover
+        self.present(dvc, animated: true, completion: nil)
     }
 }
 

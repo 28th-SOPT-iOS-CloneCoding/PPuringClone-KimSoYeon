@@ -51,11 +51,13 @@ class NewAlertVC: UIViewController {
 
 extension NewAlertVC {
     func setView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         view.addSubviews([header, newReminderTableView])
         
         self.presentationController?.delegate = self
         isModalInPresentation = true
+        
+        header.titleLabel.text = "새로운 미리 알림"
     }
     
     func setTableView() {

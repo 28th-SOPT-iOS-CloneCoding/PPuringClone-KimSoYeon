@@ -14,6 +14,7 @@
 		922A5543267F96490003A047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922A5542267F96490003A047 /* Assets.xcassets */; };
 		922A5546267F96490003A047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922A5544267F96490003A047 /* LaunchScreen.storyboard */; };
 		922A5558267F9E9C0003A047 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922A5557267F9E9C0003A047 /* MainVC.swift */; };
+		92A6D57026859E9C00AC3891 /* NewListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A6D56F26859E9C00AC3891 /* NewListVC.swift */; };
 		92DB533926821FE200E8C9D9 /* MainListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB533826821FE200E8C9D9 /* MainListTVC.swift */; };
 		92DB538326823A9200E8C9D9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DB538226823A9200E8C9D9 /* UIView+.swift */; };
 		92EE63B82684D522005C28B5 /* NewAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE63B72684D522005C28B5 /* NewAlertVC.swift */; };
@@ -33,6 +34,7 @@
 		922A5545267F96490003A047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		922A5547267F96490003A047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		922A5557267F9E9C0003A047 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		92A6D56F26859E9C00AC3891 /* NewListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListVC.swift; sourceTree = "<group>"; };
 		92DB533826821FE200E8C9D9 /* MainListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListTVC.swift; sourceTree = "<group>"; };
 		92DB538226823A9200E8C9D9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		92EE63B72684D522005C28B5 /* NewAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlertVC.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				922A5557267F9E9C0003A047 /* MainVC.swift */,
 				92EE63B72684D522005C28B5 /* NewAlertVC.swift */,
+				92A6D56F26859E9C00AC3891 /* NewListVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				922A5558267F9E9C0003A047 /* MainVC.swift in Sources */,
 				92EE63B82684D522005C28B5 /* NewAlertVC.swift in Sources */,
 				922A553A267F96480003A047 /* AppDelegate.swift in Sources */,
+				92A6D57026859E9C00AC3891 /* NewListVC.swift in Sources */,
 				92EE63C02684E164005C28B5 /* NewReminderTVC.swift in Sources */,
 				92DB533926821FE200E8C9D9 /* MainListTVC.swift in Sources */,
 				92EE63BC2684DB19005C28B5 /* AddHeader.swift in Sources */,

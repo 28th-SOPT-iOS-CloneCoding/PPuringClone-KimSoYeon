@@ -31,9 +31,10 @@ class AddHeader: UIView {
         return button
     }()
     
-    var titleLable: UILabel = {
+    var titleLabel: UILabel = {
         let label = UILabel()
-        
+        label.text = "새로운"
+        label.font = .systemFont(ofSize: 17)
         return label
     }()
     
@@ -58,7 +59,7 @@ class AddHeader: UIView {
         super.init(frame: .zero)
         self.viewController = viewController
         self.newAlertVC = newAlertVC
-        addSubviews([cancelButton, addButton])
+        addSubviews([cancelButton, titleLabel, addButton])
         setButtonAction()
     }
     
@@ -66,6 +67,11 @@ class AddHeader: UIView {
         cancelButton.snp.makeConstraints { make in
             make.centerY.equalTo(self.snp.centerY)
             make.leading.equalToSuperview().inset(18)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(self.snp.centerY)
+            make.centerX.equalTo(self.snp.centerX)
         }
         
         addButton.snp.makeConstraints { make in
