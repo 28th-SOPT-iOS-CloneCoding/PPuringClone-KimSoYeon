@@ -78,8 +78,6 @@ class MainVC: UIViewController {
     // MARK: - Local Variables
     
     var isEdit = false
-    let collectionViewTopAnchor: CGFloat = 0
-    let tableViewTopAnchor: CGFloat = -300
     
     var items: [UIBarButtonItem] = []
     var lists: [String] = ["뿌링클론코딩", "미라클론코딩", "스펙타클론코딩", "오라클론코딩"]
@@ -99,13 +97,16 @@ class MainVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         mainCollectionView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview().offset(10)
             make.height.equalTo(300)
         }
         
         mainTableView.snp.makeConstraints { make in
             make.top.equalTo(mainCollectionView.snp.bottom).offset(20)
-            make.bottom.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().inset(10)
         }
     }
 }
@@ -205,12 +206,41 @@ extension MainVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainListCVC.identifier, for: indexPath) as? MainListCVC else {
             return UICollectionViewCell()
         }
+        cell.setCellData(title: menus[indexPath.row])
         return cell
     }
 }
 
 extension MainVC: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return calculateCellSize(collectionView: collectionView, index: indexPath.row)
+    }
+}
+
+// MARK: - CollecitonView Cell
+
+extension MainVC {
+    private func calculateCellSize(collectionView: UICollectionView, index: Int) -> CGSize {
+        let label = UILabel()
+        var width: CGFloat = 0
+        var height: CGFloat = 0
+        
+        label.text = menus[index]
+        label.sizeToFit()
+        
+        if label.text?.count ?? 0 < 3 {
+            width = label.frame.width + 50
+        } else if label.text?.count ?? 0 <= 4 {
+            width = label.frame.width + 40
+        } else if label.text?.count ?? 0 <= 5 {
+            width = label.frame.width + 30
+        } else {
+            width = label.frame.width + 20
+        }
+        height = 50
+        
+        return CGSize(width: width, height: height)
+    }
 }
 
 
