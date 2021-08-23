@@ -19,13 +19,13 @@
 		92669D072649FB0F009E0018 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92669D052649FB0F009E0018 /* Main.storyboard */; };
 		92669D092649FB10009E0018 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92669D082649FB10009E0018 /* Assets.xcassets */; };
 		92669D0C2649FB10009E0018 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92669D0A2649FB10009E0018 /* LaunchScreen.storyboard */; };
-		92753C31264E2F9E005B6CC1 /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92753C30264E2F9E005B6CC1 /* GeneralAPI.swift */; };
 		92753C34264E3045005B6CC1 /* MovieServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92753C33264E3045005B6CC1 /* MovieServices.swift */; };
 		92753C37264E30C6005B6CC1 /* MovieRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92753C36264E30C6005B6CC1 /* MovieRequest.swift */; };
 		92753C3D264E32B5005B6CC1 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92753C3C264E32B5005B6CC1 /* MovieModel.swift */; };
 		92753C43264E37EC005B6CC1 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92753C42264E37EC005B6CC1 /* MoreVC.swift */; };
 		929D0EFD2653FDA600F326C0 /* DateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929D0EFC2653FDA600F326C0 /* DateCVC.swift */; };
 		929D0F002653FDB200F326C0 /* TimeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929D0EFF2653FDB200F326C0 /* TimeCVC.swift */; };
+		92ACADBE26D3F2B90039B5D1 /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92ACADBD26D3F2B90039B5D1 /* GeneralAPI.swift */; };
 		92BB7B5D264ED3E7005A9103 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BB7B5C264ED3E7005A9103 /* HomeVC.swift */; };
 		92BD60B8265A4D6A00094B59 /* UIView+SetViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BD60B7265A4D6A00094B59 /* UIView+SetViewShadow.swift */; };
 		92EC1CFA264E66A00078BC3E /* MovieListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC1CF9264E66A00078BC3E /* MovieListTVC.swift */; };
@@ -47,13 +47,13 @@
 		92669D082649FB10009E0018 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92669D0B2649FB10009E0018 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92669D0D2649FB10009E0018 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92753C30264E2F9E005B6CC1 /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralAPI.swift; path = CGVMovieApp/Sources/Services/GeneralAPI.swift; sourceTree = SOURCE_ROOT; };
 		92753C33264E3045005B6CC1 /* MovieServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieServices.swift; sourceTree = "<group>"; };
 		92753C36264E30C6005B6CC1 /* MovieRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequest.swift; sourceTree = "<group>"; };
 		92753C3C264E32B5005B6CC1 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		92753C42264E37EC005B6CC1 /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		929D0EFC2653FDA600F326C0 /* DateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCVC.swift; sourceTree = "<group>"; };
 		929D0EFF2653FDB200F326C0 /* TimeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCVC.swift; sourceTree = "<group>"; };
+		92ACADBD26D3F2B90039B5D1 /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
 		92BB7B5C264ED3E7005A9103 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		92BD60B7265A4D6A00094B59 /* UIView+SetViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SetViewShadow.swift"; sourceTree = "<group>"; };
 		92EC1CF9264E66A00078BC3E /* MovieListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieListTVC.swift; path = CGVMovieApp/Sources/Cells/MovieListTVC.swift; sourceTree = SOURCE_ROOT; };
@@ -203,8 +203,8 @@
 		92669D2A264A1893009E0018 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				92753C30264E2F9E005B6CC1 /* GeneralAPI.swift */,
 				92753C33264E3045005B6CC1 /* MovieServices.swift */,
+				92ACADBD26D3F2B90039B5D1 /* GeneralAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -351,6 +351,7 @@
 				92753C3D264E32B5005B6CC1 /* MovieModel.swift in Sources */,
 				92BB7B5D264ED3E7005A9103 /* HomeVC.swift in Sources */,
 				92BD60B8265A4D6A00094B59 /* UIView+SetViewShadow.swift in Sources */,
+				92ACADBE26D3F2B90039B5D1 /* GeneralAPI.swift in Sources */,
 				929D0F002653FDB200F326C0 /* TimeCVC.swift in Sources */,
 				929D0EFD2653FDA600F326C0 /* DateCVC.swift in Sources */,
 				92669D042649FB0F009E0018 /* ViewController.swift in Sources */,
@@ -362,7 +363,6 @@
 				9231EA502653C030006F42F6 /* DateTimeTVC.swift in Sources */,
 				92753C37264E30C6005B6CC1 /* MovieRequest.swift in Sources */,
 				9231EA412653AA0E006F42F6 /* TheaterTownCVC.swift in Sources */,
-				92753C31264E2F9E005B6CC1 /* GeneralAPI.swift in Sources */,
 				922E22F1264F8AA400F8ADA7 /* NowBookingVC.swift in Sources */,
 				922E50D02652E11A007DFB79 /* TheaterTVC.swift in Sources */,
 				92669D022649FB0F009E0018 /* SceneDelegate.swift in Sources */,
