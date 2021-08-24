@@ -1,4 +1,6 @@
 # KimSoYeon
+
+## 뿌링클론코딩
 <1st Clone Coding - iOS Clock App>
 - 스토리 보드 사용
 
